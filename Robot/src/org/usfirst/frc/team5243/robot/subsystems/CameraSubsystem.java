@@ -1,0 +1,57 @@
+package org.usfirst.frc.team5243.robot.subsystems;
+
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.DrawMode;
+import com.ni.vision.NIVision.Image;
+import com.ni.vision.NIVision.ShapeMode;
+
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
+/**
+ *
+ */
+public class CameraSubsystem extends Subsystem {
+    
+    private int session;
+    private Image frame;
+    private NIVision.Rect rect;
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    }
+    public void CameraInit(){
+
+        frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+
+        // the camera name (ex "cam0") can be found through the roborio web interface
+        session = NIVision.IMAQdxOpenCamera("cam0",
+                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+        NIVision.IMAQdxConfigureGrab(session);
+    }
+    public void CameraSetUp(){
+    	NIVision.IMAQdxStartAcquisition(session);
+        /**
+         * grab an image, draw the circle, and provide it for the camera server
+         * which will in turn send it to the dashboard.
+         */
+        rect =  new NIVision.Rect(10, 10, 100, 100);
+    }
+    public void CameraLoop(){
+
+        NIVision.IMAQdxGrab(session, frame, 1);
+        NIVision.imaqDrawShapeOnImage(frame, frame, rect,
+                DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+        
+        CameraServer.getInstance().setImage(frame);
+    }
+    
+    public void CameraEnd(){
+    	NIVision.IMAQdxStopAcquisition(session);
+    }
+    
+}
+
