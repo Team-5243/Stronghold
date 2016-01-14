@@ -26,13 +26,14 @@ public class CameraSubsystem extends Subsystem {
     public void CameraInit(){
 
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-
+        
         // the camera name (ex "cam0") can be found through the roborio web interface
         session = NIVision.IMAQdxOpenCamera("cam0",
                 NIVision.IMAQdxCameraControlMode.CameraControlModeController);
         NIVision.IMAQdxConfigureGrab(session);
     }
     public void CameraSetUp(){
+    	System.out.println("In camera SetUp");
     	NIVision.IMAQdxStartAcquisition(session);
         /**
          * grab an image, draw the circle, and provide it for the camera server
