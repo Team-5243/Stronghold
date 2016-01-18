@@ -2,9 +2,11 @@
 package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 
 /**
@@ -16,10 +18,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
-	
+	RobotDrive myDrive;
 	public static OI oi;
+	NetworkTable table;
+	double[] defaultValue = new double[0];
+	public Robot() {
+		table = NetworkTable.getTable("GRIP/myCoutoursReport");
+		
+	}
 	
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -29,6 +36,9 @@ public class Robot extends IterativeRobot {
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
+		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
+
+		
     }
 	
 	public void disabledPeriodic() {
@@ -72,7 +82,16 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
         oi.getCamera().CameraLoop();
-    }
+        
+        double areas = table.getNumber("area", 0);
+		System.out.print("areas: ");
+		//for (double area: areas) {
+			System.out.print(areas + " ");
+		//}
+		System.out.println();
+		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
+		System.out.print("");
+	}
     
     /**
      * This function is called periodically during test mode
