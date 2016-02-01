@@ -34,8 +34,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-	//	oi.getCamera().CameraInit();
-	//	oi.getCamera().CameraSetUp();
+		oi.getCamera().CameraInit();
+		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
 		SmartDashboard.putNumber("Motor", 5);
@@ -82,16 +82,18 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
-       // oi.getCamera().CameraLoop();
+        oi.getCamera().CameraLoop();
         
       //  double areas = table.getNumber("area", 0);
 		//System.out.print("areas: ");
 		//for (double area: areas) {
 		//	System.out.print(areas + " ");
 		//}
-		System.out.println();
+		//System.out.println();
 		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
-		System.out.print("");
+		oi.getSensorSS().TestAccel();
+		oi.getSensorSS().TestUltra();
+		//System.out.print("");
 	}
     
     /**

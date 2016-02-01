@@ -19,7 +19,7 @@ public class SensorSubsystem extends Subsystem {
 	public SensorSubsystem(){
 		InitAccel();
 		InitUltra();
-		InitGyro();
+		//InitGyro();
 	}
     public void initDefaultCommand(){
         // Set the default command for a subsystem here.
