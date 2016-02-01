@@ -2,12 +2,14 @@
 package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+=======
+>>>>>>> Made the shooting subsystem and shoot command *second go*
 
 
 /**
@@ -19,15 +21,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	RobotDrive myDrive;
+	
 	public static OI oi;
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
 	//NetworkTable table;
 	double[] defaultValue = new double[0];
 	public Robot() {
 	//	table = NetworkTable.getTable("GRIP/myCoutoursReport");
 		
 	}
+=======
+>>>>>>> Made the shooting subsystem and shoot command *second go*
 	
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -37,9 +43,12 @@ public class Robot extends IterativeRobot {
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
 		SmartDashboard.putNumber("Motor", 5);
 		
+=======
+>>>>>>> Made the shooting subsystem and shoot command *second go*
     }
 	
 	public void disabledPeriodic() {
@@ -83,6 +92,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
         oi.getCamera().CameraLoop();
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
         
       //  double areas = table.getNumber("area", 0);
 		//System.out.print("areas: ");
@@ -95,6 +105,9 @@ public class Robot extends IterativeRobot {
 		oi.getSensorSS().TestUltra();
 		//System.out.print("");
 	}
+=======
+    }
+>>>>>>> Made the shooting subsystem and shoot command *second go*
     
     /**
      * This function is called periodically during test mode

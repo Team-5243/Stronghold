@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5243.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
@@ -10,11 +9,14 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
 public class OI {
 	
 	private CameraSubsystem CameraSub= new CameraSubsystem();
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
 	private final MotorSubsystem MotorSub = new MotorSubsystem();
 	private final SensorSubsystem SensorSub = new SensorSubsystem();
 	
 	Joystick leftStick;
 	Joystick rightStick;
+=======
+>>>>>>> Made the shooting subsystem and shoot command *second go*
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -41,15 +43,10 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-	public OI(){
-		leftStick = new Joystick(0);
-		rightStick = new Joystick(1);
-	}
-	
-	
 	public CameraSubsystem getCamera(){
 		return CameraSub;
 	}
+<<<<<<< 724fd99e2ed1146c45958c09f9e48c406346b45e
 	public MotorSubsystem getMotorSS(){
 		return MotorSub;
 	}
@@ -62,5 +59,7 @@ public class OI {
 	public Joystick getRightStick(){
 		return rightStick;
 	}
+=======
+>>>>>>> Made the shooting subsystem and shoot command *second go*
 }
 

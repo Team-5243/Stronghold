@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class CameraSubsystem extends Subsystem {
-    
     private int session;
     private Image frame;
     private NIVision.Rect rect;
@@ -42,7 +41,6 @@ public class CameraSubsystem extends Subsystem {
         rect =  new NIVision.Rect(10, 10, 100, 100);
     }
     public void CameraLoop(){
-
         NIVision.IMAQdxGrab(session, frame, 1);
         NIVision.imaqDrawShapeOnImage(frame, frame, rect,
                 DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
