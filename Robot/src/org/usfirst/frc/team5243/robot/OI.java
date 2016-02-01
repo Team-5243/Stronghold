@@ -9,8 +9,9 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-	private CameraSubsystem CameraSub= new CameraSubsystem();
+	//private CameraSubsystem CameraSub= new CameraSubsystem();
 	private MotorSubsystem MotorSub = new MotorSubsystem();
+	private SensorSubsystem SensorSub = new SensorSubsystem();
 	
 	Joystick leftStick;
 	Joystick rightStick;
@@ -46,9 +47,9 @@ public class OI {
 	}
 	
 	
-	public CameraSubsystem getCamera(){
-		return CameraSub;
-	}
+//	public CameraSubsystem getCamera(){
+	//	return CameraSub;
+	//}
 	public MotorSubsystem getMotorSS(){
 		return MotorSub;
 	}

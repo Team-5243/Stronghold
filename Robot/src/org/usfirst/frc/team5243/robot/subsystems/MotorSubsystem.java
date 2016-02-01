@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -19,7 +21,10 @@ public class MotorSubsystem extends Subsystem {
      * made for 4 motors
      */
     public MotorSubsystem(){
-    	
+    	frontLeft = new Jaguar(RobotMap.MotorFrontLeft);
+    	frontRight = new Jaguar(RobotMap.MotorFrontRight);
+    	backRight = new Jaguar(RobotMap.MotorBackRight);
+    	backLeft = new Jaguar(RobotMap.MotorBackLeft);
     }
     /**
      * Does nothing at this point

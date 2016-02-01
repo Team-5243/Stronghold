@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -20,10 +21,10 @@ public class Robot extends IterativeRobot {
 
 	RobotDrive myDrive;
 	public static OI oi;
-	NetworkTable table;
+	//NetworkTable table;
 	double[] defaultValue = new double[0];
 	public Robot() {
-		table = NetworkTable.getTable("GRIP/myCoutoursReport");
+	//	table = NetworkTable.getTable("GRIP/myCoutoursReport");
 		
 	}
 	
@@ -33,23 +34,23 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-		oi.getCamera().CameraInit();
-		oi.getCamera().CameraSetUp();
+	//	oi.getCamera().CameraInit();
+	//	oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
-
+		SmartDashboard.putNumber("Motor", 5);
 		
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		oi.getCamera().CameraEnd();
+	//	oi.getCamera().CameraEnd();
 	}
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-   
-        
+    
+         
     }
 
     /**
@@ -81,12 +82,12 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
-        oi.getCamera().CameraLoop();
+       // oi.getCamera().CameraLoop();
         
-        double areas = table.getNumber("area", 0);
-		System.out.print("areas: ");
+      //  double areas = table.getNumber("area", 0);
+		//System.out.print("areas: ");
 		//for (double area: areas) {
-			System.out.print(areas + " ");
+		//	System.out.print(areas + " ");
 		//}
 		System.out.println();
 		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
