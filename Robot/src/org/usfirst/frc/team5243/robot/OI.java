@@ -2,6 +2,9 @@ package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,7 +47,10 @@ public class OI {
     	public OI(){
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
+ 		Button horse = new JoystickButton(leftStick, 1);
+ 		horse.whenPressed(new Shoot());
  	}
+   
  	
 	public CameraSubsystem getCamera(){
 		return CameraSub;

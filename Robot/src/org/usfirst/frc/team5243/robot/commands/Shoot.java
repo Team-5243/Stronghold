@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5243.robot.commands;
 
-import org.usfirst.frc.team5243.robot.subsystems.Shooting;
+import org.usfirst.frc.team5243.robot.subsystems.ShootingSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shoot extends Command {
 	public boolean finished = false;
-	public Shooting bob = new Shooting();
+	public ShootingSubsystem shooter = new ShootingSubsystem();
 	//public Retrival bobber = new Retrival();
     public Shoot() {
         // Use requires() here to declare subsystem dependencies
-        requires(Shooting);
+        //requires(ShootingSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class Shoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	bob.spinUp();
+    	shooter.spinUp();
     	try {
 			wait(2000);
 		} catch (InterruptedException e) {
@@ -36,7 +36,7 @@ public class Shoot extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	bob.spinDown();
+    	shooter.spinDown();
     	finished = true;
     }
 

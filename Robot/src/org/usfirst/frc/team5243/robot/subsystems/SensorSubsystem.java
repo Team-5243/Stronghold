@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
@@ -15,11 +15,11 @@ public class SensorSubsystem extends Subsystem {
     // here. Call these from Commands.
 	Accelerometer accel;
 	Ultrasonic ultra;
-	Gyro gyro;
+	GyroBase gyro;
 	public SensorSubsystem(){
 		InitAccel();
 		InitUltra();
-		//InitGyro();
+		InitGyro();
 	}
     public void initDefaultCommand(){
         // Set the default command for a subsystem here.
@@ -51,7 +51,7 @@ public class SensorSubsystem extends Subsystem {
      * Currently uses port 2
      */
     private void InitGyro(){
-    	gyro = new Gyro(2);
+    	//gyro = new GyroBase(2);
     }
 }
 
