@@ -9,12 +9,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ShootingSubsystem extends Subsystem {
-    private Jaguar leftSide = new Jaguar(RobotMap.flyWheelLeft);
-    private Jaguar rightSide = new Jaguar(RobotMap.flyWheelRight);
+    private Jaguar leftSide;
+    private Jaguar rightSide;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+    public ShootingSubsystem(){
+    	leftSide = new Jaguar(RobotMap.flyWheelLeft);
+    	rightSide = new Jaguar(RobotMap.flyWheelRight);
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

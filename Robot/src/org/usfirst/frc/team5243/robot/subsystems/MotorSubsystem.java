@@ -16,7 +16,7 @@ public class MotorSubsystem extends Subsystem {
 	private Jaguar backLeft;
 	private Jaguar frontRight;
 	private Jaguar backRight;
-	private Jaguar doggyDoor;
+
     /**
      * made for 4 motors
      */
@@ -25,7 +25,6 @@ public class MotorSubsystem extends Subsystem {
     	frontRight = new Jaguar(RobotMap.MotorFrontRight);
     	backRight = new Jaguar(RobotMap.MotorBackRight);
     	backLeft = new Jaguar(RobotMap.MotorBackLeft);
-    	doggyDoor = new Jaguar(RobotMap.MotorDoggyDoor);
     }
     /**
      * Does nothing at this point

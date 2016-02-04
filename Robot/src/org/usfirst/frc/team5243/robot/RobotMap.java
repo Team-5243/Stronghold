@@ -15,21 +15,28 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
-
+	
+	//PWM Ports
 	public final static int MotorFrontLeft = 0;
 	public final static int MotorFrontRight = 1;
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight =3;
-<<<<<<< 5080df46c00dec93ce66a93374803bea828bc473
-	public final static int MotorDoggyDoor = 6;
-	public final static int EncoderDoggyDoorPortOne = 7;
-	public final static int EncoderDoggyDoorPortTwo = 8;
-=======
-	
 	//ports for fly wheels are not finalized; just test ports
 	public final static int flyWheelLeft = 4;
 	public final static int flyWheelRight = 5;
->>>>>>> Pushing up sensor subsystem adn shooting. small changes.
+	
+	public final static int MotorDoggyDoor = 6;
+	
+	
+	//DIO Ports
+	public final static int ultrasonicinputport = 0; 
+	public final static int ultrasonicoutputport = 1; 
+	public final static int Gyroscope450 = 2;
+	public final static int EncoderDoggyDoorPortOne = 7;
+	public final static int EncoderDoggyDoorPortTwo = 8;
+	
+
+    //3Pushing up sensor subsystem adn shooting. small changes.
 }
 
 

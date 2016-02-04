@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -38,9 +40,7 @@ public class SensorSubsystem extends Subsystem {
     	System.out.println("Range: " + ultra.getRangeInches());
     }
     private void InitUltra(){
-    	int ultrasonicinputport = 0; 
-    	int ultrasonicoutputport = 1; 
-    	ultra = new Ultrasonic(ultrasonicinputport,ultrasonicoutputport);
+    	ultra = new Ultrasonic(RobotMap.ultrasonicinputport,RobotMap.ultrasonicoutputport);
     	ultra.setAutomaticMode(true);
     }
     public void TestGyro(){
@@ -51,7 +51,7 @@ public class SensorSubsystem extends Subsystem {
      * Currently uses port 2
      */
     private void InitGyro(){
-    	//gyro = new GyroBase(2);
+    	//gyro = new GyroBase(RobotMap.Gyroscope450);
     }
 }
 

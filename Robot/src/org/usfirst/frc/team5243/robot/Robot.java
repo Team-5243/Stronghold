@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	
-	public static OI oi;
+	public static OI oi = new OI();
 	private RobotDrive myDrive;
 	//NetworkTable table;
 	double[] defaultValue = new double[0];
@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+		
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
@@ -51,7 +51,6 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-	//	oi.getCamera().CameraEnd();
 	}
 
     public void autonomousInit() {
@@ -81,7 +80,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	oi.getCamera().CameraEnd();
     }
 
     /**

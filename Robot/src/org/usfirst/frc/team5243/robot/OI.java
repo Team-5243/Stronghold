@@ -12,12 +12,16 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-	private CameraSubsystem CameraSub= new CameraSubsystem();
+	private final CameraSubsystem CameraSub= new CameraSubsystem();
 	private final MotorSubsystem MotorSub = new MotorSubsystem();
 	private final SensorSubsystem SensorSub = new SensorSubsystem();
+	private final RetrievalSubsystem RetrievalSub = new RetrievalSubsystem();
+	private final ShootingSubsystem ShootingSub = new ShootingSubsystem();
 	
-	Joystick leftStick;
-	Joystick rightStick;
+	private Joystick leftStick;
+	private Joystick rightStick;
+	private Button horse;
+	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -44,11 +48,11 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-    	public OI(){
+    public OI(){
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
- 		Button horse = new JoystickButton(leftStick, 1);
- 		horse.whenPressed(new Shoot());
+ 		horse = new JoystickButton(leftStick, 1);
+ 		horse.whileActive(new Shoot());
  	}
    
  	
@@ -66,6 +70,14 @@ public class OI {
 	}
 	public Joystick getRightStick(){
 		return rightStick;
+	}
+
+
+	public ShootingSubsystem getShootingSS() {
+		return ShootingSub;
+	}
+	public RetrievalSubsystem getRetrievalSS(){
+		return RetrievalSub;
 	}
 }
 

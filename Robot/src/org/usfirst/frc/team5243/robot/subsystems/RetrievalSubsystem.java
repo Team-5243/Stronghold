@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class RetrievalSubsystem extends Subsystem {
-    Jaguar door;
-	Encoder lecoder;
+    private Jaguar door;
+	private Encoder lecoder;
 	public RetrievalSubsystem(){
 		door = new Jaguar(RobotMap.MotorDoggyDoor);
 	}
