@@ -20,6 +20,9 @@ public class RobotMap {
 	public final static int MotorFrontRight = 1;
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight =3;
+	public final static int MotorDoggyDoor = 6;
+	public final static int EncoderDoggyDoorPortOne = 7;
+	public final static int EncoderDoggyDoorPortTwo = 8;
 }
 
 
