@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-		oi.getCamera().CameraInit();
+//		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 
@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	oi.getCamera().CameraEnd();
+    	//oi.getCamera().CameraEnd();
     }
 
     /**
@@ -111,14 +111,14 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        /*LiveWindow.run();
+        LiveWindow.run();
         SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
         SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
         SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
         SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
-        SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        /*SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());*/
     }
 }

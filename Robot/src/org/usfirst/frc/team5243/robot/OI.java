@@ -12,7 +12,7 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-	private final CameraSubsystem CameraSub;
+	private final CameraSubsystem CameraSub = new CameraSubsystem();
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
@@ -52,7 +52,6 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public OI(){
     	System.out.println("OI constructor Start");
-    	CameraSub = new CameraSubsystem();
     	MotorSub  = new MotorSubsystem();
     	SensorSub = new SensorSubsystem();
     	RetrievalSub = new RetrievalSubsystem();
@@ -60,10 +59,10 @@ public class OI {
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		shootButton = new JoystickButton(leftStick, 1);
- 		shootButton.whileActive(new Shoot());
+ 	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
- 		retrievalButton.whileActive(new Shoot());
+ 		//retrievalButton.whileActive(new Shoot());
  	}
    
  	

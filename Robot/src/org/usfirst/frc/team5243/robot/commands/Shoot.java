@@ -12,7 +12,7 @@ public class Shoot extends Command {
 	
     public Shoot() {
     	System.out.println("Shoot Constructor Started");
-    	requires(Robot.oi.getRetrievalSS());
+    	//requires(Robot.oi.getRetrievalSS());
     	requires(Robot.oi.getShootingSS());
     	System.out.println("Shoot constructor ended");
     }

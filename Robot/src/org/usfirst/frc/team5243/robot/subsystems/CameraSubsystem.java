@@ -24,32 +24,32 @@ public class CameraSubsystem extends Subsystem {
     }
     public void CameraInit(){
 
+    }
+    public void CameraSetUp(){
+
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         
         // the camera name (ex "cam0") can be found through the roborio web interface
-        session = NIVision.IMAQdxOpenCamera("cam0",
-                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+        session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
         NIVision.IMAQdxConfigureGrab(session);
-    }
-    public void CameraSetUp(){
     	System.out.println("In camera SetUp");
     	NIVision.IMAQdxStartAcquisition(session);
         /**
          * grab an image, draw the circle, and provide it for the camera server
          * which will in turn send it to the dashboard.
          */
-        rect =  new NIVision.Rect(10, 10, 100, 100);
+         //rect =  new NIVision.Rect(10, 10, 100, 100);
     }
-    public void CameraLoop(){
+    public void CameraLoop(){	
         NIVision.IMAQdxGrab(session, frame, 1);
-        NIVision.imaqDrawShapeOnImage(frame, frame, rect,
-                DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
         
+        //NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+        CameraServer.getInstance().setQuality(60);
         CameraServer.getInstance().setImage(frame);
     }
     
     public void CameraEnd(){
-    	NIVision.IMAQdxStopAcquisition(session);
+    	//NIVision.IMAQdxStopAcquisition(session);
     }
     
 }
