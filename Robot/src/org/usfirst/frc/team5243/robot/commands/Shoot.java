@@ -11,9 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Shoot extends Command {
 	
     public Shoot() {
+    	System.out.println("Shoot Constructor Started");
     	requires(Robot.oi.getRetrievalSS());
     	requires(Robot.oi.getShootingSS());
-    	
+    	System.out.println("Shoot constructor ended");
     }
 
     // Called repeatedly when this Command is scheduled to run

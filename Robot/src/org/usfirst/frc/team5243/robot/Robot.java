@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	
-	public static OI oi = new OI();
+	public static OI oi;
 	private RobotDrive myDrive;
 	//NetworkTable table;
 	double[] defaultValue = new double[0];
@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		
+		oi = new OI();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
+        /*LiveWindow.run();
         SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
         SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
@@ -119,6 +119,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
         SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
-        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());*/
     }
 }

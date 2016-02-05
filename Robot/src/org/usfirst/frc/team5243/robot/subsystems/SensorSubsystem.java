@@ -17,11 +17,11 @@ public class SensorSubsystem extends Subsystem {
     // here. Call these from Commands.
 	Accelerometer accel;
 	Ultrasonic ultra;
-	AnalogGyro gyro;
+//	AnalogGyro gyro;
 	public SensorSubsystem(){
 		InitAccel();
 		InitUltra();
-		InitGyro();
+		//InitGyro();
 	}
     public void initDefaultCommand(){
         // Set the default command for a subsystem here.
@@ -53,20 +53,20 @@ public class SensorSubsystem extends Subsystem {
     	ultra.setAutomaticMode(true);
     }
     public void TestGyro(){
-    	System.out.print("Gyro angle: " + gyro.getAngle());
-    	System.out.println("Gyro rate: " + gyro.getRate());
+  //  	System.out.print("Gyro angle: " + gyro.getAngle());
+    //	System.out.println("Gyro rate: " + gyro.getRate());
     }
-    public double getAngle(){
-    	return gyro.getAngle();
-    }
-    public double getRate(){
+   // public double getAngle(){
+    //	return gyro.getAngle();
+    //}
+    /*public double getRate(){
     	return gyro.getRate();
-    }
+    }*/
     /**
      * Currently uses port 2
      */
-    private void InitGyro(){
+    /*private void InitGyro(){
     	gyro = new AnalogGyro(RobotMap.Gyroscope450);
-    }
+    }*/
 }
 
