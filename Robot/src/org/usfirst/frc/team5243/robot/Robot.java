@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5243.robot;
 
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
@@ -64,6 +65,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -110,5 +112,13 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+        SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
+        SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
+        SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+        SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+        SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
     }
 }

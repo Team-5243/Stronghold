@@ -3,7 +3,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
@@ -17,7 +17,7 @@ public class SensorSubsystem extends Subsystem {
     // here. Call these from Commands.
 	Accelerometer accel;
 	Ultrasonic ultra;
-	GyroBase gyro;
+	AnalogGyro gyro;
 	public SensorSubsystem(){
 		InitAccel();
 		InitUltra();
@@ -31,6 +31,15 @@ public class SensorSubsystem extends Subsystem {
     	System.out.println("Accelerometer X: " +accel.getX());
     	System.out.println("Accelerometer Y: " +accel.getY());
     	System.out.println("Accelerometer Z: " +accel.getZ());
+    }
+    public double getX(){
+    	return accel.getX();
+    }
+    public double getY(){
+    	return accel.getY();
+    }
+    public double getZ(){
+    	return accel.getZ();
     }
     private void InitAccel(){
     	accel = new BuiltInAccelerometer();
@@ -47,11 +56,17 @@ public class SensorSubsystem extends Subsystem {
     	System.out.print("Gyro angle: " + gyro.getAngle());
     	System.out.println("Gyro rate: " + gyro.getRate());
     }
+    public double getAngle(){
+    	return gyro.getAngle();
+    }
+    public double getRate(){
+    	return gyro.getRate();
+    }
     /**
      * Currently uses port 2
      */
     private void InitGyro(){
-    	//gyro = new GyroBase(RobotMap.Gyroscope450);
+    	gyro = new AnalogGyro(RobotMap.Gyroscope450);
     }
 }
 

@@ -45,6 +45,8 @@ public class MotorSubsystem extends Subsystem {
 	public Jaguar getFrontLeft() {
 		return frontLeft;
 	}
-	
+	public double getSpeed(){
+		return frontLeft.getSpeed();
+	}
 }
 

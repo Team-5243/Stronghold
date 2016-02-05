@@ -36,7 +36,7 @@ public class RobotMap {
 	public final static int EncoderDoggyDoorPortTwo = 8;
 	
 
-    //3Pushing up sensor subsystem adn shooting. small changes.
+    //Pushing up sensor subsystem and shooting. small changes.
 }
 
 

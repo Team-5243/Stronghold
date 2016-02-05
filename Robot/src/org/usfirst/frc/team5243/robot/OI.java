@@ -20,7 +20,8 @@ public class OI {
 	
 	private Joystick leftStick;
 	private Joystick rightStick;
-	private Button horse;
+	private Button shootButton;
+	private Button retrievalButton;
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -51,8 +52,10 @@ public class OI {
     public OI(){
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
- 		horse = new JoystickButton(leftStick, 1);
- 		horse.whileActive(new Shoot());
+ 		shootButton = new JoystickButton(leftStick, 1);
+ 		shootButton.whileActive(new Shoot());
+ 		retrievalButton = new JoystickButton(rightStick, 1);
+ 		retrievalButton.whileActive(new Shoot());
  	}
    
  	
