@@ -1,9 +1,11 @@
 package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team5243.robot.commands.DriveStraight;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
@@ -12,7 +14,7 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-	private final CameraSubsystem CameraSub = new CameraSubsystem();
+	private final CameraSubsystem CameraSub;
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
@@ -23,6 +25,7 @@ public class OI {
 	private Joystick rightStick;
 	private Button shootButton;
 	private Button retrievalButton;
+	private Button driveStraightButton;
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -52,6 +55,7 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public OI(){
     	System.out.println("OI constructor Start");
+    	CameraSub = new CameraSubsystem();
     	MotorSub  = new MotorSubsystem();
     	SensorSub = new SensorSubsystem();
     	RetrievalSub = new RetrievalSubsystem();
@@ -59,12 +63,16 @@ public class OI {
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		shootButton = new JoystickButton(leftStick, 1);
+ 		driveStraightButton = new JoystickButton(rightStick, 1);
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
  		//retrievalButton.whileActive(new Shoot());
  	}
-   
+    public void initializeDriveStraight(RobotDrive thyDrive){
+ 		driveStraightButton.whileActive(new DriveStraight(thyDrive));
+    }
+    
  	
 	public CameraSubsystem getCamera(){
 		return CameraSub;

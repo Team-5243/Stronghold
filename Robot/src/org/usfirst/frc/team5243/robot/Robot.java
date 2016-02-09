@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	private RobotDrive myDrive;
 	//NetworkTable table;
-	double[] defaultValue = new double[0];
+	//double[] defaultValue = new double[0];
 	public Robot() {
 	//	table = NetworkTable.getTable("GRIP/myCoutoursReport");
 		
@@ -40,12 +40,12 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 //		oi.getCamera().CameraInit();
-		oi.getCamera().CameraSetUp();
+	//	oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
 		SmartDashboard.putNumber("Motor", 5);
-		
+		oi.initializeDriveStraight(myDrive);
 
 
     }
@@ -90,7 +90,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
-        oi.getCamera().CameraLoop();
+       // oi.getCamera().CameraLoop();
         
       //  double areas = table.getNumber("area", 0);
 		//System.out.print("areas: ");
@@ -99,8 +99,8 @@ public class Robot extends IterativeRobot {
 		//}
 		//System.out.println();
 		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
-		oi.getSensorSS().TestAccel();
-		oi.getSensorSS().TestUltra();
+		/*oi.getSensorSS().TestAccel();
+		oi.getSensorSS().TestUltra();*/
 		//System.out.print("");
 	}
 
@@ -113,11 +113,11 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
         SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
-        SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
+        /*SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
         SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
         SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
         /*SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());*/
     }

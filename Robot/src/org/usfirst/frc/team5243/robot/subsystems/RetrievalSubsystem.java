@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RetrievalSubsystem extends Subsystem {
     private Jaguar door;
-	//private Encoder doorEncoder;
+	private Encoder doorEncoder;
 	public RetrievalSubsystem(){
 		door = new Jaguar(RobotMap.MotorDoggyDoor);
-		//doorEncoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+		doorEncoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
 	}
 	
 	/**
@@ -22,9 +22,9 @@ public class RetrievalSubsystem extends Subsystem {
 	 */
 	public void turn(){
 		door.set(1);
-		/*if(doorEncoder.get() >= .5){
+		if(doorEncoder.get() >= .5){
 			stop();
-		}	*/
+		}	
 	}
 	public void stop(){
 		door.stopMotor();

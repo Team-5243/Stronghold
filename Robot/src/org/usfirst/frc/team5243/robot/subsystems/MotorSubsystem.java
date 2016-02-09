@@ -2,7 +2,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,19 +12,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class MotorSubsystem extends Subsystem {
 	
-	private Jaguar frontLeft;
-	private Jaguar backLeft;
-	private Jaguar frontRight;
-	private Jaguar backRight;
+	private Talon frontLeft;
+	private Talon backLeft;
+	private Talon frontRight;
+	private Talon backRight;
 
     /**
      * made for 4 motors
      */
     public MotorSubsystem(){
-    	frontLeft = new Jaguar(RobotMap.MotorFrontLeft);
-    	frontRight = new Jaguar(RobotMap.MotorFrontRight);
-    	backRight = new Jaguar(RobotMap.MotorBackRight);
-    	backLeft = new Jaguar(RobotMap.MotorBackLeft);
+    	frontLeft = new Talon(RobotMap.MotorFrontLeft);
+    	frontRight = new Talon(RobotMap.MotorFrontRight);
+    	backRight = new Talon(RobotMap.MotorBackRight);
+    	backLeft = new Talon(RobotMap.MotorBackLeft);
     }
     /**
      * Does nothing at this point
@@ -33,20 +33,22 @@ public class MotorSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 		
 	}
-	public Jaguar getBackRight() {
+	public Talon getBackRight() {
 		return backRight;
 	}
-	public Jaguar getBackLeft() {
+	public Talon getBackLeft() {
 		return backLeft;
 	}
-	public Jaguar getFrontRight() {
+	public Talon getFrontRight() {
 		return frontRight;
 	}
-	public Jaguar getFrontLeft() {
+	public Talon getFrontLeft() {
 		return frontLeft;
 	}
 	public double getSpeed(){
 		return frontLeft.getSpeed();
 	}
+	
+	
 }
 
