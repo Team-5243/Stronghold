@@ -31,7 +31,7 @@ public class RobotMap {
 	//DIO Ports
 	public final static int ultrasonicinputport = 4; 
 	public final static int ultrasonicoutputport = 5; 
-	public final static int Gyroscope450 = 2;
+	public final static int GyroscopePort = 1;
 	public final static int EncoderDoggyDoorPortOne = 7;
 	public final static int EncoderDoggyDoorPortTwo = 8;
 	
