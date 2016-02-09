@@ -39,8 +39,13 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+<<<<<<< HEAD
 //		oi.getCamera().CameraInit();
 //		oi.getCamera().CameraSetUp();
+=======
+		oi.getCamera().CameraInit();
+		oi.getCamera().CameraSetUp();
+>>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
         // instantiate the command used for the autonomous period
 
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
@@ -53,30 +58,21 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    
-         
     }
-
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        
     }
-
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-    	
-    	
     }
-
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
@@ -117,8 +113,16 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
         SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
         SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+<<<<<<< HEAD
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
 //        SmartDashboard.putString("Gyro Angle", oi.getSensorSS().getAngle());
 //        SmartDashboard.putString("Gyro Rate", oi.getSensorSS().getRate());
+=======
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+        SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        
+>>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
     }
 }
