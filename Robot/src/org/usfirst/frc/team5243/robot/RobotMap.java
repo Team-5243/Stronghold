@@ -28,23 +28,10 @@ public class RobotMap {
 
 	public final static int MotorDoggyDoor = 6;
 	
-<<<<<<< HEAD
 	// DIO Ports
 	public final static int ultrasonicinputport = 4;
 	public final static int ultrasonicoutputport = 5;
 	public final static int GyroscopePort = 0;
-=======
-	
-	//DIO Ports
-	public final static int ultrasonicinputport = 4; 
-	public final static int ultrasonicoutputport = 5; 
-<<<<<<< HEAD
-	public final static int GyroscopePort = 0;
-	public final static int GyroscopePortToo = 1;
-=======
-	public final static int GyroscopePort = 1;
->>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
 	public final static int EncoderDoggyDoorPortOne = 7;
 	public final static int EncoderDoggyDoorPortTwo = 8;
 

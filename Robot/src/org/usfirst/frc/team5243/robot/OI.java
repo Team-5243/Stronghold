@@ -14,27 +14,19 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-<<<<<<< HEAD
 	private final CameraSubsystem CameraSub;
-=======
-//	private final CameraSubsystem CameraSub = new CameraSubsystem();
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
-//	private final RetrievalSubsystem RetrievalSub;
-//	private final ShootingSubsystem ShootingSub;
+	private final RetrievalSubsystem RetrievalSub;
+	private final ShootingSubsystem ShootingSub;
+	
 	
 
 	private Joystick leftStick;
 	private Joystick rightStick;
-<<<<<<< HEAD
 	private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
-=======
-//	private Button shootButton;
-//	private Button retrievalButton;
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -67,19 +59,15 @@ public class OI {
     	CameraSub = new CameraSubsystem();
     	MotorSub  = new MotorSubsystem();
     	SensorSub = new SensorSubsystem();
-/*    	RetrievalSub = new RetrievalSubsystem();
-    	ShootingSub = new ShootingSubsystem();*/
+    	RetrievalSub = new RetrievalSubsystem();
+    	ShootingSub = new ShootingSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
-<<<<<<< HEAD
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
-=======
-// 		shootButton = new JoystickButton(leftStick, 1);
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
-// 		retrievalButton = new JoystickButton(rightStick, 1);
+ 		retrievalButton = new JoystickButton(rightStick, 1);
  		//retrievalButton.whileActive(new Shoot());
  	}
     public void initializeDriveStraight(RobotDrive thyDrive){
@@ -87,9 +75,9 @@ public class OI {
     }
     
  	
-	/*public CameraSubsystem getCamera(){
+	public CameraSubsystem getCamera(){
 		return CameraSub;
-	}*/
+	}
 	public MotorSubsystem getMotorSS(){
 		return MotorSub;
 	}
@@ -104,10 +92,11 @@ public class OI {
 	}
 
 
-/*	public ShootingSubsystem getShootingSS() {
+	public ShootingSubsystem getShootingSS() {
 		return ShootingSub;
 	}
 	public RetrievalSubsystem getRetrievalSS(){
 		return RetrievalSub;
-	}*/
+	}
 }
+
