@@ -7,6 +7,7 @@ import com.ni.vision.NIVision.ShapeMode;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
  *
@@ -15,15 +16,17 @@ public class CameraSubsystem extends Subsystem {
     private int session;
     private Image frame;
     private NIVision.Rect rect;
+    NetworkTable table;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     public void CameraInit(){
-
+    	table = NetworkTable.getTable("GRIP/myContoursReport");
     }
     public void CameraSetUp(){
 
@@ -46,11 +49,16 @@ public class CameraSubsystem extends Subsystem {
         //NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
         CameraServer.getInstance().setQuality(60);
         CameraServer.getInstance().setImage(frame);
+        
     }
+    public double getAreas(){
+    	double areas[] = table.getNumberArray("area", new double[0]);
+        return areas[0];
+    }
+    
     
     public void CameraEnd(){
     	//NIVision.IMAQdxStopAcquisition(session);
     }
     
 }
-

@@ -39,19 +39,15 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+
 //		oi.getCamera().CameraInit();
-<<<<<<< HEAD
+
 	//	oi.getCamera().CameraSetUp();
-=======
+
 //		oi.getCamera().CameraSetUp();
-<<<<<<< HEAD
-=======
-=======
+
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
->>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
->>>>>>> 1715304b16a7d72d0e3bfba901ee2a28fcca645c
         // instantiate the command used for the autonomous period
 
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
@@ -64,30 +60,21 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    
-         
     }
-
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        
     }
-
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-    	
-    	
     }
-
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
@@ -101,11 +88,11 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
-<<<<<<< HEAD
+
        // oi.getCamera().CameraLoop();
-=======
+
    //     oi.getCamera().CameraLoop();
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
+
         
       //  double areas = table.getNumber("area", 0);
 		//System.out.print("areas: ");
@@ -114,13 +101,12 @@ public class Robot extends IterativeRobot {
 		//}
 		//System.out.println();
 		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
-<<<<<<< HEAD
+
 		/*oi.getSensorSS().TestAccel();
 		oi.getSensorSS().TestUltra();*/
-=======
+
 		oi.getSensorSS().TestAccel();
 //		oi.getSensorSS().TestUltra();
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
 		//System.out.print("");
 	}
 
@@ -133,32 +119,16 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
         SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
-<<<<<<< HEAD
+
         /*SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
         SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
         SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
-        /*SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
-        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());*/
-=======
-/*        SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
-        SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
-        SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
-        SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
-//        SmartDashboard.putString("Gyro Angle", oi.getSensorSS().getAngle());
-//        SmartDashboard.putString("Gyro Rate", oi.getSensorSS().getRate());
-<<<<<<< HEAD
-=======
-=======
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
         SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+
         SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
-        
->>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
->>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
->>>>>>> 1715304b16a7d72d0e3bfba901ee2a28fcca645c
+        */
     }
 }
