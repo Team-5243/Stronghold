@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	private RobotDrive myDrive;
 	//NetworkTable table;
-	double[] defaultValue = new double[0];
+	//double[] defaultValue = new double[0];
 	public Robot() {
 	//	table = NetworkTable.getTable("GRIP/myCoutoursReport");
 		
@@ -40,12 +40,23 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 //		oi.getCamera().CameraInit();
+<<<<<<< HEAD
+	//	oi.getCamera().CameraSetUp();
+=======
 //		oi.getCamera().CameraSetUp();
+<<<<<<< HEAD
+=======
+=======
+		oi.getCamera().CameraInit();
+		oi.getCamera().CameraSetUp();
+>>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
+>>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
+>>>>>>> 1715304b16a7d72d0e3bfba901ee2a28fcca645c
         // instantiate the command used for the autonomous period
 
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
 		SmartDashboard.putNumber("Motor", 5);
-		
+		oi.initializeDriveStraight(myDrive);
 
 
     }
@@ -90,7 +101,11 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();//Never delete
+<<<<<<< HEAD
+       // oi.getCamera().CameraLoop();
+=======
    //     oi.getCamera().CameraLoop();
+>>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
         
       //  double areas = table.getNumber("area", 0);
 		//System.out.print("areas: ");
@@ -99,8 +114,13 @@ public class Robot extends IterativeRobot {
 		//}
 		//System.out.println();
 		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
+<<<<<<< HEAD
+		/*oi.getSensorSS().TestAccel();
+		oi.getSensorSS().TestUltra();*/
+=======
 		oi.getSensorSS().TestAccel();
 //		oi.getSensorSS().TestUltra();
+>>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
 		//System.out.print("");
 	}
 
@@ -113,6 +133,15 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
         SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+<<<<<<< HEAD
+        /*SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
+        SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
+        SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+        SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
+        /*SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());*/
+=======
 /*        SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
         SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
         SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
@@ -120,5 +149,16 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());*/
 //        SmartDashboard.putString("Gyro Angle", oi.getSensorSS().getAngle());
 //        SmartDashboard.putString("Gyro Rate", oi.getSensorSS().getRate());
+<<<<<<< HEAD
+=======
+=======
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+        SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        
+>>>>>>> 90b8af786f9708bb627bf99550c89f93e039fde5
+>>>>>>> a2c135a42b8de58acbc37aeecc73cb5204e0d684
+>>>>>>> 1715304b16a7d72d0e3bfba901ee2a28fcca645c
     }
 }
