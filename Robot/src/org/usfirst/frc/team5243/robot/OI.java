@@ -16,13 +16,6 @@ public class OI {
 	
 
 	private final CameraSubsystem CameraSub;
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
-//	private final CameraSubsystem CameraSub = new CameraSubsystem();
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
@@ -35,8 +28,6 @@ public class OI {
 	private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
-//	private Button shootButton;
-//	private Button retrievalButton;
 
 	
     //// CREATING BUTTONS
@@ -74,29 +65,20 @@ public class OI {
     	ShootingSub = new ShootingSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
-
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
-
-
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
  		driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
-// 		shootButton = new JoystickButton(leftStick, 1);
- 	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
+ 		shootButton = new JoystickButton(leftStick, 1);
+ 		shootButton.whileActive(new Shoot());
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
- 		//retrievalButton.whileActive(new Shoot());
- 	}
-    
-<<<<<<< HEAD
- 	
-	/*public CameraSubsystem getCamera(){
-=======
+ 		retrievalButton.whileActive(new Shoot());
+    }
 	public CameraSubsystem getCamera(){
->>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
 		return CameraSub;
-	}*/
+	}
 	public MotorSubsystem getMotorSS(){
 		return MotorSub;
 	}

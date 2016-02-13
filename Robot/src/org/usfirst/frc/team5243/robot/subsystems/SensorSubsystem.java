@@ -21,6 +21,7 @@ public class SensorSubsystem extends Subsystem {
 	static Accelerometer accel;
 	Ultrasonic ultra;
 	AnalogGyro gyro;
+	AnalogGyro gyroToo;
 	private static int count = 0;
 
 	public SensorSubsystem() {
@@ -69,7 +70,7 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	public void TestGyro() {
-		System.out.print("Gyro angle: " + gyro.getAngle());
+		System.out.println("Gyro angle: " + gyro.getAngle());
 		System.out.println("Gyro rate: " + gyro.getRate());
 	}
 
@@ -98,15 +99,11 @@ public class SensorSubsystem extends Subsystem {
 	 */
 	private void InitGyro() {
 		gyro = new AnalogGyro(RobotMap.GyroscopePort);
-<<<<<<< HEAD
-		gyro = new AnalogGyro(RobotMap.GyroscopePortToo);
+		gyroToo = new AnalogGyro(RobotMap.GyroscopePortToo);
 	}
-}
-=======
 
-	}
 	public AnalogGyro getGyro(){
 		return gyro;
 	}
 }
->>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
+

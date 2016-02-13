@@ -25,33 +25,13 @@ public class RobotMap {
 	// ports for fly wheels are not finalized; just test ports
 	public final static int flyWheelLeft = 4;
 	public final static int flyWheelRight = 5;
-
-<<<<<<< HEAD
 	public final static int MotorDoggyDoor = 6;
-	
-=======
-	
-
-
->>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
 	// DIO Ports
 	public final static int ultrasonicinputport = 4;
 	public final static int ultrasonicoutputport = 5;
 	public final static int GyroscopePort = 0;
-<<<<<<< HEAD
 	public final static int GyroscopePortToo = 1;
 	public final static int EncoderDoggyDoorPortOne = 7;
 	public final static int EncoderDoggyDoorPortTwo = 8;
-=======
-
-
-
-	public final static int EncoderDoggyDoorPortOne = 7;
-	public final static int EncoderDoggyDoorPortTwo = 8;
-
-
-
->>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
-
 	// Pushing up sensor subsystem and shooting. small changes.
 }
