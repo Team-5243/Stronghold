@@ -15,15 +15,17 @@ public class SensorSubsystem extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+
+
+
 	static Accelerometer accel;
 	Ultrasonic ultra;
 	AnalogGyro gyro;
-	AnalogGyro gyroToo;
 	private static int count = 0;
 
 	public SensorSubsystem() {
-		 InitAccel();
-		// InitUltra();
+		InitAccel();
+		InitUltra();
 		InitGyro();
 	}
 
@@ -69,17 +71,14 @@ public class SensorSubsystem extends Subsystem {
 	public void TestGyro() {
 		System.out.print("Gyro angle: " + gyro.getAngle());
 		System.out.println("Gyro rate: " + gyro.getRate());
-		System.out.println("Second gyro port");
-		System.out.print("Gyro angle: " + gyroToo.getAngle());
-		System.out.println("Gyro rate: " + gyroToo.getRate());
 	}
 
-	public String getAngle() {
-		return gyro.getAngle() + "gyroToo: " + gyroToo.getAngle();
+	public double getAngle() {
+		return gyro.getAngle();
 	}
 
-	public String getRate() {
-		return gyro.getRate() + "gyroToo: " + gyroToo.getRate();
+	public double getRate() {
+		return gyro.getRate();
 	}
 
 	public static boolean isTilting(){
@@ -99,6 +98,15 @@ public class SensorSubsystem extends Subsystem {
 	 */
 	private void InitGyro() {
 		gyro = new AnalogGyro(RobotMap.GyroscopePort);
+<<<<<<< HEAD
 		gyro = new AnalogGyro(RobotMap.GyroscopePortToo);
 	}
 }
+=======
+
+	}
+	public AnalogGyro getGyro(){
+		return gyro;
+	}
+}
+>>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af

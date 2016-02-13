@@ -16,11 +16,18 @@ public class OI {
 	
 
 	private final CameraSubsystem CameraSub;
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
 //	private final CameraSubsystem CameraSub = new CameraSubsystem();
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
-//	private final RetrievalSubsystem RetrievalSub;
-//	private final ShootingSubsystem ShootingSub;
+	private final RetrievalSubsystem RetrievalSub;
+	private final ShootingSubsystem ShootingSub;
+	
 	
 
 	private Joystick leftStick;
@@ -63,26 +70,31 @@ public class OI {
     	CameraSub = new CameraSubsystem();
     	MotorSub  = new MotorSubsystem();
     	SensorSub = new SensorSubsystem();
-/*    	RetrievalSub = new RetrievalSubsystem();
-    	ShootingSub = new ShootingSubsystem();*/
+    	RetrievalSub = new RetrievalSubsystem();
+    	ShootingSub = new ShootingSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
 
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
 
+
+ 		shootButton = new JoystickButton(leftStick, 1);
+ 		driveStraightButton = new JoystickButton(rightStick, 1);
+ 		driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
 // 		shootButton = new JoystickButton(leftStick, 1);
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
-// 		retrievalButton = new JoystickButton(rightStick, 1);
+ 		retrievalButton = new JoystickButton(rightStick, 1);
  		//retrievalButton.whileActive(new Shoot());
  	}
-    public void initializeDriveStraight(RobotDrive thyDrive){
- 		driveStraightButton.whileActive(new DriveStraight(thyDrive));
-    }
     
+<<<<<<< HEAD
  	
 	/*public CameraSubsystem getCamera(){
+=======
+	public CameraSubsystem getCamera(){
+>>>>>>> 4d339c1bbfa5857e4cdb701a814f7a98e7cf19af
 		return CameraSub;
 	}*/
 	public MotorSubsystem getMotorSS(){
@@ -99,10 +111,11 @@ public class OI {
 	}
 
 
-/*	public ShootingSubsystem getShootingSS() {
+	public ShootingSubsystem getShootingSS() {
 		return ShootingSub;
 	}
 	public RetrievalSubsystem getRetrievalSS(){
 		return RetrievalSub;
-	}*/
+	}
 }
+

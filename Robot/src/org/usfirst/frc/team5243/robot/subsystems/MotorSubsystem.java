@@ -16,7 +16,7 @@ public class MotorSubsystem extends Subsystem {
 	private Talon backLeft;
 	private Talon frontRight;
 	private Talon backRight;
-
+	private RobotDrive myDrive;
     /**
      * made for 4 motors
      */
@@ -25,6 +25,7 @@ public class MotorSubsystem extends Subsystem {
     	frontRight = new Talon(RobotMap.MotorFrontRight);
     	backRight = new Talon(RobotMap.MotorBackRight);
     	backLeft = new Talon(RobotMap.MotorBackLeft);
+    	myDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
     }
     /**
      * Does nothing at this point
@@ -48,7 +49,9 @@ public class MotorSubsystem extends Subsystem {
 	public double getSpeed(){
 		return frontLeft.getSpeed();
 	}
-	
+	public RobotDrive getDrive(){
+		return myDrive;
+	}
 	
 }
 

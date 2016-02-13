@@ -23,10 +23,8 @@ public class Ramparts extends Command {
     protected void execute() {
     	while(Robot.oi.getSensorSS().getY() < 1000000000 && Robot.oi.getSensorSS().getY() > 0){
     		//drive up to ramparts
-    		Robot.oi.getMotorSS().getBackLeft().set(1);
-    		Robot.oi.getMotorSS().getBackRight().set(1);
-    		Robot.oi.getMotorSS().getFrontLeft().set(1);
-    		Robot.oi.getMotorSS().getFrontRight().set(1);
+    		DriveStraight exeggcute = new DriveStraight();
+    		exeggcute.execute();
     	}
     	//turn right onto ramparts
     	Robot.oi.getMotorSS().getFrontRight().set(0);
@@ -51,17 +49,9 @@ public class Ramparts extends Command {
 			e.printStackTrace();
 		}
     	//drive off ramparts
-    	Robot.oi.getMotorSS().getFrontRight().set(1);
-    	Robot.oi.getMotorSS().getBackRight().set(1);
-    	Robot.oi.getMotorSS().getFrontLeft().set(1);
-    	Robot.oi.getMotorSS().getBackLeft().set(1);
+    	DriveStraight theKnightUsed = new DriveStraight(1,1); // speed,seconds
+    	theKnightUsed.execute();
     	//placeholder, need to test time needed to drive off ramparts
-    	try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	finished = true;
     }
 
