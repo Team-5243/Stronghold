@@ -41,16 +41,6 @@ public class DriveStraight extends Command {
 		
 	}
 	/**
-	 * will drive straight at the given speed for 0 seconds
-	 * @param speed
-	 */
-	public DriveStraight(Double speed){
-		requires(Robot.oi.getMotorSS());
-        iRobot = Robot.oi.getMotorSS().getDrive();
-		gyro = Robot.oi.getSensorSS().getGyro();
-		this.speed = speed;
-	}
-	/**
 	 * will drive straight at the maximum speed for 
 	 * @param seconds
 	 */
@@ -60,6 +50,17 @@ public class DriveStraight extends Command {
 		gyro = Robot.oi.getSensorSS().getGyro();
 		this.seconds = seconds;
 	}
+	/**
+	 * will drive straight at the given speed for 0 seconds
+	 * @param speed
+	 */
+	public DriveStraight(Double speed){
+		requires(Robot.oi.getMotorSS());
+        iRobot = Robot.oi.getMotorSS().getDrive();
+		gyro = Robot.oi.getSensorSS().getGyro();
+		this.speed = speed;
+	}
+	
 	public void setSpeed(double speed){
 		this.speed = speed;
 	}
@@ -100,7 +101,23 @@ public class DriveStraight extends Command {
 	protected boolean isFinished() {
 		return isFinished;
 	}
-
+	/**
+	 * if boolean = true; it will drive when tilting. If false, it will drive when not tilting
+	 *  *** NOTE: Has while loops. Be careful.
+	 * @param driveWhileTilting
+	 */
+	public void driveTilting(boolean driveWhileTilting){
+		gyro.reset();
+		if(driveWhileTilting){
+			while(Robot.oi.getSensorSS().isTilting()){
+				iRobot.drive(speed, -gyro.getAngle() * K);
+			}
+		}else{
+			while(!Robot.oi.getSensorSS().isTilting()){
+				iRobot.drive(speed, -gyro.getAngle() * K);
+			}
+		}
+	}
 	// Called once after isFinished returns true
 	protected void end() {
 		
