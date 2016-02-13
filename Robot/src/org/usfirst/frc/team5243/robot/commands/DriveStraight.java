@@ -1,12 +1,9 @@
 package org.usfirst.frc.team5243.robot.commands;
 
-import org.usfirst.frc.team5243.robot.RobotMap;
-
+import org.usfirst.frc.team5243.robot.Robot;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -16,77 +13,99 @@ public class DriveStraight extends Command {
 
 	private RobotDrive iRobot;
 	private AnalogGyro gyro;
-	private double K = .05; // driving with a gyro konstant
-	
+	private double K = .05; // driving w/gyro konstant
+	private double seconds = 0; // one is Double and the other is double, so that there can be 
+	private Double speed = 1.0; // separate constructors for time and speed
+	private boolean isFinished = false;
 	/**
-	 * This method will initialize the DriveStraight command. It initializes the gyro, then it
-	 * sets the expiration of the RobotDrive to .1
-	 * @param thyRobot
-	 */
-	public DriveStraight(RobotDrive thyRobot) {
-		gyro = new AnalogGyro(RobotMap.GyroscopePort);
-		iRobot = thyRobot;
-		iRobot.setExpiration(.1);
-	}
-	/**
-	 * This 
-	 */
-	protected void initialize() {
-
-	}
-	/**
-	 * Ok, so, here is the situation with the execute method of the
-	 * DriveStraight command. It returns void and it takes no parameters. What
-	 * it does do, however, is make the robot drive straight. The first thing
-	 * this method does, is gyro.reset(), which resets the gyro. Next, it calls
-	 * RobotDrive.drive, using the parameters Magnitude and Curve. Magnitude is
-	 * the speed that the robot will drive at. Curve is the angle that it will
-	 * drive out. We use a magnitude of 1, so that it will drive forward as fast
-	 * as possible, because we just want it to drive forward. Next, we use of a
-	 * curve of K (gyro driving forward konstant) multiplied by gyro.getAngle().
-	 * The product of these two numbers creates an angle which will change as
-	 * the robot starts to turn, thereby correcting the turn. Finally, it
-	 * creates a minor delay, which will allow this method to take effect before
-	 * its effects are neutralized. Effectively, the combination of this:
+	 * gets gyro from the sensorsubsystem, gets robotdrive from the motor subsystem
 	 * 
-	 * will make the robot drive straight for .004 seconds.
+	 * @param seconds
+	 * @param speed
+	 */
+	public DriveStraight(double seconds,double speed) {
+        requires(Robot.oi.getMotorSS());
+		iRobot = Robot.oi.getMotorSS().getDrive();
+		gyro = Robot.oi.getSensorSS().getGyro();
+		this.seconds = seconds;
+		this.speed = speed;
+	}
+	/**
+	 * will drive at maximum speed for 0 seconds
+	 * (seconds, speed)
+	 */
+	public DriveStraight(){
+        requires(Robot.oi.getMotorSS());
+        iRobot = Robot.oi.getMotorSS().getDrive();
+		gyro = Robot.oi.getSensorSS().getGyro();
+		
+	}
+	/**
+	 * will drive straight at the given speed for 0 seconds
+	 * @param speed
+	 */
+	public DriveStraight(Double speed){
+		requires(Robot.oi.getMotorSS());
+        iRobot = Robot.oi.getMotorSS().getDrive();
+		gyro = Robot.oi.getSensorSS().getGyro();
+		this.speed = speed;
+	}
+	/**
+	 * will drive straight at the maximum speed for 
+	 * @param seconds
+	 */
+	public DriveStraight(double seconds){
+		requires(Robot.oi.getMotorSS());
+        iRobot = Robot.oi.getMotorSS().getDrive();
+		gyro = Robot.oi.getSensorSS().getGyro();
+		this.seconds = seconds;
+	}
+	public void setSpeed(double speed){
+		this.speed = speed;
+	}
+	public double getSpeed(){
+		return speed;
+	}
+	public double getSeconds(){
+		return seconds;
+	}
+	public void setSeconds(double seconds){
+		this.seconds=seconds;
+	}
+	protected void initialize() {
+		
+	}
+	/**
+	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
+	 * that, it will drive for 0 seconds;
 	 */
 	public void start(){
 		gyro.reset();
-		iRobot.drive(1, -gyro.getAngle() * K);
-		Timer.delay(0.004);
+		iRobot.drive(speed, -gyro.getAngle() * K);
+		Timer.delay(seconds);
+		isFinished = true;
+		end();
 	}
 	/**
-	 * Ok, so, here is the situation with the execute method of the
-	 * DriveStraight command. It returns void and it takes no parameters. What
-	 * it does do, however, is make the robot drive straight. The first thing
-	 * this method does, is gyro.reset(), which resets the gyro. Next, it calls
-	 * RobotDrive.drive, using the parameters Magnitude and Curve. Magnitude is
-	 * the speed that the robot will drive at. Curve is the angle that it will
-	 * drive out. We use a magnitude of 1, so that it will drive forward as fast
-	 * as possible, because we just want it to drive forward. Next, we use of a
-	 * curve of K (gyro driving forward konstant) multiplied by gyro.getAngle().
-	 * The product of these two numbers creates an angle which will change as
-	 * the robot starts to turn, thereby correcting the turn. Finally, it
-	 * creates a minor delay, which will allow this method to take effect before
-	 * its effects are neutralized. Effectively, the combination of this:
-	 * 
-	 * will make the robot drive straight for .004 seconds.
+	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
+	 * that, it will drive for 0 seconds;
 	 */
 	protected void execute() {
 		gyro.reset();
-		iRobot.drive(1, -gyro.getAngle() * K);
-		Timer.delay(0.004);
+		iRobot.drive(speed, -gyro.getAngle() * K);
+		Timer.delay(seconds);
+		isFinished = true;
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return isFinished;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		
 	}
-
+	
 	protected void interrupted() {
 	}
 }

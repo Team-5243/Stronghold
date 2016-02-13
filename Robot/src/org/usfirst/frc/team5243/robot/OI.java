@@ -73,7 +73,7 @@ public class OI {
 
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
-
+ 		driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
 // 		shootButton = new JoystickButton(leftStick, 1);
 
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
@@ -81,11 +81,7 @@ public class OI {
 // 		retrievalButton = new JoystickButton(rightStick, 1);
  		//retrievalButton.whileActive(new Shoot());
  	}
-    public void initializeDriveStraight(RobotDrive thyDrive){
- 		driveStraightButton.whileActive(new DriveStraight(thyDrive));
-    }
     
- 	
 	public CameraSubsystem getCamera(){
 		return CameraSub;
 	}

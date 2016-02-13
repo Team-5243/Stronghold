@@ -23,7 +23,6 @@ public class Robot extends IterativeRobot {
 
 	
 	public static OI oi;
-	private RobotDrive myDrive;
 	//NetworkTable table;
 	//double[] defaultValue = new double[0];
 	public Robot() {
@@ -50,9 +49,7 @@ public class Robot extends IterativeRobot {
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 
-		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
 		SmartDashboard.putNumber("Motor", 5);
-		oi.initializeDriveStraight(myDrive);
 
 
     }
@@ -100,7 +97,7 @@ public class Robot extends IterativeRobot {
 		//	System.out.print(areas + " ");
 		//}
 		//System.out.println();
-		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
+		oi.getMotorSS().getDrive().tankDrive(oi.getLeftStick(),oi.getRightStick());
 
 		/*oi.getSensorSS().TestAccel();
 		oi.getSensorSS().TestUltra();*/

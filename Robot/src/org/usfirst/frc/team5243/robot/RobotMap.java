@@ -31,7 +31,6 @@ public class RobotMap {
 	public final static int ultrasonicinputport = 4;
 	public final static int ultrasonicoutputport = 5;
 	public final static int GyroscopePort = 0;
-	public final static int GyroscopePortToo = 1;
 
 	// Pushing up sensor subsystem and shooting. small changes.
 }
