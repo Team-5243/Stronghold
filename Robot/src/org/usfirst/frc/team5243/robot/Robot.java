@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		oi = new OI();
+<<<<<<< HEAD
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
 		oi.initializeDriveStraight(myDrive);
@@ -41,6 +42,20 @@ public class Robot extends IterativeRobot {
 		
 		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(),
 				oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
+=======
+
+//		oi.getCamera().CameraInit();
+
+	//	oi.getCamera().CameraSetUp();
+
+//		oi.getCamera().CameraSetUp();
+
+		oi.getCamera().CameraInit();
+		oi.getCamera().CameraSetUp();
+        // instantiate the command used for the autonomous period
+
+		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
 		SmartDashboard.putNumber("Motor", 5);
 		oi.initializeDriveStraight(myDrive);
 
@@ -65,6 +80,7 @@ public class Robot extends IterativeRobot {
 
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
+<<<<<<< HEAD
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
@@ -114,3 +130,66 @@ public class Robot extends IterativeRobot {
 		
 	}
 }
+=======
+        // teleop starts running. If you want the autonomous to 
+        // continue until interrupted by another command, remove
+        // this line or comment it out.
+    }
+    /**
+     * This function is called when the disabled button is hit.
+     * You can use it to reset subsystems before shutting down.
+     */
+    public void disabledInit(){
+    	//oi.getCamera().CameraEnd();
+    }
+
+    /**
+     * This function is called periodically during operator control
+     */
+    public void teleopPeriodic() {
+        Scheduler.getInstance().run();//Never delete
+
+       // oi.getCamera().CameraLoop();
+
+   //     oi.getCamera().CameraLoop();
+
+        
+      //  double areas = table.getNumber("area", 0);
+		//System.out.print("areas: ");
+		//for (double area: areas) {
+		//	System.out.print(areas + " ");
+		//}
+		//System.out.println();
+		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
+
+		/*oi.getSensorSS().TestAccel();
+		oi.getSensorSS().TestUltra();*/
+
+		oi.getSensorSS().TestAccel();
+//		oi.getSensorSS().TestUltra();
+		//System.out.print("");
+	}
+
+    
+
+    
+    /**
+     * This function is called periodically during test mode
+     */
+    public void testPeriodic() {
+        LiveWindow.run();
+        SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+
+        /*SmartDashboard.putNumber("Fly Wheel Speed", oi.getShootingSS().getSpeed());
+        SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
+        SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+        SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+        SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+        SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+        SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+
+        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        */
+    }
+}
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
