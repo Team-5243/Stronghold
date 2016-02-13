@@ -15,14 +15,18 @@ public class SensorSubsystem extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+<<<<<<< HEAD
+
+=======
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
 	static Accelerometer accel;
 	Ultrasonic ultra;
 	AnalogGyro gyro;
 	private static int count = 0;
 
 	public SensorSubsystem() {
-		 InitAccel();
-		// InitUltra();
+		InitAccel();
+		InitUltra();
 		InitGyro();
 	}
 
@@ -95,9 +99,18 @@ public class SensorSubsystem extends Subsystem {
 	 */
 	private void InitGyro() {
 		gyro = new AnalogGyro(RobotMap.GyroscopePort);
+<<<<<<< HEAD
 	}
 	public AnalogGyro getGyro(){
 		return gyro;
+=======
+<<<<<<< HEAD
+	}
+}
+=======
+		gyro = new AnalogGyro(RobotMap.GyroscopePortToo);
+>>>>>>> 60ad8667e446bf50e5c98e50d29c7e74057ca7d1
 	}
 }
 
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d

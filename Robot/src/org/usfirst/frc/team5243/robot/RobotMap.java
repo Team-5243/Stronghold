@@ -26,11 +26,24 @@ public class RobotMap {
 	public final static int flyWheelLeft = 4;
 	public final static int flyWheelRight = 5;
 	public final static int MotorDoggyDoor = 6;
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
 	// DIO Ports
 	public final static int ultrasonicinputport = 4;
 	public final static int ultrasonicoutputport = 5;
 	public final static int GyroscopePort = 0;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	public final static int EncoderDoggyDoorPortOne = 7;
+	public final static int EncoderDoggyDoorPortTwo = 8;
+=======
+	public final static int GyroscopePortToo = 1;
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
+>>>>>>> 60ad8667e446bf50e5c98e50d29c7e74057ca7d1
 
 	// Pushing up sensor subsystem and shooting. small changes.
 }

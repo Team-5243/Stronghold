@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5243.robot;
 
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,8 +8,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,23 +18,36 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	
 	public static OI oi;
+<<<<<<< HEAD
 	//NetworkTable table;
 	//double[] defaultValue = new double[0];
+=======
+	private RobotDrive myDrive;
+
+	NetworkTable table;
+	double[] defaultValue = new double[0];
+>>>>>>> 60ad8667e446bf50e5c98e50d29c7e74057ca7d1
 	public Robot() {
-	//	table = NetworkTable.getTable("GRIP/myCoutoursReport");
-		
+		table = NetworkTable.getTable("GRIP/myCoutoursReport");
+
 	}
 
-	
-
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	public void robotInit() {
 		oi = new OI();
+<<<<<<< HEAD
+		oi.getCamera().CameraInit();
+		oi.getCamera().CameraSetUp();
+		oi.initializeDriveStraight(myDrive);
+		//instantiate the command used for the autonomous period
+		
+		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(),
+				oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
+=======
 
 //		oi.getCamera().CameraInit();
 
@@ -49,25 +59,85 @@ public class Robot extends IterativeRobot {
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
 
+<<<<<<< HEAD
+=======
+		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(), oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
+>>>>>>> 60ad8667e446bf50e5c98e50d29c7e74057ca7d1
 		SmartDashboard.putNumber("Motor", 5);
 
+	}
 
-    }
-	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-    public void autonomousInit() {
-        // schedule the autonomous command (example)
-    }
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
-    public void teleopInit() {
+
+	public void autonomousInit() {
+		// schedule the autonomous command (example)
+
+	}
+
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+
+	}
+
+	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
+<<<<<<< HEAD
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+
+	}
+
+	/**
+	 * This function is called when the disabled button is hit. You can use it
+	 * to reset subsystems before shutting down.
+	 */
+	public void disabledInit() {
+		// oi.getCamera().CameraEnd();
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();// Never delete
+		
+		oi.getCamera().CameraLoop();
+		System.out.print("areas: " + table.getNumber("area", 0));
+		
+		System.out.println();
+		myDrive.tankDrive(oi.getLeftStick(), oi.getRightStick());
+		
+		oi.getSensorSS().TestAccel(); oi.getSensorSS().TestUltra();
+		
+		}
+
+	/**
+	 * This function is called periodically during test mode
+	 */
+	public void testPeriodic() {
+		LiveWindow.run();
+		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+		
+		SmartDashboard.putNumber("Fly Wheel Speed",
+		oi.getShootingSS().getSpeed()); SmartDashboard.putNumber("Doggy Door Speed", oi.getRetrievalSS().getSpeed());
+		SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+		SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+		 
+		
+		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+		
+	}
+}
+=======
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
@@ -129,3 +199,4 @@ public class Robot extends IterativeRobot {
         */
     }
 }
+>>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
