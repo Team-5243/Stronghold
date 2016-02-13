@@ -14,15 +14,13 @@ import org.usfirst.frc.team5243.robot.subsystems.*;
  */
 public class OI {
 	
-<<<<<<< HEAD
-	private final CameraSubsystem CameraSub;
-=======
 
 	private final CameraSubsystem CameraSub;
+
+
 
 //	private final CameraSubsystem CameraSub = new CameraSubsystem();
 
->>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
@@ -32,11 +30,6 @@ public class OI {
 
 	private Joystick leftStick;
 	private Joystick rightStick;
-<<<<<<< HEAD
-	private Button shootButton;
-	private Button retrievalButton;
-	private Button driveStraightButton;
-=======
 
 	private Button shootButton;
 	private Button retrievalButton;
@@ -44,7 +37,6 @@ public class OI {
 
 //	private Button shootButton;
 //	private Button retrievalButton;
->>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -81,17 +73,16 @@ public class OI {
     	ShootingSub = new ShootingSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
-<<<<<<< HEAD
+
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
-=======
+
 
  		shootButton = new JoystickButton(leftStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 1);
  		driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
 // 		shootButton = new JoystickButton(leftStick, 1);
 
->>>>>>> a9822ccdc5bed917e0966a4ad8e7cbc3bbee8e8d
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
