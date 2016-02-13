@@ -16,9 +16,7 @@ public class OI {
 	
 
 	private final CameraSubsystem CameraSub;
-
 //	private final CameraSubsystem CameraSub = new CameraSubsystem();
-
 	private final MotorSubsystem MotorSub;
 	private final SensorSubsystem SensorSub;
 //	private final RetrievalSubsystem RetrievalSub;
@@ -27,13 +25,12 @@ public class OI {
 
 	private Joystick leftStick;
 	private Joystick rightStick;
-
 	private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
-
 //	private Button shootButton;
 //	private Button retrievalButton;
+
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -75,7 +72,6 @@ public class OI {
  		driveStraightButton = new JoystickButton(rightStick, 1);
 
 // 		shootButton = new JoystickButton(leftStick, 1);
-
  	//	shootButton.whileActive(new Shoot()); sSOME ERROR IN SHOOT 
  		System.out.println("OI constructor End");
 // 		retrievalButton = new JoystickButton(rightStick, 1);
@@ -86,9 +82,9 @@ public class OI {
     }
     
  	
-	public CameraSubsystem getCamera(){
+	/*public CameraSubsystem getCamera(){
 		return CameraSub;
-	}
+	}*/
 	public MotorSubsystem getMotorSS(){
 		return MotorSub;
 	}

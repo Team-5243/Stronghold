@@ -102,4 +102,3 @@ public class SensorSubsystem extends Subsystem {
 		gyro = new AnalogGyro(RobotMap.GyroscopePortToo);
 	}
 }
-
