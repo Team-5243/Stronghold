@@ -66,11 +66,8 @@ public class OI {
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		shootButton = new JoystickButton(leftStick, 1);
- 		driveStraightButton = new JoystickButton(rightStick, 1);
- 		shootButton = new JoystickButton(leftStick, 1);
- 		driveStraightButton = new JoystickButton(rightStick, 1);
- 		driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
- 		shootButton = new JoystickButton(leftStick, 1);
+ 		//driveStraightButton = new JoystickButton(rightStick, 1);
+ 		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
  		shootButton.whileActive(new Shoot());
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
@@ -91,8 +88,6 @@ public class OI {
 	public Joystick getRightStick(){
 		return rightStick;
 	}
-
-
 	public ShootingSubsystem getShootingSS() {
 		return ShootingSub;
 	}

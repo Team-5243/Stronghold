@@ -25,6 +25,10 @@ public class MotorSubsystem extends Subsystem {
     	frontRight = new Talon(RobotMap.MotorFrontRight);
     	backRight = new Talon(RobotMap.MotorBackRight);
     	backLeft = new Talon(RobotMap.MotorBackLeft);
+    	frontLeft.setInverted(true);
+    	frontRight.setInverted(true);
+    	backLeft.setInverted(true);
+    	backRight.setInverted(true);
     	myDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
     }
     /**

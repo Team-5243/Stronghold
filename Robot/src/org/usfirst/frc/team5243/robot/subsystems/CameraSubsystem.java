@@ -4,7 +4,6 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.ShapeMode;
-
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -26,7 +25,7 @@ public class CameraSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void CameraInit(){
-    	table = NetworkTable.getTable("GRIP/myContoursReport");
+    
     }
     public void CameraSetUp(){
 
@@ -41,21 +40,24 @@ public class CameraSubsystem extends Subsystem {
          * grab an image, draw the circle, and provide it for the camera server
          * which will in turn send it to the dashboard.
          */
-         //rect =  new NIVision.Rect(10, 10, 100, 100);
+         rect =  new NIVision.Rect(10, 10, 100, 100);
     }
     public void CameraLoop(){	
         NIVision.IMAQdxGrab(session, frame, 1);
-        
-        //NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+    	table = NetworkTable.getTable("GRIP/myContoursReport");
+        NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
         CameraServer.getInstance().setQuality(60);
         CameraServer.getInstance().setImage(frame);
         
     }
     public double getAreas(){
     	double areas[] = table.getNumberArray("area", new double[0]);
+    	if(areas.length == 0)
+    		return -1;
+    	System.out.println(areas);
         return areas[0];
     }
-    
+   
     
     public void CameraEnd(){
     	//NIVision.IMAQdxStopAcquisition(session);

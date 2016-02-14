@@ -19,8 +19,8 @@ public class RobotMap {
 
 	// PWM Ports
 	public final static int MotorFrontLeft = 0;
-	public final static int MotorFrontRight = 1;
-	public final static int MotorBackLeft = 2;
+	public final static int MotorFrontRight = 2;
+	public final static int MotorBackLeft = 1;
 	public final static int MotorBackRight = 3;
 	// ports for fly wheels are not finalized; just test ports
 	public final static int flyWheelLeft = 4;
