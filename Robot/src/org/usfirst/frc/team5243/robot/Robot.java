@@ -2,8 +2,22 @@
 package org.usfirst.frc.team5243.robot;
 
 
+import org.usfirst.frc.team5243.robot.commands.DriveStraight;
+import org.usfirst.frc.team5243.robot.commands.LowBarAutonomous;
+import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
+import org.usfirst.frc.team5243.robot.commands.MoatAutonomous;
+import org.usfirst.frc.team5243.robot.commands.MoatCommand;
+import org.usfirst.frc.team5243.robot.commands.Ramparts;
+import org.usfirst.frc.team5243.robot.commands.RampartsAutonomous;
+import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
+import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.Shoot;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -94,8 +108,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
         oi.getCamera().CameraLoop();
         SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
-        /*
-        double areas = table.getNumber("area", 0);
+        
+        /*double areas = table.getNumber("area", 0);
 		System.out.print("areas: ");
 		for (double area: areas) {
 			System.out.print(areas + " ");
@@ -106,7 +120,7 @@ public class Robot extends IterativeRobot {
 		oi.getSensorSS().TestUltra();
 
 		System.out.print("");
-	*/
+		*/
 	}
 	
 
@@ -126,7 +140,19 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
         SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
-        //SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
+        SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
+        SmartDashboard.putData("Ramparts Autonomous", new RampartsAutonomous());
+        SmartDashboard.putData("Rock Wall Autonomous", new RockwallCommandGroup());
+        SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainCommandGroup());
+        SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
+        SmartDashboard.putData("Shoot TeleOp", new Shoot());
+        SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
+        SmartDashboard.putData("Moat TeleOp", new MoatCommand());
+        SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
+        SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
+        SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
+        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
      	
     }
 }

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5243.robot.commands;
 
-import org.usfirst.frc.team5243.robot.subsystems.SensorSubsystem;
+
+import org.usfirst.frc.team5243.robot.Robot;
+
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,11 +24,11 @@ public class RoughTerrainCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*while(SensorSubsystem.isTilting()){
+    	while(Robot.oi.getSensorSS().isTiltingY() || Robot.oi.getSensorSS().isTiltingYneg()){
     		DriveStraight criminal = new DriveStraight(1,1);
-    		criminal.execute();
+    		criminal.execute(); //phil seriously
     	}
-    	run = true;*/
+    	run = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
