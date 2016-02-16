@@ -34,7 +34,7 @@ public class LowBarCommand extends Command {
 
 	private boolean isTilting() {
 		// TODO Auto-generated method stub
-		return SensorSubsystem.isTilting();
+		return false;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
