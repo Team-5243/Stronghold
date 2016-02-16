@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RockwallCommandGroup extends CommandGroup {
+public class RampartsAutonomous extends CommandGroup {
     
-    public  RockwallCommandGroup() {
+    public  RampartsAutonomous() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveStraight(5/*placeholder*/,1));
-    	addSequential(new RockWallCommand());
+    	addSequential(new DriveStraight(5/*placeholder*/, 1));
+    	addSequential(new Ramparts());
     	addSequential(new Shoot());
         // To run multiple commands at the same time,
         // use addParallel()

@@ -1,21 +1,23 @@
 package org.usfirst.frc.team5243.robot.commands;
 
-
 import org.usfirst.frc.team5243.robot.Robot;
-
-
+import org.usfirst.frc.team5243.robot.RobotMap;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RoughTerrainCommand extends Command {
-	private boolean run = false;
+public class ClimbCommand extends Command {
+	private boolean done = false;
+	private Jaguar leftMotor;
+	private Jaguar rightMotor;
 	
-    public RoughTerrainCommand() {
+    public ClimbCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
+    	leftMotor = new Jaguar(RobotMap.leftClimbMotor);
+    	rightMotor = new Jaguar(RobotMap.rightClimbMotor);
     }
 
     // Called just before this Command runs the first time
@@ -24,16 +26,25 @@ public class RoughTerrainCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().isTiltingY() || Robot.oi.getSensorSS().isTiltingYneg()){
-    		DriveStraight criminal = new DriveStraight(1,1);
-    		criminal.execute(); //phil seriously
+    	while(!Robot.oi.getSensorSS().isTiltingZ()){
+    		leftMotor.set(1);
+    		rightMotor.set(1);
+    	
+    		if(Robot.oi.getSensorSS().isTiltingZneg()){
+    			leftMotor.set(1);
+    			rightMotor.set(0);
+    		}
+    		if(Robot.oi.getSensorSS().isTiltingZ()){
+    			rightMotor.set(1);	
+    			leftMotor.set(0);
+    		} 		
     	}
-    	run = true;
+    	done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return run;
+        return done;
     }
 
     // Called once after isFinished returns true
@@ -44,5 +55,4 @@ public class RoughTerrainCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-   
 }

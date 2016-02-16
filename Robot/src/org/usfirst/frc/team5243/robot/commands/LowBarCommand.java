@@ -32,6 +32,13 @@ public class LowBarCommand extends Command {
       fertig=true;
     }
 
+<<<<<<< HEAD
+=======
+	private boolean isTilting() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+>>>>>>> 5416a8bb267128812c9e19fca8297b61348b9b61
 
 	// Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

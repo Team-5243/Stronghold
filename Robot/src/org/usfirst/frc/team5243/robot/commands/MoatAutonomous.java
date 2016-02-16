@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RockwallCommandGroup extends CommandGroup {
+public class MoatAutonomous extends CommandGroup {
     
-    public  RockwallCommandGroup() {
+    public  MoatAutonomous() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveStraight(5/*placeholder*/,1));
-    	addSequential(new RockWallCommand());
+    	addSequential(new DriveStraight(5/*placeholder*/, 1));
+    	addSequential(new MoatCommand());
     	addSequential(new Shoot());
         // To run multiple commands at the same time,
         // use addParallel()

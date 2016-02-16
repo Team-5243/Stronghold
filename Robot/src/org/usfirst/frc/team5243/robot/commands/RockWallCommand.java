@@ -1,21 +1,15 @@
 package org.usfirst.frc.team5243.robot.commands;
 
-
-import org.usfirst.frc.team5243.robot.Robot;
-
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RoughTerrainCommand extends Command {
-	private boolean run = false;
-	
-    public RoughTerrainCommand() {
+public class RockWallCommand extends Command {
+
+    public RockWallCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
     }
 
     // Called just before this Command runs the first time
@@ -24,16 +18,11 @@ public class RoughTerrainCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().isTiltingY() || Robot.oi.getSensorSS().isTiltingYneg()){
-    		DriveStraight criminal = new DriveStraight(1,1);
-    		criminal.execute(); //phil seriously
-    	}
-    	run = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return run;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -44,5 +33,4 @@ public class RoughTerrainCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-   
 }
