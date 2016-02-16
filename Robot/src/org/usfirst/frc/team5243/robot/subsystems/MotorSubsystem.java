@@ -50,6 +50,12 @@ public class MotorSubsystem extends Subsystem {
 	public Talon getFrontLeft() {
 		return frontLeft;
 	}
+	public void setAll(double x){
+		frontLeft.set(x);
+		frontRight.set(x);
+		backLeft.set(x);
+		backRight.set(x);
+	}
 	public double getSpeed(){
 		return frontLeft.getSpeed();
 	}
