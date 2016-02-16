@@ -33,8 +33,7 @@ public class LowBarCommand extends Command {
     }
 
 	private boolean isTilting() {
-		// TODO Auto-generated method stub
-		return SensorSubsystem.isTilting();
+		return Robot.oi.getSensorSS().isTilting();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

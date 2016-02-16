@@ -82,7 +82,7 @@ public class SensorSubsystem extends Subsystem {
 		return gyro.getRate();
 	}
 
-	public static boolean isTilting(){
+	public boolean isTilting(){
 	// using getY for test robot, not sure for real robot
 	   int count=0;
 	   for (int i=0; i<3; i++){
