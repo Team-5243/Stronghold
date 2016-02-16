@@ -16,9 +16,7 @@ public class SensorSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-
-
-	static Accelerometer accel;
+	Accelerometer accel;
 	Ultrasonic ultra;
 	AnalogGyro gyro;
 	AnalogGyro gyroToo;
@@ -82,16 +80,84 @@ public class SensorSubsystem extends Subsystem {
 		return gyro.getRate();
 	}
 
-	public boolean isTilting(){
-	// using getY for test robot, not sure for real robot
-	   int count=0;
-	   for (int i=0; i<3; i++){
-		   if(accel.getY() > 0.117){
-			   count++;
-		   }
-	   }
-	   if (count>=2) return true;
-	   return false;
+	public boolean isTiltingZ() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getZ() > 0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
+	}
+
+	public boolean isTiltingY() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getY() > 0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
+	}
+
+	// Tilt is usually above .15, flat at .0xxx, negative positive based on side
+	// lifted
+	public boolean isTiltingX() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getX() > 0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
+	}
+
+	public boolean isTiltingXneg() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getX() > -0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
+	}
+
+	public boolean isTiltingYneg() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getY() > -0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
+	}
+
+	public boolean isTiltingZneg() {
+		// using getY for test robot, not sure for real robot
+		int count = 0;
+		for (int i = 0; i < 3; i++) {
+			if (accel.getZ() > -0.117) {
+				count++;
+			}
+		}
+		if (count >= 2)
+			return true;
+		return false;
 	}
 
 	/**
@@ -102,8 +168,7 @@ public class SensorSubsystem extends Subsystem {
 		gyroToo = new AnalogGyro(RobotMap.GyroscopePortToo);
 	}
 
-	public AnalogGyro getGyro(){
+	public AnalogGyro getGyro() {
 		return gyro;
 	}
 }
-
