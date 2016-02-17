@@ -1,18 +1,23 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
-
+import org.usfirst.frc.team5243.robot.RobotMap;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class MoatCommand extends Command {
+public class ClimbCommand extends Command {
 	private boolean done = false;
-	private DriveStraight gucci;
-    public MoatCommand() {
+	private Jaguar leftMotor;
+	private Jaguar rightMotor;
+	
+    public ClimbCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	leftMotor = new Jaguar(RobotMap.leftClimbMotor);
+    	rightMotor = new Jaguar(RobotMap.rightClimbMotor);
     }
 
     // Called just before this Command runs the first time
@@ -21,9 +26,18 @@ public class MoatCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().isTiltingY()){//drive straight when tilting
-    		gucci = new DriveStraight(1,1);
-    		gucci.execute();
+    	while(!Robot.oi.getSensorSS().isTiltingZ()){//while robot isn't tilting both motors operate at same time
+    		leftMotor.set(1);
+    		rightMotor.set(1);
+    	
+    		if(Robot.oi.getSensorSS().isTiltingZneg()){//if robot is tilting to the left make right motor pause so left can catch up
+    			leftMotor.set(1);
+    			rightMotor.set(0);
+    		}
+    		if(Robot.oi.getSensorSS().isTiltingZ()){//if robot is tilting to the right make let motor pause so right can catch up
+    			rightMotor.set(1);	
+    			leftMotor.set(0);
+    		} 		
     	}
     	done = true;
     }
