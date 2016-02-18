@@ -3,6 +3,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,10 +17,9 @@ public class SensorSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-	Accelerometer accel;
-	Ultrasonic ultra;
-	AnalogGyro gyro;
-	AnalogGyro gyroToo;
+	private Accelerometer accel;
+	private Ultrasonic ultra;
+	private ADXRS450_Gyro gyro;
 	private static int count = 0;
 
 	public SensorSubsystem() {
@@ -160,19 +160,16 @@ public class SensorSubsystem extends Subsystem {
 		return false;
 	}
 
-	/**
-	 * Currently uses port 2
-	 */
 	private void InitGyro() {
-		gyro = new AnalogGyro(RobotMap.GyroscopePort);
-		gyroToo = new AnalogGyro(RobotMap.GyroscopePortToo);
+		gyro = new ADXRS450_Gyro();
 	}
 
-	public AnalogGyro getGyro() {
+	public ADXRS450_Gyro getGyro() {
 		return gyro;
 	}
-	public double getRange(){
+
+	public double getRange() {
 		return ultra.getRangeInches();
 	}
-	
+
 }

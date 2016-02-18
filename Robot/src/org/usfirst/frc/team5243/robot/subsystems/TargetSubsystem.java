@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
-public class TargetSubsystem extends PIDSubsystem {
+/*public class TargetSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
     public TargetSubsystem() {
@@ -32,3 +32,4 @@ public class TargetSubsystem extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     }
 }
+*/

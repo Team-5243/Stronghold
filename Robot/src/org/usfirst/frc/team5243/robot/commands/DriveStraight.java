@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
@@ -12,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraight extends Command {
 
 	private RobotDrive iRobot;
-	private AnalogGyro gyro;
+	private ADXRS450_Gyro gyro;
 	private double K = .05; // driving w/gyro konstant
 	private double seconds = 0; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed

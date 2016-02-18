@@ -54,7 +54,7 @@ public class CameraSubsystem extends Subsystem {
         
     }
     public double getAreas(){
-    	double areas[] = table.getNumberArray("area", new double[0]);
+    	double areas[] = table.getNumberArray("targets/area", new double[0]);
     	if(areas.length == 0)
     		return -1;
     	System.out.println(areas);

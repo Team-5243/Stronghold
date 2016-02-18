@@ -106,6 +106,18 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
         SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
         SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+        SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
+        SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
+        SmartDashboard.putData("Ramparts Autonomous", new RampartsAutonomous());
+        SmartDashboard.putData("Rock Wall Autonomous", new RockwallCommandGroup());
+        SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainCommandGroup());
+        SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
+        SmartDashboard.putData("Shoot TeleOp", new Shoot());
+        SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
+        SmartDashboard.putData("Moat TeleOp", new MoatCommand());
+        SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
+        SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
+        SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
         oi.getCamera().CameraLoop();
         SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
         
@@ -152,7 +164,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
         SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
         SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
-        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        //SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
      	
     }
 }
