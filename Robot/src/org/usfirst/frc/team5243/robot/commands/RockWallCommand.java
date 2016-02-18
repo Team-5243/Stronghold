@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RockWallCommand extends Command {
 	private boolean done = false;
-	private DriveStraight weeb;
+	private DriveStraight mvw;
     public RockWallCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,8 +22,8 @@ public class RockWallCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	while(Robot.oi.getSensorSS().isTiltingY()){//drivestraight when tilting
-    		weeb = new DriveStraight(1,1);
-    		weeb.execute();
+    		mvw = new DriveStraight(1,1);
+    		mvw.execute();
     	}
     	done = true;
     }

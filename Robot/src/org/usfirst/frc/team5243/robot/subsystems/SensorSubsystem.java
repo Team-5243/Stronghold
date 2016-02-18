@@ -171,4 +171,8 @@ public class SensorSubsystem extends Subsystem {
 	public AnalogGyro getGyro() {
 		return gyro;
 	}
+	public double getRange(){
+		return ultra.getRangeInches();
+	}
+	
 }
