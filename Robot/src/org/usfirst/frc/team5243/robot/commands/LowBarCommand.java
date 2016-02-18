@@ -22,8 +22,8 @@ public class LowBarCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
       while(isTilting()){ //drive up the ramp slow to clear lowbar
-    	  DriveStraight scapegoat = new DriveStraight((double).5);
-    	  scapegoat.execute();
+    	  DriveStraight cmd = new DriveStraight((double).5);
+    	  cmd.execute();
       }
       
       //speed up once lowbar is cleared
@@ -32,13 +32,10 @@ public class LowBarCommand extends Command {
       fertig=true;
     }
 
-<<<<<<< HEAD
-=======
 	private boolean isTilting() {
 		// TODO Auto-generated method stub
 		return false;
 	}
->>>>>>> 5416a8bb267128812c9e19fca8297b61348b9b61
 
 	// Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

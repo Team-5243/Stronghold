@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.Robot;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -37,5 +38,11 @@ public class RetrievalSubsystem extends Subsystem {
     public double getSpeed() {
     	return door.get();
     }
+
+	public boolean isForwardPosition() {//doggy door has completed rotation
+		// TODO Auto-generated method stub
+		
+		return Robot.oi.get;
+	}
 }
 

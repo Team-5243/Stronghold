@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.Robot;
+import org.usfirst.frc.team5243.robot.RobotMap;
+
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;
@@ -62,5 +65,13 @@ public class CameraSubsystem extends Subsystem {
     public void CameraEnd(){
     	//NIVision.IMAQdxStopAcquisition(session);
     }
+	public double distanceToCenterTower() {
+		// TODO Auto-generated method stub
+		return Robot.oi.getSensorSS().getRange();
+	}
+	public boolean isTowerCentered() {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 }

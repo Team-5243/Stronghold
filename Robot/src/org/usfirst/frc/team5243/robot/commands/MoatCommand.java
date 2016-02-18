@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoatCommand extends Command {
 	private boolean done = false;
-	private DriveStraight gucci;
+	private DriveStraight jdl;
     public MoatCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,8 +22,8 @@ public class MoatCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	while(Robot.oi.getSensorSS().isTiltingY()){//drive straight when tilting
-    		gucci = new DriveStraight(1,1);
-    		gucci.execute();
+    		jdl = new DriveStraight(1,1);
+    		jdl.execute();
     	}
     	done = true;
     }
