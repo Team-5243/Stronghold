@@ -10,14 +10,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ClimbCommand extends Command {
 	private boolean done = false;
-	private Jaguar leftMotor;
-	private Jaguar rightMotor;
+
 	
     public ClimbCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	leftMotor = new Jaguar(RobotMap.leftClimbMotor);
-    	rightMotor = new Jaguar(RobotMap.rightClimbMotor);
     }
 
     // Called just before this Command runs the first time
@@ -27,16 +24,16 @@ public class ClimbCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(!Robot.oi.getSensorSS().isTiltingZ()){
-    		leftMotor.set(.5);
-    		rightMotor.set(.5);
+    		Robot.oi.getLiftSS().getLeft().set(.5);
+    		Robot.oi.getLiftSS().getRight().set(.5);
     	
     		if(Robot.oi.getSensorSS().isTiltingZneg()){//if robot is tilting to the left make right motor pause so left can catch up
-    			leftMotor.set(.5);
-    			rightMotor.set(0);
+    			Robot.oi.getLiftSS().getLeft().set(.5);
+    			Robot.oi.getLiftSS().getLeft().set(0);
     		}
     		if(Robot.oi.getSensorSS().isTiltingZ()){//if robot is tilting to the right make let motor pause so right can catch up
-    			rightMotor.set(.5);	
-    			leftMotor.set(0);
+    			Robot.oi.getLiftSS().getLeft().set(.5);	
+    			Robot.oi.getLiftSS().getLeft().set(0);
     		} 		
     	}
     }

@@ -28,6 +28,7 @@ public class OI {
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
 	private final ShootingSubsystem ShootingSub;
+	private final LiftSubsystem LiftSub;
 	
 	
 
@@ -52,6 +53,8 @@ public class OI {
     	SensorSub = new SensorSubsystem();
     	RetrievalSub = new RetrievalSubsystem();
     	ShootingSub = new ShootingSubsystem();
+    	LiftSub = new LiftSubsystem();
+    	
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		AlignButton = new JoystickButton(leftStick, 7);
@@ -95,6 +98,9 @@ public class OI {
 	}
 	public RetrievalSubsystem getRetrievalSS(){
 		return RetrievalSub;
+	}
+	public LiftSubsystem getLiftSS(){
+		return LiftSub;
 	}
 }
 
