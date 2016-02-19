@@ -19,13 +19,13 @@ public class RobotMap {
 	public final static int leftClimbMotor = 7;
 	public final static int rightClimbMotor = 8;
 	// PWM Ports
-	public final static int MotorFrontLeft = 0;
-	public final static int MotorFrontRight = 2;
-	public final static int MotorBackLeft = 1;
-	public final static int MotorBackRight = 3;
+	public final static int MotorFrontLeft = 2;
+	public final static int MotorFrontRight = 3;
+	public final static int MotorBackLeft = 4;
+	public final static int MotorBackRight = 5;
 	// ports for fly wheels are not finalized; just test ports
-	public final static int flyWheelLeft = 4;
-	public final static int flyWheelRight = 5;
+	public final static int flyWheelLeft = 1;
+	public final static int flyWheelRight = 0;
 	public final static int MotorDoggyDoor = 6;
 	// DIO Ports
 	public final static int ultrasonicinputport = 4;
@@ -35,4 +35,6 @@ public class RobotMap {
 	public final static int EncoderDoggyDoorPortOne = 7;
 	public final static int EncoderDoggyDoorPortTwo = 8;
 	// Pushing up sensor subsystem and shooting. small changes.
+	public static final int SolenoidModuleNumber = 3;
+	public static final int SolenoidChannel=2;
 }

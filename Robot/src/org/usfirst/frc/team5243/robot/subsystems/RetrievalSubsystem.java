@@ -42,7 +42,7 @@ public class RetrievalSubsystem extends Subsystem {
 	public boolean isForwardPosition() {//doggy door has completed rotation
 		// TODO Auto-generated method stub
 		
-		return Robot.oi.get;
+		return true;//Robot.oi.get;
 	}
 }
 

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
@@ -11,11 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveStraight extends Command {
 
-	private RobotDrive iRobot;
-	private AnalogGyro gyro;
-	private double K = .05; // driving w/gyro konstant
+
 	private double seconds = 0; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
+	private double k = .05;
 	private boolean isFinished = false;
 	/**
 	 * gets gyro from the sensorsubsystem, gets robotdrive from the motor subsystem
@@ -25,8 +26,6 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(double seconds,double speed) {
         requires(Robot.oi.getMotorSS());
-		iRobot = Robot.oi.getMotorSS().getDrive();
-		gyro = Robot.oi.getSensorSS().getGyro();
 		this.seconds = seconds;
 		this.speed = speed;
 	}
@@ -36,8 +35,7 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(){
         requires(Robot.oi.getMotorSS());
-        iRobot = Robot.oi.getMotorSS().getDrive();
-		gyro = Robot.oi.getSensorSS().getGyro();
+
 		
 	}
 	/**
@@ -46,8 +44,7 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(Double speed){
 		requires(Robot.oi.getMotorSS());
-        iRobot = Robot.oi.getMotorSS().getDrive();
-		gyro = Robot.oi.getSensorSS().getGyro();
+
 		this.speed = speed;
 	}
 	/**
@@ -56,8 +53,6 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(double seconds){
 		requires(Robot.oi.getMotorSS());
-        iRobot = Robot.oi.getMotorSS().getDrive();
-		gyro = Robot.oi.getSensorSS().getGyro();
 		this.seconds = seconds;
 	}
 	public void setSpeed(double speed){
@@ -80,8 +75,8 @@ public class DriveStraight extends Command {
 	 * that, it will drive for 0 seconds;
 	 */
 	public void start(){
-		gyro.reset();
-		iRobot.drive(speed, -gyro.getAngle() * K);
+		Robot.oi.getSensorSS().getGyro().reset();
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
 		Timer.delay(seconds);
 		isFinished = true;
 		end();
@@ -91,8 +86,8 @@ public class DriveStraight extends Command {
 	 * that, it will drive for 0 seconds;
 	 */
 	protected void execute() {
-		gyro.reset();
-		iRobot.drive(speed, -gyro.getAngle() * K);
+		Robot.oi.getSensorSS().getGyro().reset();
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
 		Timer.delay(seconds);
 		isFinished = true;
 	}
@@ -103,7 +98,7 @@ public class DriveStraight extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		
+		isFinished =false;
 	}
 	
 	protected void interrupted() {

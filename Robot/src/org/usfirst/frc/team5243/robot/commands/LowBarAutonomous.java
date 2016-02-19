@@ -13,7 +13,10 @@ public class LowBarAutonomous extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	addSequential(new DriveStraight(5/*placeholder*/, 1));
-    	addSequential(new LowBarCommand());
+    	addSequential(new LowBarCommandGroup());
+    	addSequential(new DriveStraight(5,1));
+    	addSequential(new CenterTower());
+    	addParallel(new SpinUpCommand());
     	addSequential(new Shoot());
         // To run multiple commands at the same time,
         // use addParallel()
