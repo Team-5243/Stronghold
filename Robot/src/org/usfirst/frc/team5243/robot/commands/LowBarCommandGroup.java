@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LowBarCommandGroup extends CommandGroup {
     
     public  LowBarCommandGroup() {
-        
+
     	Robot.oi.getSensorSS().getGyro().reset();
     	while(!Robot.oi.getSensorSS().isTiltingX()){
     		Robot.oi.getMotorSS().getDrive().drive(.3, -Robot.oi.getSensorSS().getGyro().getAngle() * .05);

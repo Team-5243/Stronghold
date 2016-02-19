@@ -21,7 +21,6 @@ public class DriveStraight extends Command {
 	private double k = .05;
 	private boolean isFinished = false;
 	/**
-	 * gets gyro from the sensorsubsystem, gets robotdrive from the motor subsystem
 	 * 
 	 * @param seconds
 	 * @param speed
@@ -30,6 +29,9 @@ public class DriveStraight extends Command {
         requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
 		this.seconds = seconds;
+		if(speed > 1){
+			speed = 1;
+		}
 		this.speed = speed;
 	}
 	/**

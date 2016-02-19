@@ -10,6 +10,7 @@ import org.usfirst.frc.team5243.robot.commands.Ramparts;
 import org.usfirst.frc.team5243.robot.commands.RampartsAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
 import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
@@ -81,26 +82,29 @@ public class Robot extends IterativeRobot {
 		 * oi.getCamera().CameraSetUp(); }
 		 */
 		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-	}
+        // teleop starts running. If you want the autonomous to 
+        // continue until interrupted by another command, remove
+        // this line or comment it out.
+    }
+    /**
+     * This function is called when the disabled button is hit.
+     * You can use it to reset subsystems before shutting down.
+     */
+    public void disabledInit(){
+    	//oi.getCamera().CameraEnd();
+    }
 
-	/**
-	 * This function is called when the disabled button is hit. You can use it
-	 * to reset subsystems before shutting down.
-	 */
-	public void disabledInit() {
-		oi.getCamera().CameraEnd();
-	}
-
-	/**
-	 * This function is called periodically during operator control
-	 */
-	public void teleopPeriodic() {
-		Scheduler.getInstance().run();// Never delete
-		if (!oi.getMotorSS().isCommandRunning()) {
-			oi.getMotorSS().getDrive().tankDrive(oi.getLeftStick(), oi.getRightStick());
+    /**
+     * This function is called periodically during operator control
+     */
+    public void teleopPeriodic() {
+        Scheduler.getInstance().run();//Never delete
+        
+		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
+        /*double areas = table.getNumber("area", 0);
+		System.out.print("areas: ");
+		for (double area: areas) {
+			System.out.print(areas + " ");
 		}
 		LiveWindow.run();
 		// SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
