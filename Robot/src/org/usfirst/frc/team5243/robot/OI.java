@@ -57,9 +57,21 @@ public class OI {
     	
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
- 		AlignButton = new JoystickButton(leftStick, 7);
+ 		
+    }
+    public void init(){
+    	AlignButton = new JoystickButton(leftStick, 7);
  		SpinUpButton = new JoystickButton(leftStick, 6);
  		shootButton = new JoystickButton(leftStick, 1);
+ 		
+ 		driveStraightButton = new JoystickButton(rightStick, 2);
+ 		climbButton = new JoystickButton(rightStick, 3);
+ 		lowBarButton = new JoystickButton(rightStick, 4);
+ 		moatButton = new JoystickButton(rightStick, 5);
+ 		rampartsButton = new JoystickButton(rightStick,6);
+ 		rockWallButton = new JoystickButton(rightStick, 7);
+ 		roughTerrainButton = new JoystickButton(rightStick,8);
+ 		
  		//driveStraightButton = new JoystickButton(rightStick, 1);
  		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
  		shootButton.whenPressed(new Shoot());

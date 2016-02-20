@@ -24,8 +24,12 @@ public class SensorSubsystem extends Subsystem {
 =======
 	Accelerometer accel;
 	Ultrasonic ultra;
+<<<<<<< 802c647afa1b8a506695138f1cc869e19ca056c2
 	ADXRS450_Gyro gyro;
 >>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
+=======
+	AnalogGyro gyro;
+>>>>>>> Fixed project to running state
 	private static int count = 0;
 
 	public SensorSubsystem() {
@@ -167,10 +171,10 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	private void InitGyro() {
-		gyro = new ADXRS450_Gyro();
+		gyro = new AnalogGyro(0);
 	}
 
-	public ADXRS450_Gyro getGyro() {
+	public AnalogGyro getGyro() {
 		return gyro;
 	}
 

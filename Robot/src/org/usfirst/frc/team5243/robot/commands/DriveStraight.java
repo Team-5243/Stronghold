@@ -40,7 +40,7 @@ public class DriveStraight extends Command {
 	 * (seconds, speed)
 	 */
 	public DriveStraight(){
-        requires(Robot.oi.getMotorSS());
+        //requires(Robot.oi.getMotorSS());
 
 		
 	}

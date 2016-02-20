@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		//oi.init();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
