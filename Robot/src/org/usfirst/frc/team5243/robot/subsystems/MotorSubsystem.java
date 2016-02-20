@@ -16,6 +16,7 @@ public class MotorSubsystem extends Subsystem {
 	private Talon backLeft;
 	private Talon frontRight;
 	private Talon backRight;
+	private boolean isRunning;
 	private RobotDrive myDrive;
     /**
      * made for 4 motors
@@ -25,15 +26,23 @@ public class MotorSubsystem extends Subsystem {
     	frontRight = new Talon(RobotMap.MotorFrontRight);
     	backRight = new Talon(RobotMap.MotorBackRight);
     	backLeft = new Talon(RobotMap.MotorBackLeft);
+    	isRunning=false;
     	frontLeft.setInverted(true);
     	frontRight.setInverted(true);
     	backLeft.setInverted(true);
     	backRight.setInverted(true);
     	myDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
+    	myDrive.setSafetyEnabled(false);
     }
     /**
      * Does nothing at this point
      */
+    public boolean isCommandRunning(){
+    	return isRunning;
+    }
+    public void setRunning(boolean s){
+    	isRunning =s;
+    }
 	@Override
 	protected void initDefaultCommand() {
 		

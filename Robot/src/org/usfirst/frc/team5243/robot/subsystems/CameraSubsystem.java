@@ -18,6 +18,7 @@ public class CameraSubsystem extends Subsystem {
     private int session;
     private Image frame;
     private NIVision.Rect rect;
+    private boolean isInit;
     NetworkTable table;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -44,6 +45,7 @@ public class CameraSubsystem extends Subsystem {
          * which will in turn send it to the dashboard.
          */
          rect =  new NIVision.Rect(10, 10, 100, 100);
+         isInit=true;
     }
     public void CameraLoop(){	
         NIVision.IMAQdxGrab(session, frame, 1);
@@ -54,9 +56,8 @@ public class CameraSubsystem extends Subsystem {
         
     }
     public double getAreas(){
-<<<<<<< 802c647afa1b8a506695138f1cc869e19ca056c2
-    	double areas[] = table.getNumberArray("targets/area", new double[0]);
-=======
+    	//double areas[] = table.getNumberArray("targets/area", new double[0]);
+
     	return 0.0;
     /*	double areas[] = table.getNumberArray("area", new double[0]);
 >>>>>>> Fixed project to running state
@@ -68,7 +69,8 @@ public class CameraSubsystem extends Subsystem {
    
     
     public void CameraEnd(){
-    	//NIVision.IMAQdxStopAcquisition(session);
+    	NIVision.IMAQdxStopAcquisition(session);
+    	isInit=false;
     }
 	public double distanceToCenterTower() {
 		// TODO Auto-generated method stub
@@ -77,6 +79,9 @@ public class CameraSubsystem extends Subsystem {
 	public boolean isTowerCentered() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public boolean isInit(){
+		return isInit;
 	}
     
 }

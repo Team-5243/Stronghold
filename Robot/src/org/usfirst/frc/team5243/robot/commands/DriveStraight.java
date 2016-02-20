@@ -12,10 +12,22 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveStraight extends Command {
+<<<<<<< b4ba2bcf228c728b7a0b2bf44707bf503a8fa223
 	private RobotDrive iRobot;
 	private ADXRS450_Gyro gyro;
 	private double K = .05; // driving w/gyro konstant
 	private double seconds = 0; // one is Double and the other is double, so that there can be 
+=======
+
+
+	private RobotDrive iRobot;
+	private ADXRS450_Gyro gyro;
+	private double K = .05; // driving w/gyro konstant
+
+
+
+	private double seconds = 2; // one is Double and the other is double, so that there can be 
+>>>>>>> First hour of testing, Drive straight Button 2 works
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
 	private boolean isFinished = false;
@@ -79,11 +91,13 @@ public class DriveStraight extends Command {
 	 * that, it will drive for 0 seconds;
 	 */
 	public void start(){
-		Robot.oi.getSensorSS().getGyro().reset();
+		Robot.oi.getMotorSS().setRunning(true);
+		if(!isFinished){
+			Robot.oi.getSensorSS().getGyro().reset();
+		}
 		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		Timer.delay(seconds);
 		isFinished = true;
-		end();
+		System.out.print("in Start");
 	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
@@ -103,6 +117,7 @@ public class DriveStraight extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		isFinished =false;
+		Robot.oi.getMotorSS().setRunning(false);
 	}
 	
 	protected void interrupted() {
