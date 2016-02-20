@@ -41,8 +41,13 @@ public class RetrievalSubsystem extends Subsystem {
 
 	public boolean isForwardPosition() {//doggy door has completed rotation
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		final boolean deeznuts = false;
 		return deeznuts;
+=======
+		
+		return true;//Robot.oi.get;
+>>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
 	}
 }
 

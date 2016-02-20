@@ -17,9 +17,15 @@ public class SensorSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
+<<<<<<< HEAD
 	private Accelerometer accel;
 	private Ultrasonic ultra;
 	private ADXRS450_Gyro gyro;
+=======
+	Accelerometer accel;
+	Ultrasonic ultra;
+	ADXRS450_Gyro gyro;
+>>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
 	private static int count = 0;
 
 	public SensorSubsystem() {

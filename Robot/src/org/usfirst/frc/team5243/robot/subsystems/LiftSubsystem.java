@@ -11,7 +11,9 @@ public class LiftSubsystem extends Subsystem {
     // here. Call these from Commands.
 	private Talon leftTalon;
 	private Talon rightTalon;
+	private Talon arm;
 	public LiftSubsystem(){
+		//arm = new Talon(RobotMap.Arm);
 		leftTalon = new Talon(RobotMap.leftClimbMotor);
 		rightTalon = new Talon(RobotMap.rightClimbMotor);
 	}
@@ -26,6 +28,9 @@ public class LiftSubsystem extends Subsystem {
     }
     public void setLeft(int speed){
     	leftTalon.set(speed);
+    }
+    public void raiseArm(int speed){
+    	arm.set(speed);
     }
     public void setRight(int speed){
     	rightTalon.set(speed);

@@ -26,25 +26,24 @@ public class ClimbCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(!Robot.oi.getSensorSS().isTiltingZ()){//while robot isn't tilting both motors operate at same time
-    		leftMotor.set(1);
-    		rightMotor.set(1);
+    	if(!Robot.oi.getSensorSS().isTiltingZ()){
+    		leftMotor.set(.5);
+    		rightMotor.set(.5);
     	
     		if(Robot.oi.getSensorSS().isTiltingZneg()){//if robot is tilting to the left make right motor pause so left can catch up
-    			leftMotor.set(1);
+    			leftMotor.set(.5);
     			rightMotor.set(0);
     		}
     		if(Robot.oi.getSensorSS().isTiltingZ()){//if robot is tilting to the right make let motor pause so right can catch up
-    			rightMotor.set(1);	
+    			rightMotor.set(.5);	
     			leftMotor.set(0);
     		} 		
     	}
-    	done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return done;
+        return false;//Make a stop motor command
     }
 
     // Called once after isFinished returns true

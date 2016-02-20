@@ -6,7 +6,13 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team5243.robot.commands.CenterTower;
+import org.usfirst.frc.team5243.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraight;
+import org.usfirst.frc.team5243.robot.commands.LowBarCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.MoatCommand;
+import org.usfirst.frc.team5243.robot.commands.RampartsCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.subsystems.*;
@@ -32,6 +38,12 @@ public class OI {
 	private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
+	private Button climbButton;
+	private Button lowBarButton;
+	private Button moatButton;
+	private Button rampartsButton;
+	private Button rockWallButton;
+	private Button roughTerrainButton;
 
     public OI(){
     	System.out.println("OI constructor Start");
@@ -50,7 +62,15 @@ public class OI {
  		shootButton.whenPressed(new Shoot());
  		SpinUpButton.whenPressed(new SpinUpCommand());
  		AlignButton.whenPressed(new CenterTower());
- 		
+ 		// begin today buttons
+ 		driveStraightButton.whenPressed(new DriveStraight());
+ 		climbButton.whenPressed(new ClimbCommand());
+ 		lowBarButton.whenPressed(new LowBarCommandGroup());
+ 		moatButton.whenPressed(new MoatCommand());
+ 		rampartsButton.whenPressed(new RampartsCommandGroup());
+ 		rockWallButton.whenPressed(new RockwallCommandGroup());
+ 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
+ 		// end today buttons
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
  		retrievalButton.whileActive(new Shoot());
