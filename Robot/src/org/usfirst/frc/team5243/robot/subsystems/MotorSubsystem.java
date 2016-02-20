@@ -56,6 +56,14 @@ public class MotorSubsystem extends Subsystem {
 		backLeft.set(x);
 		backRight.set(x);
 	}
+	public void setLeft(double speedthedroog){
+		frontLeft.set(speedthedroog);
+		backLeft.set(speedthedroog);
+	}
+	public void setRight(double speedthenumber){
+		frontRight.set(speedthenumber);
+		backRight.set(speedthenumber);
+	}
 	public double getSpeed(){
 		return frontLeft.getSpeed();
 	}

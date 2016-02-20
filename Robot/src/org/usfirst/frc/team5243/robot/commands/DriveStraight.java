@@ -26,6 +26,7 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(double seconds,double speed) {
         requires(Robot.oi.getMotorSS());
+        requires(Robot.oi.getSensorSS());
 		this.seconds = seconds;
 		this.speed = speed;
 	}
@@ -34,8 +35,8 @@ public class DriveStraight extends Command {
 	 * (seconds, speed)
 	 */
 	public DriveStraight(){
-        requires(Robot.oi.getMotorSS());
-
+		requires(Robot.oi.getMotorSS());
+        requires(Robot.oi.getSensorSS());
 		
 	}
 	/**
@@ -44,7 +45,7 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(Double speed){
 		requires(Robot.oi.getMotorSS());
-
+        requires(Robot.oi.getSensorSS());
 		this.speed = speed;
 	}
 	/**
@@ -53,7 +54,8 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(double seconds){
 		requires(Robot.oi.getMotorSS());
-		this.seconds = seconds;
+        requires(Robot.oi.getSensorSS());
+        this.seconds = seconds;
 	}
 	public void setSpeed(double speed){
 		this.speed = speed;

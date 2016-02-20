@@ -59,18 +59,31 @@ public class OI {
  		shootButton = new JoystickButton(leftStick, 1);
  		//driveStraightButton = new JoystickButton(rightStick, 1);
  		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
+ 		/*					button name
+ 		 * CenterTower		AlignButton
+ 		 * ClimbCommand		climbButton
+ 		 * DriveStraight	driveStraightButton
+ 		 * LowBar			lowBarButton
+ 		 * Moat				moatButton
+ 		 * Ramparts			rampartsButton
+ 		 * RockWall			rockWallButton
+ 		 * Rough Terrain	roughTerrainButton
+ 		 * Shoot			shootButton
+ 		 * 
+ 		 */
+ 		
  		shootButton.whenPressed(new Shoot());
  		SpinUpButton.whenPressed(new SpinUpCommand());
  		AlignButton.whenPressed(new CenterTower());
  		// begin today buttons
- 		driveStraightButton.whenPressed(new DriveStraight());
+ 		driveStraightButton.whenPressed(new DriveStraight(.5,1));
  		climbButton.whenPressed(new ClimbCommand());
  		lowBarButton.whenPressed(new LowBarCommandGroup());
  		moatButton.whenPressed(new MoatCommand());
  		rampartsButton.whenPressed(new RampartsCommandGroup());
  		rockWallButton.whenPressed(new RockwallCommandGroup());
  		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
- 		// end today buttons
+ 		// end 2/19 buttons
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
  		retrievalButton.whileActive(new Shoot());

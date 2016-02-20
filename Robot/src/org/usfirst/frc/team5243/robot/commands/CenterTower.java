@@ -24,10 +24,8 @@ public class CenterTower extends Command {
 
 	private void centerTower() {
 		double speed = (Robot.oi.getCamera().distanceToCenterTower() * .001) + .2;
-		Robot.oi.getMotorSS().getBackLeft().set(speed);
-		Robot.oi.getMotorSS().getFrontLeft().set(speed);
-		Robot.oi.getMotorSS().getFrontRight().set(-speed);
-		Robot.oi.getMotorSS().getBackRight().set(-speed);
+		Robot.oi.getMotorSS().setLeft(speed);
+		Robot.oi.getMotorSS().setRight(-speed);
 	}
 
 	@Override
