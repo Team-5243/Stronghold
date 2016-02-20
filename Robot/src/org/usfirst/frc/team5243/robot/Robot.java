@@ -13,6 +13,7 @@ import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
+import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -99,8 +100,9 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();// Never delete
-		if (!oi.getMotorSS().isCommandRunning()) {
-			oi.getMotorSS().getDrive().tankDrive(oi.getLeftStick(), oi.getRightStick());
+		MotorSubsystem ms = oi.getMotorSS();
+		if (!ms.isCommandRunning()) {
+			ms.getDrive().tankDrive(oi.getLeftStick(), oi.getRightStick());
 		}
 		LiveWindow.run();
 		// SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
