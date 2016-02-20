@@ -79,7 +79,12 @@ public class DriveStraight extends Command {
 	protected void initialize() {
 		System.currentTimeMillis();
 	}
-	
+
+	/**
+	 * will make the robot drive straight for the number of seconds in the constructor, or, if y	ou did not set
+	 * that, it will drive for 0 seconds;
+	 */
+
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
 		if(!isFinished){
