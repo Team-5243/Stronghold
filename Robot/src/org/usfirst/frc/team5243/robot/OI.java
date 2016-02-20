@@ -88,24 +88,24 @@ public class OI {
  		 * 
  		 */
  		
- 		shootButton.whenPressed(new Shoot());
- 		SpinUpButton.whenPressed(new SpinUpCommand());
- 		AlignButton.whenPressed(new CenterTower());
+// 		shootButton.whenPressed(new Shoot());
+// 		SpinUpButton.whenPressed(new SpinUpCommand());
+// 		AlignButton.whenPressed(new CenterTower());
  		// begin today buttons
- 		driveStraightButton.whenPressed(new DriveStraight(.5,1));
- 		climbButton.whenPressed(new ClimbCommand());
- 		lowBarButton.whenPressed(new LowBarCommandGroup());
- 		moatButton.whenPressed(new MoatCommand());
- 		rampartsButton.whenPressed(new RampartsCommandGroup());
- 		rockWallButton.whenPressed(new RockwallCommandGroup());
- 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
+ 		driveStraightButton.whileHeld(new DriveStraight(.5,1));
+// 		climbButton.whenPressed(new ClimbCommand());
+// 		lowBarButton.whenPressed(new LowBarCommandGroup());
+// 		moatButton.whenPressed(new MoatCommand());
+// 		rampartsButton.whenPressed(new RampartsCommandGroup());
+// 		rockWallButton.whenPressed(new RockwallCommandGroup());
+// 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
  		// end 2/19 buttons
 
 //		shootButton.whenPressed(new Shoot());
 //		SpinUpButton.whenPressed(new SpinUpCommand());
 //		AlignButton.whenPressed(new CenterTower());
 //		// begin today buttons
-		driveStraightButton.whileHeld(new DriveStraight());
+//		driveStraightButton.whileHeld(new DriveStraight());
 		driveStraightButton.whenReleased(new Command(){
 			public void start(){
 				getMotorSS().setRunning(false);
@@ -133,16 +133,16 @@ public class OI {
 			}
 			
 		});
-//		climbButton.whenPressed(new ClimbCommand());
-//		lowBarButton.whenPressed(new LowBarCommandGroup());
-		moatButton.whenPressed(new MoatCommand());
-//		rampartsButton.whenPressed(new RampartsCommandGroup());
-//		rockWallButton.whenPressed(new RockwallCommandGroup());
-//		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
- 		// end today buttons
- 		System.out.println("OI constructor End");
- 		retrievalButton = new JoystickButton(rightStick, 1);
- 		//retrievalButton.whileActive(new Shoot());
+////		climbButton.whenPressed(new ClimbCommand());
+////		lowBarButton.whenPressed(new LowBarCommandGroup());
+//		moatButton.whenPressed(new MoatCommand());
+////		rampartsButton.whenPressed(new RampartsCommandGroup());
+////		rockWallButton.whenPressed(new RockwallCommandGroup());
+////		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
+// 		// end today buttons
+// 		System.out.println("OI constructor End");
+// 		retrievalButton = new JoystickButton(rightStick, 1);
+// 		//retrievalButton.whileActive(new Shoot());
     }
 	public CameraSubsystem getCamera(){
 		return CameraSub;
