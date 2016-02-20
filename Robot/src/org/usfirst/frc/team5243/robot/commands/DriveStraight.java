@@ -12,22 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveStraight extends Command {
-<<<<<<< b4ba2bcf228c728b7a0b2bf44707bf503a8fa223
-	private RobotDrive iRobot;
-	private ADXRS450_Gyro gyro;
-	private double K = .05; // driving w/gyro konstant
-	private double seconds = 0; // one is Double and the other is double, so that there can be 
-=======
 
-
-	private RobotDrive iRobot;
-	private ADXRS450_Gyro gyro;
-	private double K = .05; // driving w/gyro konstant
 
 
 
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
->>>>>>> First hour of testing, Drive straight Button 2 works
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
 	private boolean isFinished = false;

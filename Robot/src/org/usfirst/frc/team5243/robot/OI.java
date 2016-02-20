@@ -75,7 +75,6 @@ public class OI {
  		
  		//driveStraightButton = new JoystickButton(rightStick, 1);
  		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
-<<<<<<< b4ba2bcf228c728b7a0b2bf44707bf503a8fa223
  		/*					button name
  		 * CenterTower		AlignButton
  		 * ClimbCommand		climbButton
@@ -101,7 +100,7 @@ public class OI {
  		rockWallButton.whenPressed(new RockwallCommandGroup());
  		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
  		// end 2/19 buttons
-=======
+
 //		shootButton.whenPressed(new Shoot());
 //		SpinUpButton.whenPressed(new SpinUpCommand());
 //		AlignButton.whenPressed(new CenterTower());
@@ -141,7 +140,6 @@ public class OI {
 //		rockWallButton.whenPressed(new RockwallCommandGroup());
 //		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
  		// end today buttons
->>>>>>> First hour of testing, Drive straight Button 2 works
  		System.out.println("OI constructor End");
  		retrievalButton = new JoystickButton(rightStick, 1);
  		//retrievalButton.whileActive(new Shoot());
