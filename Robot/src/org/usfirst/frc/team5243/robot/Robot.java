@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		//oi.init();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
         // instantiate the command used for the autonomous period
@@ -112,11 +113,18 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainCommandGroup());
         SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
         SmartDashboard.putData("Shoot TeleOp", new Shoot());
+<<<<<<< HEAD
+        SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
+=======
+>>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
         SmartDashboard.putData("Moat TeleOp", new MoatCommand());
         SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
         SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
         SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
+<<<<<<< HEAD
+=======
         SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+>>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
         oi.getCamera().CameraLoop();
         SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
         
@@ -162,7 +170,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
         SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
         SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
-        SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+        //SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
      	
     }
 }

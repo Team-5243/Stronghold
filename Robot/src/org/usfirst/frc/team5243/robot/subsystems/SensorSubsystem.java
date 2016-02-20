@@ -17,9 +17,19 @@ public class SensorSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
+<<<<<<< HEAD
+	private Accelerometer accel;
+	private Ultrasonic ultra;
+	private ADXRS450_Gyro gyro;
+=======
 	Accelerometer accel;
 	Ultrasonic ultra;
+<<<<<<< 802c647afa1b8a506695138f1cc869e19ca056c2
 	ADXRS450_Gyro gyro;
+>>>>>>> 32b4931ac164f1a2c2e66ac8b6a706d67899b50a
+=======
+	AnalogGyro gyro;
+>>>>>>> Fixed project to running state
 	private static int count = 0;
 
 	public SensorSubsystem() {
@@ -160,18 +170,16 @@ public class SensorSubsystem extends Subsystem {
 		return false;
 	}
 
-	/**
-	 * Currently uses port 2
-	 */
 	private void InitGyro() {
-		gyro = new ADXRS450_Gyro();
+		gyro = new AnalogGyro(0);
 	}
 
-	public ADXRS450_Gyro getGyro() {
+	public AnalogGyro getGyro() {
 		return gyro;
 	}
-	public double getRange(){
+
+	public double getRange() {
 		return ultra.getRangeInches();
 	}
-	
+
 }

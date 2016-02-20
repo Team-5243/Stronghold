@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveStraight extends Command {
-
-
+	private RobotDrive iRobot;
+	private ADXRS450_Gyro gyro;
+	private double K = .05; // driving w/gyro konstant
 	private double seconds = 0; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
@@ -37,6 +38,7 @@ public class DriveStraight extends Command {
 	public DriveStraight(){
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
+        //requires(Robot.oi.getMotorSS());
 		
 	}
 	/**

@@ -28,6 +28,7 @@ public class OI {
 	private final SensorSubsystem SensorSub;
 	private final RetrievalSubsystem RetrievalSub;
 	private final ShootingSubsystem ShootingSub;
+	private final LiftSubsystem LiftSub;
 	
 	
 
@@ -52,11 +53,25 @@ public class OI {
     	SensorSub = new SensorSubsystem();
     	RetrievalSub = new RetrievalSubsystem();
     	ShootingSub = new ShootingSubsystem();
+    	LiftSub = new LiftSubsystem();
+    	
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
- 		AlignButton = new JoystickButton(leftStick, 7);
+ 		
+    }
+    public void init(){
+    	AlignButton = new JoystickButton(leftStick, 7);
  		SpinUpButton = new JoystickButton(leftStick, 6);
  		shootButton = new JoystickButton(leftStick, 1);
+ 		
+ 		driveStraightButton = new JoystickButton(rightStick, 2);
+ 		climbButton = new JoystickButton(rightStick, 3);
+ 		lowBarButton = new JoystickButton(rightStick, 4);
+ 		moatButton = new JoystickButton(rightStick, 5);
+ 		rampartsButton = new JoystickButton(rightStick,6);
+ 		rockWallButton = new JoystickButton(rightStick, 7);
+ 		roughTerrainButton = new JoystickButton(rightStick,8);
+ 		
  		//driveStraightButton = new JoystickButton(rightStick, 1);
  		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
  		/*					button name
@@ -108,6 +123,9 @@ public class OI {
 	}
 	public RetrievalSubsystem getRetrievalSS(){
 		return RetrievalSub;
+	}
+	public LiftSubsystem getLiftSS(){
+		return LiftSub;
 	}
 }
 
