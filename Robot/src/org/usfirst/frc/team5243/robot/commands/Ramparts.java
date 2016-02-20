@@ -7,6 +7,22 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+
+
+
+
+/*
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
+ */
 public class Ramparts extends Command {
 	private boolean finished = false;
     public Ramparts() {
@@ -21,7 +37,7 @@ public class Ramparts extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().getY() < 1000000000 && Robot.oi.getSensorSS().getY() > 0){
+    	while(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*/ && Robot.oi.getSensorSS().getY() > 0){
     		//drive up to ramparts
     		DriveStraight exeggcute = new DriveStraight();
     		exeggcute.execute();

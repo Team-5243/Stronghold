@@ -19,8 +19,10 @@ public class DriveStraight extends Command {
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
+	private long timeStart;
 	private boolean isFinished = false;
 	/**
+	 * 
 	 * 
 	 * @param seconds
 	 * @param speed
@@ -32,7 +34,7 @@ public class DriveStraight extends Command {
 		if(speed > 1){
 			speed = 1;
 		}
-		this.speed = speed;
+		this.speed = speed*1000;
 	}
 	/**
 	 * will drive at maximum speed for 0 seconds
@@ -42,8 +44,8 @@ public class DriveStraight extends Command {
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
         //requires(Robot.oi.getMotorSS());
-		
 	}
+	
 	/**
 	 * will drive straight at the given speed for 0 seconds
 	 * @param speed
@@ -75,12 +77,9 @@ public class DriveStraight extends Command {
 		this.seconds=seconds;
 	}
 	protected void initialize() {
-		
+		System.currentTimeMillis();
 	}
-	/**
-	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
-	 * that, it will drive for 0 seconds;
-	 */
+	
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
 		if(!isFinished){
@@ -95,14 +94,12 @@ public class DriveStraight extends Command {
 	 * that, it will drive for 0 seconds;
 	 */
 	protected void execute() {
-		Robot.oi.getSensorSS().getGyro().reset();
 		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		Timer.delay(seconds);
-		isFinished = true;
+		
 	}
 
 	protected boolean isFinished() {
-		return isFinished;
+		return System.currentTimeMillis() - timeStart < 0;
 	}
 
 	// Called once after isFinished returns true
@@ -110,7 +107,9 @@ public class DriveStraight extends Command {
 		isFinished =false;
 		Robot.oi.getMotorSS().setRunning(false);
 	}
-	
+	public void changeConstant(double conman){
+		k = conman;
+	}
 	protected void interrupted() {
 	}
 }
