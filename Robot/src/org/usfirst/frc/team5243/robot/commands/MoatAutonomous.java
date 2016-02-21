@@ -16,7 +16,7 @@ public class MoatAutonomous extends CommandGroup {
     	addSequential(new MoatCommand());
     	addSequential(new CenterTower());
     	addParallel(new SpinUpCommand());
-    	addSequential(new Shoot());
+    	//addSequential(new Shoot());
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

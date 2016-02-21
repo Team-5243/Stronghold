@@ -2,6 +2,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,12 +14,12 @@ public class LiftSubsystem extends Subsystem {
 	private Talon leftTalon;
 	private Talon rightTalon;
 	private Talon arm;
-	private Solenoid shoot;
+//	private Solenoid shoot;
 	public LiftSubsystem(){
-		//arm = new Talon(RobotMap.Arm);
+		arm = new Talon(RobotMap.ArmMotor);
 		leftTalon = new Talon(RobotMap.leftClimbMotor);
 		rightTalon = new Talon(RobotMap.rightClimbMotor);
-		shoot = new Solenoid(RobotMap.SolenoidModuleNumber,RobotMap.SolenoidChannel);
+//		shoot = new Solenoid(RobotMap.SolenoidModuleNumber,RobotMap.SolenoidChannel);
 	}
     public void initDefaultCommand() {
     	
@@ -32,7 +33,11 @@ public class LiftSubsystem extends Subsystem {
     public void setLeft(int speed){
     	leftTalon.set(speed);
     }
-    public void raiseArm(int speed){
+    public void raiseArm(Solenoid s, Compressor c){
+    	c.setClosedLoopControl(true);
+    	s.set(true);
+    }
+    public void extendArm(double speed){
     	arm.set(speed);
     }
     public void setRight(int speed){
@@ -43,6 +48,6 @@ public class LiftSubsystem extends Subsystem {
     	rightTalon.set(speed);
     }
     public void shootOut(){
-    	shoot.set(true);
+//    	shoot.set(true);
     }
 }

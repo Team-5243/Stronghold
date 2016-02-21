@@ -6,12 +6,12 @@ import org.usfirst.frc.team5243.robot.commands.LowBarAutonomous;
 import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
 import org.usfirst.frc.team5243.robot.commands.MoatAutonomous;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.Ramparts;
 import org.usfirst.frc.team5243.robot.commands.RampartsAutonomous;
+import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
+import org.usfirst.frc.team5243.robot.commands.RockWallAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
-import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
-import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 	double[] defaultValue = new double[0];
 
 	public Robot() {
-		table = NetworkTable.getTable("GRIP/myCoutoursReport");
+		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
 
 	}
 
@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
 	 * to reset subsystems before shutting down.
 	 */
 	public void disabledInit() {
-		//oi.getCamera().CameraEnd();
+		oi.getCamera().CameraEnd();
 	}
 
 	/**
@@ -105,14 +105,16 @@ public class Robot extends IterativeRobot {
 			ms.getDrive().tankDrive(oi.getLeftStick(), oi.getRightStick());
 		}
 		LiveWindow.run();
-		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
-		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
-		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());
-		SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
-		SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
-		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
-		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+		// SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+		// SmartDashboard.putNumber("Fly Wheel Speed",
+		// oi.getShootingSS().getSpeed());
+		// SmartDashboard.putNumber("Doggy Door Speed",
+		// oi.getRetrievalSS().getSpeed());
+		// SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+		// SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+		// SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+		// SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+		// SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
 		// SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
 		// SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
 		// SmartDashboard.putData("Ramparts Autonomous", new
@@ -135,7 +137,7 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard.putNumber("NetworkTable areas",
 		// oi.getCamera().getAreas());
 
-		oi.getCamera().CameraLoop();
+		// oi.getCamera().CameraLoop();
 		SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
 
 		/*
@@ -165,12 +167,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
 		SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
 		SmartDashboard.putData("Ramparts Autonomous", new RampartsAutonomous());
-		SmartDashboard.putData("Rock Wall Autonomous", new RockwallCommandGroup());
-		SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainCommandGroup());
+		SmartDashboard.putData("Rock Wall Autonomous", new RockWallAutonomous());
+		SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainAutonomous());
 		SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
+		SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
 		SmartDashboard.putData("Shoot TeleOp", new Shoot());
 		SmartDashboard.putData("Moat TeleOp", new MoatCommand());
-		SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
+		SmartDashboard.putData("Ramparts TeleOp", new RampartsCommand());
 		SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
 		SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
 		// SmartDashboard.putNumber("NetworkTable areas",

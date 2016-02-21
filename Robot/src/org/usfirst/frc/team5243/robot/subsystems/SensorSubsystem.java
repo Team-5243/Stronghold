@@ -20,7 +20,7 @@ public class SensorSubsystem extends Subsystem {
 
 	private Accelerometer accel;
 	private Ultrasonic ultra;
-	private ADXRS450_Gyro gyro;
+	private AnalogGyro gyro;
 
 	private static int count = 0;
 
@@ -76,7 +76,6 @@ public class SensorSubsystem extends Subsystem {
 
 	public double getAngle() {
 		return gyro.getAngle();
-		
 	}
 
 	public double getRate() {
@@ -123,9 +122,7 @@ public class SensorSubsystem extends Subsystem {
 			return true;
 		return false;
 	}
- // ************* .1 is a  slight tilt as if it has just entered the barricade (make sure you do + or minus .1
-	//.14 is a normal tilt, about the max you should expect
-	//.2 is a large tilt
+
 	public boolean isTiltingXneg() {
 		// using getY for test robot, not sure for real robot
 		int count = 0;
@@ -166,10 +163,10 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	private void InitGyro() {
-		gyro = new ADXRS450_Gyro();
+		gyro = new AnalogGyro(0);
 	}
 
-	public ADXRS450_Gyro getGyro() {
+	public AnalogGyro getGyro() {
 		return gyro;
 	}
 

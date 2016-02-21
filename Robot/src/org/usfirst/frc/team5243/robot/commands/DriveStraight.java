@@ -19,7 +19,6 @@ public class DriveStraight extends Command {
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
-	private long starttime = 0;
 	private boolean isFinished = false;
 	/**
 	 * gets gyro from the sensorsubsystem, gets robotdrive from the motor subsystem
@@ -41,7 +40,7 @@ public class DriveStraight extends Command {
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
         //requires(Robot.oi.getMotorSS());
-        starttime = System.currentTimeMillis();
+		
 	}
 	/**
 	 * will drive straight at the given speed for 0 seconds
@@ -51,7 +50,6 @@ public class DriveStraight extends Command {
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
 		this.speed = speed;
-		starttime = System.currentTimeMillis();
 	}
 	/**
 	 * will drive straight at the maximum speed for 
@@ -61,7 +59,6 @@ public class DriveStraight extends Command {
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
         this.seconds = seconds;
-        starttime = System.currentTimeMillis();
 	}
 	public void setSpeed(double speed){
 		this.speed = speed;
@@ -76,14 +73,12 @@ public class DriveStraight extends Command {
 		this.seconds=seconds;
 	}
 	protected void initialize() {
-		Robot.oi.getSensorSS().getGyro().reset();
+		
 	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
 	 * that, it will drive for 0 seconds;
-	 * @param isFinished 
 	 */
-	@Override
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
 		if(!isFinished){
@@ -98,11 +93,14 @@ public class DriveStraight extends Command {
 	 * that, it will drive for 0 seconds;
 	 */
 	protected void execute() {
+		Robot.oi.getSensorSS().getGyro().reset();
 		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
+		Timer.delay(seconds);
+		isFinished = true;
 	}
 
 	protected boolean isFinished() {
-		return System.currentTimeMillis() - starttime > seconds*1000;
+		return isFinished;
 	}
 
 	// Called once after isFinished returns true

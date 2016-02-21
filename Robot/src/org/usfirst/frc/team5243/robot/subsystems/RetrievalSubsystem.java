@@ -22,7 +22,7 @@ public class RetrievalSubsystem extends Subsystem {
 	 * starts the turning of the doggy door
 	 */
 	public void turn(){
-		door.set(.2);
+		door.set(1);
 		if(doorEncoder.get() >= .5){
 			stop();
 		}	

@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Ramparts extends Command {
+public class RampartsCommand extends Command {
 	private boolean finished = false;
-    public Ramparts() {
+    public RampartsCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.oi.getMotorSS());

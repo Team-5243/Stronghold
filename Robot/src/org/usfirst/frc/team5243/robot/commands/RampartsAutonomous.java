@@ -13,7 +13,7 @@ public class RampartsAutonomous extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	addSequential(new DriveStraight(5/*placeholder*/, 1));
-    	addSequential(new Ramparts());
+    	addSequential(new RampartsCommand());
     	addSequential(new CenterTower());
     	addParallel(new SpinUpCommand());
     	addSequential(new Shoot());

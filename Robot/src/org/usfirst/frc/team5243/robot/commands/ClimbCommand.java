@@ -23,17 +23,17 @@ public class ClimbCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.oi.getSensorSS().isTiltingY()){
+    	if(!Robot.oi.getSensorSS().isTiltingZ()){
     		Robot.oi.getLiftSS().getLeft().set(.5);
     		Robot.oi.getLiftSS().getRight().set(.5);
     	
-    		if(Robot.oi.getSensorSS().isTiltingYneg()){//if robot is tilting to the left make right motor pause so left can catch up
-    			Robot.oi.getLiftSS().getRight().set(.5);
+    		if(Robot.oi.getSensorSS().isTiltingZneg()){//if robot is tilting to the left make right motor pause so left can catch up
+    			Robot.oi.getLiftSS().getLeft().set(.5);
     			Robot.oi.getLiftSS().getLeft().set(0);
     		}
-    		if(Robot.oi.getSensorSS().isTiltingY()){//if robot is tilting to the right make let motor pause so right can catch up
+    		if(Robot.oi.getSensorSS().isTiltingZ()){//if robot is tilting to the right make let motor pause so right can catch up
     			Robot.oi.getLiftSS().getLeft().set(.5);	
-    			Robot.oi.getLiftSS().getRight().set(0);
+    			Robot.oi.getLiftSS().getLeft().set(0);
     		} 		
     	}
     }
