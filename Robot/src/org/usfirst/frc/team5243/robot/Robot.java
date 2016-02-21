@@ -17,8 +17,6 @@ import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -34,6 +32,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	@SuppressWarnings("unused")
 	private RobotDrive myDrive;
 	NetworkTable table;
 	double[] defaultValue = new double[0];

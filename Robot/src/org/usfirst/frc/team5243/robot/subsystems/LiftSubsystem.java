@@ -50,4 +50,8 @@ public class LiftSubsystem extends Subsystem {
     public void shootOut(){
 //    	shoot.set(true);
     }
+	public void stopLift() {
+		leftTalon.set(0);
+		rightTalon.set(0);		
+	}
 }

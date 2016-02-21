@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,8 +14,8 @@ import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
 import org.usfirst.frc.team5243.robot.commands.RetrievalCommand;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
-import org.usfirst.frc.team5243.robot.commands.Shoot;
-import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
+//import org.usfirst.frc.team5243.robot.commands.Shoot;
+//import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,8 +34,8 @@ public class OI {
 	private Joystick leftStick;
 	private Joystick rightStick;
 	private Button AlignButton;
-	private Button SpinUpButton;
-	private Button shootButton;
+	//private Button SpinUpButton;
+	//private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
 	private Button climbButton;

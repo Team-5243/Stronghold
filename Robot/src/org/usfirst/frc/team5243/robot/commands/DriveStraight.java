@@ -2,9 +2,6 @@ package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 

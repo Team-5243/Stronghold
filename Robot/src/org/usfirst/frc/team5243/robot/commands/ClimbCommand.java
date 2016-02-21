@@ -1,8 +1,7 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
-import org.usfirst.frc.team5243.robot.RobotMap;
-import edu.wpi.first.wpilibj.Jaguar;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -36,11 +35,13 @@ public class ClimbCommand extends Command {
     			Robot.oi.getLiftSS().getLeft().set(0);
     		} 		
     	}
+    	done = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;//Make a stop motor command
+    	Robot.oi.getLiftSS().stopLift();
+        return done;//Make a stop motor command
     }
 
     // Called once after isFinished returns true

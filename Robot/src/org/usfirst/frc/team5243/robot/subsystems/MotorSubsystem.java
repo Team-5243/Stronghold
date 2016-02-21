@@ -2,9 +2,8 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -41,7 +40,7 @@ public class MotorSubsystem extends Subsystem {
     	return isRunning;
     }
     public void setRunning(boolean s){
-    	isRunning =s;
+    	isRunning = s;
     }
 	@Override
 	protected void initDefaultCommand() {

@@ -1,12 +1,12 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.Robot;
-import org.usfirst.frc.team5243.robot.RobotMap;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.ShapeMode;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -60,7 +60,6 @@ public class CameraSubsystem extends Subsystem {
 
     	return 0.0;
     /*	double areas[] = table.getNumberArray("area", new double[0]);
->>>>>>> Fixed project to running state
     	if(areas.length == 0)
     		return -1;
     	System.out.println(areas);
