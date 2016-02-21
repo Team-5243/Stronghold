@@ -79,6 +79,13 @@ public class MotorSubsystem extends Subsystem {
 	public RobotDrive getDrive(){
 		return myDrive;
 	}
-	
+	public void turnLeft(double speed){
+		setLeft(speed);
+		setRight(speed);
+	}
+	public void turnRight(double speed){
+		setLeft(speed);
+		setRight(speed);
+	}
 }
 

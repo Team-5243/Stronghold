@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
 	 * to reset subsystems before shutting down.
 	 */
 	public void disabledInit() {
-		oi.getCamera().CameraEnd();
+		//oi.getCamera().CameraEnd();
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard.putNumber("NetworkTable areas",
 		// oi.getCamera().getAreas());
 
-		// oi.getCamera().CameraLoop();
+		oi.getCamera().CameraLoop();
 		SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
 
 		/*

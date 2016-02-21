@@ -87,7 +87,7 @@ public class DriveStraight extends Command {
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
 		if(!isFinished){
-			//Robot.oi.getSensorSS().getGyro().reset();
+			Robot.oi.getSensorSS().getGyro().reset();
 		}
 		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
 		isFinished = true;

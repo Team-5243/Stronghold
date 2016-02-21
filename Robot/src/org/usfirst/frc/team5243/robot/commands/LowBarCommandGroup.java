@@ -11,14 +11,11 @@ public class LowBarCommandGroup extends CommandGroup {
     
     public  LowBarCommandGroup() {
         
-    	Robot.oi.getSensorSS().getGyro().reset();
-    	while(!Robot.oi.getSensorSS().isTiltingX()){
-    		Robot.oi.getMotorSS().getDrive().drive(.3, -Robot.oi.getSensorSS().getGyro().getAngle() * .05);
-    	}
-    	while(Robot.oi.getSensorSS().isTiltingX()){
-    		Robot.oi.getMotorSS().getDrive().drive(.1, -Robot.oi.getSensorSS().getGyro().getAngle() * .05);
-    	}
-    	Robot.oi.getMotorSS().getDrive().drive(.5, -Robot.oi.getSensorSS().getGyro().getAngle() * .05);
-
+    	addSequential(new DriveStraight(5,1));
+    	addSequential(new LowBarCommand());
+    	addSequential(new CenterTower());
+//    	addParallel(new SpinUpCommand());
+//    	addSequential(new Shoot());
     }
+    
 }
