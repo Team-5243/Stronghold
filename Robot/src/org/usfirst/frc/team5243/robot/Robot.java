@@ -6,19 +6,19 @@ import org.usfirst.frc.team5243.robot.commands.LowBarAutonomous;
 import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
 import org.usfirst.frc.team5243.robot.commands.MoatAutonomous;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.Ramparts;
 import org.usfirst.frc.team5243.robot.commands.RampartsAutonomous;
+import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
+import org.usfirst.frc.team5243.robot.commands.RockWallAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
-import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+
+
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainAutonomous;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
-import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
+import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -34,12 +34,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	@SuppressWarnings("unused")
 	private RobotDrive myDrive;
 	NetworkTable table;
 	double[] defaultValue = new double[0];
 
 	public Robot() {
-		table = NetworkTable.getTable("GRIP/myCoutoursReport");
+		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
 
 	}
 
@@ -82,6 +83,7 @@ public class Robot extends IterativeRobot {
 		 * oi.getCamera().CameraSetUp(); }
 		 */
 		// This makes sure that the autonomous stops running when
+
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
@@ -90,21 +92,37 @@ public class Robot extends IterativeRobot {
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
-    public void disabledInit(){
-    	//oi.getCamera().CameraEnd();
-    }
 
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {
-        Scheduler.getInstance().run();//Never delete
-        
-		myDrive.tankDrive(oi.getLeftStick(),oi.getRightStick());
         /*double areas = table.getNumber("area", 0);
 		System.out.print("areas: ");
 		for (double area: areas) {
 			System.out.print(areas + " ");
+=======
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+	}
+
+	/**
+	 * This function is called when the disabled button is hit. You can use it
+	 * to reset subsystems before shutting down.
+	 */
+	public void disabledInit() {
+		//oi.getCamera().CameraEnd();
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();// Never delete
+		MotorSubsystem ms = oi.getMotorSS();
+		if (!ms.isCommandRunning()) {
+			ms.getDrive().tankDrive(oi.getLeftStick(), oi.getRightStick());
+
 		}
 		LiveWindow.run();
 		// SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
@@ -169,12 +187,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
 		SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
 		SmartDashboard.putData("Ramparts Autonomous", new RampartsAutonomous());
-		SmartDashboard.putData("Rock Wall Autonomous", new RockwallCommandGroup());
-		SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainCommandGroup());
+		SmartDashboard.putData("Rock Wall Autonomous", new RockWallAutonomous());
+		SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainAutonomous());
 		SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
+		SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
 		SmartDashboard.putData("Shoot TeleOp", new Shoot());
 		SmartDashboard.putData("Moat TeleOp", new MoatCommand());
-		SmartDashboard.putData("Ramparts TeleOp", new Ramparts());
+		SmartDashboard.putData("Ramparts TeleOp", new RampartsCommand());
 		SmartDashboard.putData("Rock Wall TeleOp", new RockWallCommand());
 		SmartDashboard.putData("Rough Terrain TeleOp", new RoughTerrainCommand());
 		// SmartDashboard.putNumber("NetworkTable areas",

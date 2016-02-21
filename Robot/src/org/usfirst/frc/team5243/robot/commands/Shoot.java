@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
-import org.usfirst.frc.team5243.robot.subsystems.ShootingSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,7 +25,7 @@ public class Shoot extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return Robot.oi.getRetrievalSS().isForwardPosition();
+		return false;
 	}
 
 	@Override

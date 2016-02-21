@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveNotStraight extends Command {
-	private double seconds = 1;
-	private double speedthedroog = 1;
-	private double degrees = 0;
+	//private double seconds = 1;
+	//private double speedthedroog = 1;
+	//private double degrees = 0;
 	public DriveNotStraight() {
 		requires(Robot.oi.getMotorSS());
 		requires(Robot.oi.getSensorSS());

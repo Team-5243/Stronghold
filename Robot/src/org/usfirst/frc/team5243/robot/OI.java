@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5243.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,13 +8,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5243.robot.commands.CenterTower;
 import org.usfirst.frc.team5243.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraight;
-import org.usfirst.frc.team5243.robot.commands.LowBarCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.RampartsCommandGroup;
-import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
-import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
-import org.usfirst.frc.team5243.robot.commands.Shoot;
-import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
+import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
+import org.usfirst.frc.team5243.robot.commands.RetrievalCommand;
+import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
+//import org.usfirst.frc.team5243.robot.commands.Shoot;
+//import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,13 +31,11 @@ public class OI {
 	private final ShootingSubsystem ShootingSub;
 	private final LiftSubsystem LiftSub;
 	
-	
-
 	private Joystick leftStick;
 	private Joystick rightStick;
 	private Button AlignButton;
-	private Button SpinUpButton;
-	private Button shootButton;
+	//private Button SpinUpButton;
+	//private Button shootButton;
 	private Button retrievalButton;
 	private Button driveStraightButton;
 	private Button climbButton;
@@ -55,16 +53,15 @@ public class OI {
     	RetrievalSub = new RetrievalSubsystem();
     	ShootingSub = new ShootingSubsystem();
     	LiftSub = new LiftSubsystem();
-    	
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		
     }
     public void init(){
     	AlignButton = new JoystickButton(leftStick, 7);
- 		SpinUpButton = new JoystickButton(leftStick, 6);
- 		shootButton = new JoystickButton(leftStick, 1);
- 		
+ 		//SpinUpButton = new JoystickButton(leftStick, 6);
+    	//shootButton = new JoystickButton(leftStick, 1);
+    	retrievalButton = new JoystickButton(rightStick, 1);
  		driveStraightButton = new JoystickButton(rightStick, 2);
  		climbButton = new JoystickButton(rightStick, 3);
  		lowBarButton = new JoystickButton(rightStick, 4);
@@ -88,24 +85,18 @@ public class OI {
  		 * 
  		 */
  		
- 		shootButton.whenPressed(new Shoot());
- 		SpinUpButton.whenPressed(new SpinUpCommand());
+ 		//shootButton.whenPressed(new Shoot());
+ 		//SpinUpButton.whenPressed(new SpinUpCommand());
  		AlignButton.whenPressed(new CenterTower());
- 		// begin today buttons
+ 		retrievalButton.whenPressed(new RetrievalCommand());
  		driveStraightButton.whenPressed(new DriveStraight(.5,1));
  		climbButton.whenPressed(new ClimbCommand());
- 		lowBarButton.whenPressed(new LowBarCommandGroup());
+ 		lowBarButton.whenPressed(new LowBarCommand());
  		moatButton.whenPressed(new MoatCommand());
- 		rampartsButton.whenPressed(new RampartsCommandGroup());
- 		rockWallButton.whenPressed(new RockwallCommandGroup());
- 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
- 		// end 2/19 buttons
-
-//		shootButton.whenPressed(new Shoot());
-//		SpinUpButton.whenPressed(new SpinUpCommand());
-//		AlignButton.whenPressed(new CenterTower());
-//		// begin today buttons
-		driveStraightButton.whileHeld(new DriveStraight());
+ 		rampartsButton.whenPressed(new RampartsCommand());
+ 		rockWallButton.whenPressed(new RockWallCommand());
+ 		roughTerrainButton.whenPressed(new RoughTerrainCommand());
+ 		driveStraightButton.whileHeld(new DriveStraight());
 		driveStraightButton.whenReleased(new Command(){
 			public void start(){
 				getMotorSS().setRunning(false);
@@ -133,16 +124,12 @@ public class OI {
 			}
 			
 		});
-//		climbButton.whenPressed(new ClimbCommand());
-//		lowBarButton.whenPressed(new LowBarCommandGroup());
-		moatButton.whenPressed(new MoatCommand());
-//		rampartsButton.whenPressed(new RampartsCommandGroup());
-//		rockWallButton.whenPressed(new RockwallCommandGroup());
-//		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
- 		// end today buttons
+//		shootButton.whenPressed(new Shoot());
+//		SpinUpButton.whenPressed(new SpinUpCommand());
+//		AlignButton.whenPressed(new CenterTower());
+		//retrievalButton = new JoystickButton(rightStick, 1);
+ 		//retrievalButton.whileActive(new Shoot());		
  		System.out.println("OI constructor End");
- 		retrievalButton = new JoystickButton(rightStick, 1);
- 		//retrievalButton.whileActive(new Shoot());
     }
 	public CameraSubsystem getCamera(){
 		return CameraSub;
