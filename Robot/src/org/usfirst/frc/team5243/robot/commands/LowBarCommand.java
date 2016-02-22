@@ -18,7 +18,7 @@ public class LowBarCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-      while(isTilting()){ //drive up the ramp slow to clear lowbar
+      if(isTilting()){ //drive up the ramp slow to clear lowbar
     	  DriveStraight cmd = new DriveStraight((double).5);
     	  cmd.execute();
       }

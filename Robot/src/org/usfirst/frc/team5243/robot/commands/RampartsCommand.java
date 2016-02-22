@@ -40,7 +40,7 @@ public class RampartsCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*/ && Robot.oi.getSensorSS().getY() > 0){
+    	if(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*/ && Robot.oi.getSensorSS().getY() > 0){
     		//drive up to ramparts
     		DriveStraight exeggcute = new DriveStraight();
     		exeggcute.execute();

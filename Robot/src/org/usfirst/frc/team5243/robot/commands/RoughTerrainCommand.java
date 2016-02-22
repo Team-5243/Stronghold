@@ -24,7 +24,7 @@ public class RoughTerrainCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(Robot.oi.getSensorSS().isTiltingY() || Robot.oi.getSensorSS().isTiltingYneg()){
+    	if(Robot.oi.getSensorSS().isTiltingY() || Robot.oi.getSensorSS().isTiltingYneg()){
     		DriveStraight criminal = new DriveStraight(1,1);
     		criminal.execute(); //phil seriously
     	}
