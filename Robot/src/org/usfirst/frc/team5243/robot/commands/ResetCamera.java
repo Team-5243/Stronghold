@@ -7,28 +7,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoatCommand extends Command {
-    public MoatCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+public class ResetCamera extends Command {
+
+    public ResetCamera() {
+        requires(Robot.oi.getCamera());
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.oi.getCamera().CameraSetUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.oi.getSensorSS().isTiltingY()){
-    		Robot.oi.getMotorSS().getDrive().drive(.4, -Robot.oi.getSensorSS().getGyro().getAngle());
-    	}else{
-    		Robot.oi.getMotorSS().getDrive().drive(.8, -Robot.oi.getSensorSS().getGyro().getAngle());
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -39,5 +35,4 @@ public class MoatCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-
 }

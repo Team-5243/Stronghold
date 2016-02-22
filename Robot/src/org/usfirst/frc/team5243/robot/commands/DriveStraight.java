@@ -12,11 +12,13 @@ public class DriveStraight extends Command {
 
 
 
+	private int distance=0;
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
-	private long timeStart;
+	private long starttime;
 	private boolean isFinished = false;
+	private boolean first = true;
 	/**
 	 * 
 	 * 
@@ -31,6 +33,14 @@ public class DriveStraight extends Command {
 			speed = 1;
 		}
 		this.speed = speed*1000;
+	}
+	/**
+	 * 
+	 */
+	public DriveStraight(int distance, double speed){
+		this.seconds = 9001;
+		this.distance = distance;
+		this.speed = speed;
 	}
 	/**
 	 * will drive at maximum speed for 0 seconds
@@ -79,6 +89,7 @@ public class DriveStraight extends Command {
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if y	ou did not set
 	 * that, it will drive for 0 seconds;
+<<<<<<< 52eff39453bf031405c119f52558b8db3b3c2536
 	 */
 
 	public void start(){
@@ -94,18 +105,22 @@ public class DriveStraight extends Command {
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
 	 * that, it will drive for 0 seconds;
 	 */
-	protected void execute() {
-		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		
-	}
 
 	protected boolean isFinished() {
-		return System.currentTimeMillis() - timeStart < 0;
+		return System.currentTimeMillis() - starttime < 0;
 	}
-
+	protected void execute() {
+		if(first){
+			Robot.oi.getMotorSS().setRunning(true);
+			starttime = System.currentTimeMillis();
+		}
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle());
+		System.out.println("in execute" + System.currentTimeMillis());
+	}
+	
 	// Called once after isFinished returns true
 	protected void end() {
-		isFinished =false;
+		System.out.println("Ending DriveStraight");
 		Robot.oi.getMotorSS().setRunning(false);
 	}
 	public void changeConstant(double conman){

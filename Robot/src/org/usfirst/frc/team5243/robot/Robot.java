@@ -125,16 +125,15 @@ public class Robot extends IterativeRobot {
 
 		}
 		LiveWindow.run();
-		// SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
-		// SmartDashboard.putNumber("Fly Wheel Speed",
-		// oi.getShootingSS().getSpeed());
-		// SmartDashboard.putNumber("Doggy Door Speed",
-		// oi.getRetrievalSS().getSpeed());
-		// SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
-		// SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-		// SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
-		// SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
-		// SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
+		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());
+		SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+		SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
 		// SmartDashboard.putData("Low Bar Autonomous", new LowBarAutonomous());
 		// SmartDashboard.putData("Moat Autonomous", new MoatAutonomous());
 		// SmartDashboard.putData("Ramparts Autonomous", new

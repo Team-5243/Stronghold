@@ -73,7 +73,7 @@ public class CameraSubsystem extends Subsystem {
     }
 	public double distanceToCenterTower() {
 		// TODO Auto-generated method stub
-		return Robot.oi.getSensorSS().getRange();
+		return 0.0;
 	}
 	public boolean isTowerCentered() {
 		// TODO Auto-generated method stub

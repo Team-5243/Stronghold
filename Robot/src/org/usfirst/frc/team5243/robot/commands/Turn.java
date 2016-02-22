@@ -9,42 +9,59 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Turn extends Command {
-	private double toTurn;
+	private double target;
 	private double initial;
-    public Turn(double degrees) {
-        requires(Robot.oi.getMotorSS());
-        requires(Robot.oi.getSensorSS());
-        toTurn = degrees;
-    }
+	private double speed=.2;
+	private double current;
+	public Turn(double degrees) {
+		requires(Robot.oi.getMotorSS());
+		requires(Robot.oi.getSensorSS());
+		target = degrees;
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-        initial = Robot.oi.getSensorSS().getAngle();
-        if(toTurn < 0){
-        	Robot.oi.getMotorSS().setLeft(-1);
-        	Robot.oi.getMotorSS().setRight(1);
-        }else{
-        	Robot.oi.getMotorSS().setLeft(1);
-        	Robot.oi.getMotorSS().setRight(-1);
-        }
-    }
+	public Turn(double speed, double degrees) {
+		requires(Robot.oi.getMotorSS());
+		requires(Robot.oi.getSensorSS());
+		target = degrees;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		initial = Robot.oi.getSensorSS().getAngle();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return Robot.oi.getSensorSS().getAngle()-initial < toTurn;
-    }
+/*	public void start() {
+		Robot.oi.getMotorSS().setRunning(true);
+		Robot.oi.getMotorSS().turnLeft(speed);
+		System.out.print("in Start");
+	}*/
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.oi.getMotorSS().setRunning(true);
+		current = Robot.oi.getSensorSS().getAngle();
+		if (current - target > 0) {
+			Robot.oi.getMotorSS().turnLeft(speed);
+			System.out.println("turning left");
+		} else {
+			Robot.oi.getMotorSS().turnRight(speed);
+			System.out.println("turning right");
+		}
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		System.out.println(Math.abs(initial - current));
+		return Math.abs(initial - current) > target;
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.oi.getMotorSS().setRunning(false);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

@@ -3,7 +3,9 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
@@ -18,8 +20,9 @@ public class SensorSubsystem extends Subsystem {
 
 
 	private Accelerometer accel;
-	private Ultrasonic ultra;
-	private AnalogGyro gyro;
+	private AnalogInput ultra;
+	private ADXRS450_Gyro gyro;
+	private double degreeTurn;
 
 	private static int count = 0;
 
@@ -33,7 +36,9 @@ public class SensorSubsystem extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-
+	public double ultraOutput(){
+		return ultra.getVoltage()/.0097;
+	}
 	public void TestAccel() {
 		if (count++ % 10 == 0) {
 			System.out.println("Accelerometer X: " + accel.getX());
@@ -60,12 +65,11 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	public void TestUltra() {
-		System.out.println("Range: " + ultra.getRangeInches());
+		System.out.println("Range: " + ultra.getVoltage());
 	}
 
 	private void InitUltra() {
-		ultra = new Ultrasonic(RobotMap.ultrasonicinputport, RobotMap.ultrasonicoutputport);
-		ultra.setAutomaticMode(true);
+		ultra = new AnalogInput(RobotMap.ultrasonicinputport); //max angle of 20 degrees
 	}
 
 	public void TestGyro() {
@@ -162,15 +166,20 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	private void InitGyro() {
-		gyro = new AnalogGyro(0);
+		gyro = new ADXRS450_Gyro();
 	}
 
-	public AnalogGyro getGyro() {
+	public ADXRS450_Gyro getGyro() {
 		return gyro;
 	}
 
-	public double getRange() {
-		return ultra.getRangeInches();
+	public double getDegreeTurn() {
+		return degreeTurn;
 	}
+
+	public void setDegreeTurn(double degreeTurn) {
+		this.degreeTurn = degreeTurn;
+	}
+
 
 }
