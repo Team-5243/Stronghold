@@ -22,8 +22,7 @@ public class RetrievalSubsystem extends Subsystem {
 	 */
 	public void turn(){
 		door.set(1);
-		doorEncoder.reset();
-		if(doorEncoder.get() >= 1.3){//full rotation & a little more??? to retrieve ball and hold it
+		if(doorEncoder.get() >= .5){
 			stop();
 		}	
 	}
@@ -38,12 +37,16 @@ public class RetrievalSubsystem extends Subsystem {
     public double getSpeed() {
     	return door.get();
     }
-    public void unturn(){
-    	door.set(-1);
-    	doorEncoder.reset();
-    	if(doorEncoder.get() >= 1.3){//releases ball and pushes it sorta
-    		stop();
-    	}
-    }
+
+	public boolean isForwardPosition() {//doggy door has completed rotation
+		// TODO Auto-generated method stub
+
+		final boolean deeznuts = false;
+		return deeznuts;
+
+		
+		
+
+	}
 }
 

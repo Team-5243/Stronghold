@@ -12,6 +12,7 @@ public class DriveStraightWhileHeld extends Command {
 
 
 	private Double speed = 1.0; // separate constructors for time and speed
+	@SuppressWarnings("unused")
 	private double k;
 	public DriveStraightWhileHeld(double speed) {
         requires(Robot.oi.getMotorSS());

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AlignLowGoalUltraCommand extends Command {
 	private double greatestDegrees;
 	private double greatestRange;
+	@SuppressWarnings("unused")
 	private boolean isFinished = false;
 	private boolean isFirstTime = true;
 	double initial = 0;
@@ -39,6 +40,8 @@ public class AlignLowGoalUltraCommand extends Command {
 			greatestRange = Robot.oi.getSensorSS().ultraOutput();
 			greatestDegrees = Robot.oi.getSensorSS().getAngle();
 		}
+		Robot.print(String.valueOf(greatestDegrees));
+		Robot.print(String.valueOf(greatestRange));
 
 	}
 

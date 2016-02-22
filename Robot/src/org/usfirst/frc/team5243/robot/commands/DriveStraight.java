@@ -12,6 +12,7 @@ public class DriveStraight extends Command {
 
 
 
+	@SuppressWarnings("unused")
 	private int distance=0;
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
