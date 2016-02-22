@@ -22,7 +22,6 @@ public class RetrievalSubsystem extends Subsystem {
 	 */
 	public void turn(){
 		door.set(1);
-		doorEncoder.reset();
 		if(doorEncoder.get() >= 1.3){//full rotation & a little more??? to retrieve ball and hold it
 			stop();
 		}	
@@ -41,7 +40,7 @@ public class RetrievalSubsystem extends Subsystem {
     public void unturn(){
     	door.set(-1);
     	doorEncoder.reset();
-    	if(doorEncoder.get() >= 1.3){//releases ball and pushes it sorta
+    	if(doorEncoder.get() >= 1.3){//releases ball and pushes it
     		stop();
     	}
     }
