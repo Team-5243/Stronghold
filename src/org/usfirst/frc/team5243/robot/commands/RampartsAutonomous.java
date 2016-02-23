@@ -9,7 +9,7 @@ public class RampartsAutonomous extends CommandGroup {
     
     public  RampartsAutonomous() {
     	addSequential(new DriveStraight(5/*placeholder*/, 1));
-    	addSequential(new RampartsCommand());
+    	//addSequential(new RampartsCommand());
     	addSequential(new CenterTower());
     	addParallel(new SpinUpCommand());
     	addSequential(new Shoot());

@@ -11,15 +11,11 @@ import org.usfirst.frc.team5243.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraight;
 import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
 import org.usfirst.frc.team5243.robot.commands.RetrievalCommand;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
-//import org.usfirst.frc.team5243.robot.commands.Shoot;
-//import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraightWhileHeld;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.ResetCamera;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.commands.Turn;
@@ -58,7 +54,6 @@ public class OI {
 	private Button turnRight;
 	private Button turn45;
 	private Button gyroReset;
-	private Button cameraReset;
 	private Button driveStraightUltra;
 	private DriveStraightWhileHeld w;
 	
@@ -87,7 +82,6 @@ public class OI {
  		
  		
  		gyroReset = new JoystickButton(leftStick, 2);
- 		cameraReset = new JoystickButton(leftStick,8);
  		alignUltraButton = new JoystickButton(rightStick, 2);
  		driveStraightWhile = new JoystickButton(rightStick, 1);
  		driveStraightWhen = new JoystickButton(leftStick,3);
@@ -120,7 +114,6 @@ public class OI {
  		//driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
  		driveStraightUltra.whenPressed(new DriveStraight(42, .1));
  		//LiftButton.whenPressed(new ClimbCommand());
- 		cameraReset.whenPressed(new ResetCamera());
  		gyroReset.whenPressed(new Command(){
 			@Override
 			protected void initialize() {}
