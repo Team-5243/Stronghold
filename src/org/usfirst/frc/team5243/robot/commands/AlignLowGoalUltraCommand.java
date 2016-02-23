@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AlignLowGoalUltraCommand extends Command {
 	private double greatestDegrees;
 	private double greatestRange;
-	@SuppressWarnings("unused")
 	private boolean isFinished = false;
 	private boolean isFirstTime = true;
 	double initial = 0;
@@ -34,14 +33,12 @@ public class AlignLowGoalUltraCommand extends Command {
 		}
 		Robot.oi.getMotorSS().setRunning(true);
 		current = Robot.oi.getSensorSS().getAngle();
-		Robot.oi.getMotorSS().turnLeft(.2);
+		Robot.oi.getMotorSS().turnRight(.2);
 		System.out.println("turning left");
 		if (Robot.oi.getSensorSS().ultraOutput() > greatestRange) {
 			greatestRange = Robot.oi.getSensorSS().ultraOutput();
 			greatestDegrees = Robot.oi.getSensorSS().getAngle();
 		}
-		System.out.println(greatestDegrees);
-		System.out.println(greatestRange);
 
 	}
 

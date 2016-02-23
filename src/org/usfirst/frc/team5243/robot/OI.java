@@ -1,28 +1,33 @@
 package org.usfirst.frc.team5243.robot;
 
-import org.usfirst.frc.team5243.robot.commands.AlignLowGoalUltraCommand;
-import org.usfirst.frc.team5243.robot.commands.DriveStraight;
-//import org.usfirst.frc.team5243.robot.commands.Shoot;
-//import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
-import org.usfirst.frc.team5243.robot.commands.DriveStraightWhileHeld;
-import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
-import org.usfirst.frc.team5243.robot.commands.MoatCommand;
-import org.usfirst.frc.team5243.robot.commands.ResetCamera;
-import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
-import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
-import org.usfirst.frc.team5243.robot.commands.Turn;
-import org.usfirst.frc.team5243.robot.commands.TurnWhileHeld;
-import org.usfirst.frc.team5243.robot.subsystems.CameraSubsystem;
-import org.usfirst.frc.team5243.robot.subsystems.LiftSubsystem;
-import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
-import org.usfirst.frc.team5243.robot.subsystems.RetrievalSubsystem;
-import org.usfirst.frc.team5243.robot.subsystems.SensorSubsystem;
-import org.usfirst.frc.team5243.robot.subsystems.ShootingSubsystem;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team5243.robot.commands.AlignLowGoalUltraCommand;
+import org.usfirst.frc.team5243.robot.commands.CenterTower;
+import org.usfirst.frc.team5243.robot.commands.ClimbCommand;
+import org.usfirst.frc.team5243.robot.commands.DriveStraight;
+import org.usfirst.frc.team5243.robot.commands.LowBarCommand;
+import org.usfirst.frc.team5243.robot.commands.MoatCommand;
+import org.usfirst.frc.team5243.robot.commands.RampartsCommand;
+import org.usfirst.frc.team5243.robot.commands.RetrievalCommand;
+import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
+//import org.usfirst.frc.team5243.robot.commands.Shoot;
+//import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
+import org.usfirst.frc.team5243.robot.commands.DriveStraightWhileHeld;
+import org.usfirst.frc.team5243.robot.commands.LowBarCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.MoatCommand;
+import org.usfirst.frc.team5243.robot.commands.ResetCamera;
+import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
+import org.usfirst.frc.team5243.robot.commands.Shoot;
+import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
+import org.usfirst.frc.team5243.robot.commands.Turn;
+import org.usfirst.frc.team5243.robot.commands.TurnWhileHeld;
+import org.usfirst.frc.team5243.robot.subsystems.*;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -40,19 +45,15 @@ public class OI {
 	private Joystick leftStick;
 	private Joystick rightStick;
 	private Button alignUltraButton;
-	@SuppressWarnings("unused")
 	private Button AlignButton;
 	//private Button SpinUpButton;
 	//private Button shootButton;
-	@SuppressWarnings("unused")
 	private Button retrievalButton;
 	private Button driveStraightWhile;
 	private Button driveStraightWhen;
-	@SuppressWarnings("unused")
 	private Button climbButton;
 	private Button lowBarButton;
 	private Button moatButton;
-	@SuppressWarnings("unused")
 	private Button rampartsButton;
 	private Button rockWallButton;
 	private Button roughTerrainButton;
@@ -142,17 +143,11 @@ public class OI {
  		turnLeft.whileHeld(new TurnWhileHeld(true,.5));
  		turnRight.whileHeld(new TurnWhileHeld(false,.5));
  		
- 		lowBarButton.whenPressed(new LowBarCommand());
+ 		lowBarButton.whenPressed(new LowBarCommandGroup());
  		moatButton.whenPressed(new MoatCommand());
-<<<<<<< 61dc77010b2c144dc8c4e273d2af83cb8d5e6082:src/org/usfirst/frc/team5243/robot/OI.java
- 		rockWallButton.whenPressed(new RockWallCommand());
- 		roughTerrainButton.whenPressed(new RoughTerrainCommand());
- 		cameraReset.whenPressed(new ResetCamera());
-=======
  		rockWallButton.whenPressed(new RockwallCommandGroup());
  		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
  		//cameraReset.whenPressed(new ResetCamera());
->>>>>>> Stuff happened. Shit do what it do.:src/org/usfirst/frc/team5243/robot/OI.java
  		
  		
  		// end 2/19 buttons

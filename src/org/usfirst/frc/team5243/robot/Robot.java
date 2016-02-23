@@ -44,10 +44,7 @@ public class Robot extends IterativeRobot {
 		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
 
 	}
-	public static void print(String text){
-		System.out.println(text);
-	}
-	
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -141,6 +138,7 @@ public class Robot extends IterativeRobot {
 
 		}
 		LiveWindow.run();
+		
 		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
 		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
 		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.Robot;
+
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;

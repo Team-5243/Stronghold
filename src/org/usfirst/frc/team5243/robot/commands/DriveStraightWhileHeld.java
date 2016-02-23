@@ -12,7 +12,6 @@ public class DriveStraightWhileHeld extends Command {
 
 
 	private Double speed = 1.0; // separate constructors for time and speed
-	@SuppressWarnings("unused")
 	private double k;
 	public DriveStraightWhileHeld(double speed) {
         requires(Robot.oi.getMotorSS());
@@ -36,7 +35,7 @@ public class DriveStraightWhileHeld extends Command {
 	@Override
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
-		Robot.oi.getMotorSS().getDrive().drive(speed, (-Robot.oi.getSensorSS().getGyro().getAngle()+360)*.03);
+		Robot.oi.getMotorSS().getDrive().drive(speed, Robot.oi.getSensorSS().getGyro().getAngle()*.03);
 		System.out.print("in Start");
 	}
 	/**
