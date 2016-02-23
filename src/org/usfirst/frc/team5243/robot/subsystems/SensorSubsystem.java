@@ -44,7 +44,6 @@ public class SensorSubsystem extends Subsystem {
 			System.out.println("Accelerometer Z: " + accel.getZ());
 		}
 	}
-
 	public double getX() {
 		return accel.getX();
 	}

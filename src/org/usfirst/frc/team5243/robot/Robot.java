@@ -19,6 +19,7 @@ import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -71,6 +72,8 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		CommandGroup s = new MoatAutonomous();
+		s.start();
 	}
 
 	/**
@@ -78,6 +81,16 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		LiveWindow.run();
+		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
+		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
+		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());
+		SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
+		SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
+		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
+		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
+		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
+		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
 	}
 
 	public void teleopInit() {

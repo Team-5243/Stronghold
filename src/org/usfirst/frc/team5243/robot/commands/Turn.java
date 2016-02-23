@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Turn extends Command {
 	private double target;
 	private double initial;
-	private double speed=.2;
+	private double speed=.1;
 	private double current;
 	public Turn(double degrees) {
 		requires(Robot.oi.getMotorSS());
@@ -40,7 +40,7 @@ public class Turn extends Command {
 	protected void execute() {
 		Robot.oi.getMotorSS().setRunning(true);
 		current = Robot.oi.getSensorSS().getAngle();
-		if (current - target > 0) {
+		if (target > 0) {
 			Robot.oi.getMotorSS().turnLeft(speed);
 			System.out.println("turning left");
 		} else {

@@ -87,7 +87,7 @@ public class OI {
  		
  		
  		gyroReset = new JoystickButton(leftStick, 2);
- 		cameraReset = new JoystickButton(leftStick,3);
+ 		//cameraReset = new JoystickButton(leftStick,3);
  		alignUltraButton = new JoystickButton(rightStick, 2);
  		driveStraightWhile = new JoystickButton(rightStick, 1);
  		driveStraightWhen = new JoystickButton(leftStick,1);
@@ -118,7 +118,7 @@ public class OI {
  		// begin today buttons*/
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
  		driveStraightWhile.whileHeld(new DriveStraightWhileHeld(1));
- 		driveStraightWhen.whenPressed(new DriveStraight(2,1));
+ 		driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
  		//LiftButton.whenPressed(new ClimbCommand());
  		gyroReset.whenPressed(new Command(){
 			@Override
@@ -144,9 +144,15 @@ public class OI {
  		
  		lowBarButton.whenPressed(new LowBarCommand());
  		moatButton.whenPressed(new MoatCommand());
+<<<<<<< 61dc77010b2c144dc8c4e273d2af83cb8d5e6082:src/org/usfirst/frc/team5243/robot/OI.java
  		rockWallButton.whenPressed(new RockWallCommand());
  		roughTerrainButton.whenPressed(new RoughTerrainCommand());
  		cameraReset.whenPressed(new ResetCamera());
+=======
+ 		rockWallButton.whenPressed(new RockwallCommandGroup());
+ 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
+ 		//cameraReset.whenPressed(new ResetCamera());
+>>>>>>> Stuff happened. Shit do what it do.:src/org/usfirst/frc/team5243/robot/OI.java
  		
  		
  		// end 2/19 buttons
