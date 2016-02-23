@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Wait extends Command {
 	private int sec;
-	private boolean first;
 	private double startTime;
 	
     public Wait(int seconds) {
@@ -18,14 +17,7 @@ public class Wait extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	try {
-    		System.out.println("Started wait");
-			wait(sec*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	System.out.println("ended wait");
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,7 +40,14 @@ public class Wait extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	first = true;
+    	try {
+    		System.out.println("Started wait");
+			wait(sec*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	System.out.println("ended wait");
     }
 
     // Called when another command which requires one or more of the same

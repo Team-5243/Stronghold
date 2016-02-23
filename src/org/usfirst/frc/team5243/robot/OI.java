@@ -18,11 +18,8 @@ import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
 //import org.usfirst.frc.team5243.robot.commands.Shoot;
 //import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraightWhileHeld;
-import org.usfirst.frc.team5243.robot.commands.LowBarCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
 import org.usfirst.frc.team5243.robot.commands.ResetCamera;
-import org.usfirst.frc.team5243.robot.commands.RockwallCommandGroup;
-import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommandGroup;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
 import org.usfirst.frc.team5243.robot.commands.Turn;
@@ -62,9 +59,10 @@ public class OI {
 	private Button turn45;
 	private Button gyroReset;
 	private Button cameraReset;
+	private Button driveStraightUltra;
+	private DriveStraightWhileHeld w;
 	
     public OI(){
-    	System.out.println("OI constructor Start");
     	CameraSub = new CameraSubsystem();
     	MotorSub  = new MotorSubsystem();
     	SensorSub = new SensorSubsystem();
@@ -73,6 +71,7 @@ public class OI {
     	LiftSub = new LiftSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
+ 		w = new DriveStraightWhileHeld(.1);
  		
     }
     public void init(){
@@ -91,15 +90,14 @@ public class OI {
  		cameraReset = new JoystickButton(leftStick,8);
  		alignUltraButton = new JoystickButton(rightStick, 2);
  		driveStraightWhile = new JoystickButton(rightStick, 1);
- 		driveStraightWhen = new JoystickButton(leftStick,1);
+ 		driveStraightWhen = new JoystickButton(leftStick,3);
+ 		driveStraightUltra = new JoystickButton(leftStick, 1);
 // 		climbButton = new JoystickButton(rightStick, 3);
- 		lowBarButton = new JoystickButton(rightStick, 6);
- 		moatButton = new JoystickButton(rightStick, 5);
- 		rockWallButton = new JoystickButton(rightStick, 7);
- 		roughTerrainButton = new JoystickButton(rightStick,8);
+ 		//lowBarButton = new JoystickButton(rightStick, 6);
+ 		//moatButton = new JoystickButton(rightStick, 5);
+ 		//rockWallButton = new JoystickButton(rightStick, 7);
+ 		//roughTerrainButton = new JoystickButton(rightStick,8);
  		
- 		//driveStraightButton = new JoystickButton(rightStick, 1);
- 		//driveStraightButton.whileHeld(new DriveStraight((double)1.0)); // cast to double to ensure it doesn't cast to Double
  		/*					button name
  		 * CenterTower		AlignButton
  		 * ClimbCommand		climbButton
@@ -118,8 +116,9 @@ public class OI {
 // 		AlignButton.whenPressed(new CenterTower());
  		// begin today buttons*/
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
- 		driveStraightWhile.whileHeld(new DriveStraightWhileHeld(1));
- 		driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
+ 		driveStraightWhile.whileHeld(w);
+ 		//driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
+ 		driveStraightUltra.whenPressed(new DriveStraight(42, .1));
  		//LiftButton.whenPressed(new ClimbCommand());
  		cameraReset.whenPressed(new ResetCamera());
  		gyroReset.whenPressed(new Command(){
@@ -144,10 +143,10 @@ public class OI {
  		turnLeft.whileHeld(new TurnWhileHeld(true,.5));
  		turnRight.whileHeld(new TurnWhileHeld(false,.5));
  		
- 		lowBarButton.whenPressed(new LowBarCommandGroup());
- 		moatButton.whenPressed(new MoatCommand());
- 		rockWallButton.whenPressed(new RockwallCommandGroup());
- 		roughTerrainButton.whenPressed(new RoughTerrainCommandGroup());
+ 		//lowBarButton.whenPressed(new LowBarAutonomous());
+ 		//moatButton.whenPressed(new MoatCommand());
+ 		//rockWallButton.whenPressed(new RockWallAutonomous());
+ 		//roughTerrainButton.whenPressed(new RoughTerrainAutonomous());
  		//cameraReset.whenPressed(new ResetCamera());
  		
  		
@@ -160,6 +159,7 @@ public class OI {
 		driveStraightWhile.whenReleased(new Command(){
 			public void start(){
 				getMotorSS().setRunning(false);
+				w.first = true;
 			}
 			@Override
 			protected void initialize() {

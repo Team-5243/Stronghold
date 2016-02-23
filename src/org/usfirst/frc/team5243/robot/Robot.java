@@ -202,7 +202,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Ramparts Autonomous", new RampartsAutonomous());
 		SmartDashboard.putData("Rock Wall Autonomous", new RockWallAutonomous());
 		SmartDashboard.putData("Rough Terrain Autonomous", new RoughTerrainAutonomous());
-		SmartDashboard.putData("Drive Straight TeleOp", new DriveStraight());
 		SmartDashboard.putData("Low Bar TeleOp", new LowBarCommand());
 		SmartDashboard.putData("Shoot TeleOp", new Shoot());
 		SmartDashboard.putData("Moat TeleOp", new MoatCommand());
