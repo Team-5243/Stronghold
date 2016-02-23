@@ -39,6 +39,13 @@ public class SensorSubsystem extends Subsystem {
 	public double ultraOutput(){
 		return ultra.getVoltage()/.0097;
 	}
+	public double ultraOutputAverage(){
+		double average = ultraOutput();
+		for(int i = 0; i<3;i++){
+			average += ultraOutput();
+		}
+		return average/4;
+	}
 	public void TestAccel() {
 		if (count++ % 10 == 0) {
 			System.out.println("Accelerometer X: " + accel.getX());

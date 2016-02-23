@@ -77,14 +77,15 @@ public class DriveStraight extends Command {
 			return System.currentTimeMillis() - starttime > seconds*1000;
 		else{
 			System.out.println(distance);
-			System.out.println(Robot.oi.getSensorSS().ultraOutput() < distance);
-			return Robot.oi.getSensorSS().ultraOutput() < distance;
+			System.out.println(Robot.oi.getSensorSS().ultraOutput());
+			return Robot.oi.getSensorSS().ultraOutputAverage() < distance;
 		}
 	}
 	@Override
 	protected void execute(){
 		if(first){
 			starttime=System.currentTimeMillis();
+			Robot.oi.getSensorSS().getGyro().reset();
 			first = false;
 		}
 		Robot.oi.getMotorSS().setRunning(true);

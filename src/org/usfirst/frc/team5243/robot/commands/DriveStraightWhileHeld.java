@@ -38,7 +38,7 @@ public class DriveStraightWhileHeld extends Command {
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
 		Robot.oi.getMotorSS().getDrive().drive(speed, Robot.oi.getSensorSS().getGyro().getAngle()*.01);
-		System.out.print("in Start");
+		System.out.println("in Start2");
 		if(first){
 		Robot.oi.getSensorSS().getGyro().reset();
 		first = false;

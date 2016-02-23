@@ -66,7 +66,7 @@ public class OI {
     	LiftSub = new LiftSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
- 		w = new DriveStraightWhileHeld(.1);
+ 		w = new DriveStraightWhileHeld(.7);
  		
     }
     public void init(){
@@ -112,7 +112,7 @@ public class OI {
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
  		driveStraightWhile.whileHeld(w);
  		//driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
- 		driveStraightUltra.whenPressed(new DriveStraight(42, .1));
+ 		driveStraightUltra.whenPressed(new DriveStraight(42, .6));
  		//LiftButton.whenPressed(new ClimbCommand());
  		gyroReset.whenPressed(new Command(){
 			@Override
