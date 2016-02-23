@@ -79,7 +79,7 @@ public class MotorSubsystem extends Subsystem {
 		return myDrive;
 	}
 	public void turnLeft(double speed){
-		setLeft(-speed);
+		setLeft(speed);
 		setRight(speed);
 	}
 	public void turnRight(double speed){

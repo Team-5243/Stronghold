@@ -34,14 +34,14 @@ public class AlignLowGoalUltraCommand extends Command {
 		}
 		Robot.oi.getMotorSS().setRunning(true);
 		current = Robot.oi.getSensorSS().getAngle();
-		Robot.oi.getMotorSS().turnRight(.2);
+		Robot.oi.getMotorSS().turnLeft(.2);
 		System.out.println("turning left");
 		if (Robot.oi.getSensorSS().ultraOutput() > greatestRange) {
 			greatestRange = Robot.oi.getSensorSS().ultraOutput();
 			greatestDegrees = Robot.oi.getSensorSS().getAngle();
 		}
-		Robot.print(String.valueOf(greatestDegrees));
-		Robot.print(String.valueOf(greatestRange));
+		System.out.println(greatestDegrees);
+		System.out.println(greatestRange);
 
 	}
 
