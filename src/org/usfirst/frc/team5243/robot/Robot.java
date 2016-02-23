@@ -34,11 +34,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static OI oi;
+	/*
+	 * This is a mutable static field that is not declared final! It isn't protected
+	 * against malicious code and is vulnerable in that sense. This probably isn't an issue, though.
+	 */
+	public static OI oi; 
 	@SuppressWarnings("unused")
 	private RobotDrive myDrive;
-	NetworkTable table;
-	double[] defaultValue = new double[0];
+	NetworkTable table; // This is never read.
+	double[] defaultValue = new double[0]; // This is never read.
 
 	public Robot() {
 		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
@@ -50,7 +54,14 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		oi = new OI();
+		/*
+		 * We are writing to a static field from an instance method.
+		 * This is bad practice, as it can be tricky to get this right if multiple instances
+		 * are being manipulated at the same time. Basically, this is generally bad practice.
+		 * I don't know if there's a way around this, and if there isn't, that's okay, but if
+		 * there is a way to avoid writing to a static field from an instance method, do that. 
+		 */
+		oi = new OI(); 
 		oi.init();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();

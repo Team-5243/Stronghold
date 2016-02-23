@@ -12,12 +12,12 @@ public class DriveStraight extends Command {
 
 
 
-	private int distance=0;
+	private int distance=0; // This is never actually read!
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
 	private long starttime;
-	private boolean isFinished = false;
+	private boolean isFinished = false; // This is never read!
 	private boolean first = true;
 	/**
 	 * 
