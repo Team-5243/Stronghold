@@ -31,12 +31,6 @@ public class Turn extends Command {
 		current = initial;
 	}
 
-/*	public void start() {
-		Robot.oi.getMotorSS().setRunning(true);
-		Robot.oi.getMotorSS().turnLeft(speed);
-		System.out.print("in Start");
-	}*/
-
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		Robot.oi.getMotorSS().setRunning(true);

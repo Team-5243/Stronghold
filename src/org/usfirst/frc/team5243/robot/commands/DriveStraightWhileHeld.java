@@ -56,5 +56,6 @@ public class DriveStraightWhileHeld extends Command {
 	}
 	
 	protected void interrupted() {
+		Robot.oi.getMotorSS().setRunning(false);
 	}
 }

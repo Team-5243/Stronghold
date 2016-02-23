@@ -88,7 +88,7 @@ public class OI {
  		
  		
  		gyroReset = new JoystickButton(leftStick, 2);
- 		//cameraReset = new JoystickButton(leftStick,3);
+ 		cameraReset = new JoystickButton(leftStick,8);
  		alignUltraButton = new JoystickButton(rightStick, 2);
  		driveStraightWhile = new JoystickButton(rightStick, 1);
  		driveStraightWhen = new JoystickButton(leftStick,1);
@@ -121,6 +121,7 @@ public class OI {
  		driveStraightWhile.whileHeld(new DriveStraightWhileHeld(1));
  		driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
  		//LiftButton.whenPressed(new ClimbCommand());
+ 		cameraReset.whenPressed(new ResetCamera());
  		gyroReset.whenPressed(new Command(){
 			@Override
 			protected void initialize() {}

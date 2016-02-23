@@ -100,7 +100,7 @@ public class DriveStraight extends Command {
 	protected boolean isFinished() {
 		return System.currentTimeMillis() - starttime > seconds*1000;
 	}
-	@Override 
+	@Override
 	protected void execute(){
 		if(first){
 			starttime=System.currentTimeMillis();
@@ -122,5 +122,6 @@ public class DriveStraight extends Command {
 		k = conman;
 	}
 	protected void interrupted() {
+		Robot.oi.getMotorSS().setRunning(false);
 	}
 }
