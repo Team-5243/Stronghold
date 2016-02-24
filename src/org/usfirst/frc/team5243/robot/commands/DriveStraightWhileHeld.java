@@ -35,8 +35,17 @@ public class DriveStraightWhileHeld extends Command {
 	@Override
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
+<<<<<<< HEAD
 		Robot.oi.getMotorSS().getDrive().drive(speed, Robot.oi.getSensorSS().getGyro().getAngle()*.03);
 		System.out.print("in Start");
+=======
+		Robot.oi.getMotorSS().getDrive().drive(speed, Robot.oi.getSensorSS().getGyro().getAngle()*.01);
+		System.out.println("in Start2");
+		if(first){
+		Robot.oi.getSensorSS().getGyro().reset();
+		first = false;
+		}
+>>>>>>> 7de52de00171182031a6da410667e4cfc66e851d
 	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set

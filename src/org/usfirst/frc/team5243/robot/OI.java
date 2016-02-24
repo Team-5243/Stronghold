@@ -73,6 +73,10 @@ public class OI {
     	LiftSub = new LiftSubsystem();
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
+<<<<<<< HEAD
+=======
+ 		w = new DriveStraightWhileHeld(.7);
+>>>>>>> 7de52de00171182031a6da410667e4cfc66e851d
  		
     }
     public void init(){
@@ -118,8 +122,14 @@ public class OI {
 // 		AlignButton.whenPressed(new CenterTower());
  		// begin today buttons*/
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
+<<<<<<< HEAD
  		driveStraightWhile.whileHeld(new DriveStraightWhileHeld(1));
  		driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
+=======
+ 		driveStraightWhile.whileHeld(w);
+ 		//driveStraightWhen.whenPressed(new DriveStraight(2.0,1));
+ 		driveStraightUltra.whenPressed(new DriveStraight(42, .6));
+>>>>>>> 7de52de00171182031a6da410667e4cfc66e851d
  		//LiftButton.whenPressed(new ClimbCommand());
  		cameraReset.whenPressed(new ResetCamera());
  		gyroReset.whenPressed(new Command(){
