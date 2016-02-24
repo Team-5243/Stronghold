@@ -14,10 +14,10 @@ public class DriveStraightWhileHeld extends Command {
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k;
 	public DriveStraightWhileHeld(double speed) {
-        requires(Robot.oi.getMotorSS());
-        requires(Robot.oi.getSensorSS());
+        //requires(Robot.oi.getMotorSS());
+        //requires(Robot.oi.getSensorSS());
 		this.speed = speed;
-		k = .05;
+		k = .03;
 	}
 	public void setSpeed(double speed){
 		this.speed = speed;
@@ -26,7 +26,6 @@ public class DriveStraightWhileHeld extends Command {
 		return speed;
 	}
 	protected void initialize() {
-		Robot.oi.getSensorSS().getGyro().reset();
 	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
@@ -34,9 +33,14 @@ public class DriveStraightWhileHeld extends Command {
 	 */
 	@Override
 	public void start(){
+		if(Robot.oi.getMotorSS().isDriveStraight()){
+			Robot.oi.getSensorSS().getGyro().reset();
+			Robot.oi.getMotorSS().setDriveStraight(false);
+		}
 		Robot.oi.getMotorSS().setRunning(true);
-		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle()*.05);
-		System.out.print("in Start");
+		Robot.oi.getMotorSS().getDrive().drive(-speed, -Robot.oi.getSensorSS().getGyro().getAngle()*.01);
+		System.out.println("in Start2");
+		
 	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set

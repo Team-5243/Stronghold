@@ -16,6 +16,7 @@ public class MotorSubsystem extends Subsystem {
 	private Talon frontRight;
 	private Talon backRight;
 	private boolean isRunning;
+	private boolean driveStraightFirst;
 	private RobotDrive myDrive;
     /**
      * made for 4 motors
@@ -26,6 +27,7 @@ public class MotorSubsystem extends Subsystem {
     	backRight = new Talon(RobotMap.MotorBackRight);
     	backLeft = new Talon(RobotMap.MotorBackLeft);
     	isRunning=false;
+    	driveStraightFirst = true;
     	frontLeft.setInverted(true);
     	frontRight.setInverted(true);
     	backLeft.setInverted(true);
@@ -79,13 +81,25 @@ public class MotorSubsystem extends Subsystem {
 		return myDrive;
 	}
 	public void turnLeft(double speed){
-		setLeft(-speed);
+		setLeft(speed);
 		setRight(speed);
+		System.out.println("Left: " + speed);
 	}
 	public void turnRight(double speed){
-		turnLeft(-speed);
+		setLeft(-speed);
+		setRight(-speed);
+		System.out.println("Right: " + speed);
+	}
+	/**
+	 * is drive straight first;
+	 * @param d
+	 */
+	public void setDriveStraight(boolean d){
+		driveStraightFirst = d;
+	}
+	public boolean isDriveStraight(){
+		return driveStraightFirst;
 	}
 	
-
 }
 

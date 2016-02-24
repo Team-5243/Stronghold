@@ -21,6 +21,7 @@ public class EnableDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.oi.getMotorSS().setRunning(false);
+    	Robot.oi.getMotorSS().setDriveStraight(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,6 +32,7 @@ public class EnableDrive extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.oi.getMotorSS().setRunning(false);
+    	Robot.oi.getMotorSS().setDriveStraight(true);
     }
 
     // Called when another command which requires one or more of the same

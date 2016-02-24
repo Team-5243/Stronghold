@@ -15,8 +15,8 @@ public class ShootingSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public ShootingSubsystem() {
-		leftSide = new Jaguar(RobotMap.flyWheelLeft);
-		rightSide = new Jaguar(RobotMap.flyWheelRight);
+		//leftSide = new Jaguar(RobotMap.flyWheelLeft);
+		//rightSide = new Jaguar(RobotMap.flyWheelRight);
 	}
 
 	public void initDefaultCommand() {
@@ -25,27 +25,27 @@ public class ShootingSubsystem extends Subsystem {
 	}
 
 	public void spinUp() {
-		if (leftSide.getSpeed() == 1)
+		/*if (leftSide.getSpeed() == 1)
 			System.out.println("It's already at max speed");
 		else {
 			leftSide.set(1.0);
 			rightSide.set(1.0);
 			System.out.println("Fully started!");
-		}
+		}*/
 	}
 
 	public void spinDown() {
-		if (leftSide.getSpeed() == 0)
+		/*if (leftSide.getSpeed() == 0)
 			System.out.println("It's already down");
 		else {
 			leftSide.set(0.0);
 			rightSide.set(0.0);
 			System.out.println("Powered down");
-		}
+		}*/
 	}
 
 	public double getSpeed() {
-		return leftSide.getSpeed();
+		return 0.0;//leftSide.getSpeed();
 
 	}
 }

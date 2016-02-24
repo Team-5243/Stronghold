@@ -14,18 +14,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
- * 
- * 
- * 
  * 
  * Magic.
  */
@@ -45,38 +33,7 @@ public class RampartsCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*/ && Robot.oi.getSensorSS().getY() > 0){
-    		//drive up to ramparts
-    		DriveStraight exeggcute = new DriveStraight();
-    		exeggcute.execute();
-    	}
-    	//turn right onto ramparts
-    	Robot.oi.getMotorSS().getFrontRight().set(0);
-    	Robot.oi.getMotorSS().getBackRight().set(0);
-    	//placeholder, need to test time needed to turn right
-    	try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	//wait for right side to catch up
-    	Robot.oi.getMotorSS().getFrontRight().set(1);
-    	Robot.oi.getMotorSS().getBackRight().set(1);
-    	Robot.oi.getMotorSS().getFrontLeft().set(0);
-    	Robot.oi.getMotorSS().getBackLeft().set(0);
-    	///placeholder, need to test time needed to straighten out
-    	try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	//drive off ramparts
-    	DriveStraight theKnightUsed = new DriveStraight(1,1); // speed,seconds
-    	theKnightUsed.execute();
-    	//placeholder, need to test time needed to drive off ramparts
-    	finished = true;
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

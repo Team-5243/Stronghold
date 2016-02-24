@@ -12,10 +12,10 @@ public class DriveStraight extends Command {
 
 
 
-	private int distance=0;
-	private double seconds = 2; // one is Double and the other is double, so that there can be 
-	private Double speed = 1.0; // separate constructors for time and speed
-	private double k = .05;
+	private int distance;
+	private double seconds; // one is Double and the other is double, so that there can be 
+	private Double speed; // separate constructors for time and speed
+	private final double k = .03;
 	private long starttime;
 	private boolean isFinished = false;
 	private boolean first = true;
@@ -26,39 +26,23 @@ public class DriveStraight extends Command {
 	 * @param speed
 	 */
 	public DriveStraight(double seconds,double speed) {
+		System.out.println("Started seconds constructor");
         requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
 		this.seconds = seconds;
 		if(speed > 1){
 			speed = 1;
 		}
-		this.speed = speed*1000;
+		this.speed = speed;
+		distance = 0;
 	}
 	/**
 	 * 
 	 */
-	public DriveStraight(int distance, double speed){
-		this.seconds = 9001;
-		this.distance = distance;
-		this.speed = speed;
-	}
-	/**
-	 * will drive at maximum speed for 0 seconds
-	 * (seconds, speed)
-	 */
-	public DriveStraight(){
-		requires(Robot.oi.getMotorSS());
-        requires(Robot.oi.getSensorSS());
-        //requires(Robot.oi.getMotorSS());
-	}
-	
-	/**
-	 * will drive straight at the given speed for 0 seconds
-	 * @param speed
-	 */
-	public DriveStraight(Double speed){
-		requires(Robot.oi.getMotorSS());
-        requires(Robot.oi.getSensorSS());
+	public DriveStraight(int dist, double speed){
+		System.out.println("Called distance constructor");
+		seconds = 0;
+		distance = dist;
 		this.speed = speed;
 	}
 	/**
@@ -69,21 +53,11 @@ public class DriveStraight extends Command {
 		requires(Robot.oi.getMotorSS());
         requires(Robot.oi.getSensorSS());
         this.seconds = seconds;
+        speed = 0.5;
+        distance = 0;
 	}
-	public void setSpeed(double speed){
-		this.speed = speed;
-	}
-	public double getSpeed(){
-		return speed;
-	}
-	public double getSeconds(){
-		return seconds;
-	}
-	public void setSeconds(double seconds){
-		this.seconds=seconds;
-	}
+	
 	protected void initialize() {
-		System.currentTimeMillis();
 	}
 
 	/**
@@ -92,42 +66,42 @@ public class DriveStraight extends Command {
 <<<<<<< 52eff39453bf031405c119f52558b8db3b3c2536
 	 */
 
-	public void start(){
-		Robot.oi.getMotorSS().setRunning(true);
-		if(!isFinished){
-			Robot.oi.getSensorSS().getGyro().reset();
-		}
-		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		isFinished = true;
-		System.out.print("in Start");
-	}
+	
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
 	 * that, it will drive for 0 seconds;
 	 */
-
+	@Override
 	protected boolean isFinished() {
-		double distance = Robot.oi.getSensorSS().ultraOutput();
-		return System.currentTimeMillis() - starttime < 0 || distance > 18; // stops robot when it is 18 inches away from an object
-																			// maybe
-	}
-	protected void execute() {
-		if(first){
-			Robot.oi.getMotorSS().setRunning(true);
-			starttime = System.currentTimeMillis();
+		if(distance == 0)
+			return System.currentTimeMillis() - starttime > seconds*1000;
+		else{
+			System.out.println(distance);
+			System.out.println(Robot.oi.getSensorSS().ultraOutput());
+			return Robot.oi.getSensorSS().ultraOutputAverage() < distance;
 		}
-		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle());
-		System.out.println("in execute" + System.currentTimeMillis());
+	}
+	@Override
+	protected void execute(){
+		if(first){
+			starttime=System.currentTimeMillis();
+			Robot.oi.getSensorSS().getGyro().reset();
+			first = false;
+		}
+		Robot.oi.getMotorSS().setRunning(true);
+		Robot.oi.getMotorSS().getDrive().drive(-speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
+		System.out.print("in Start");
+		
 	}
 	
 	// Called once after isFinished returns true
+	@Override
 	protected void end() {
 		System.out.println("Ending DriveStraight");
+		first = true;
 		Robot.oi.getMotorSS().setRunning(false);
 	}
-	public void changeConstant(double conman){
-		k = conman;
-	}
 	protected void interrupted() {
+		//Robot.oi.getMotorSS().setRunning(false);
 	}
 }

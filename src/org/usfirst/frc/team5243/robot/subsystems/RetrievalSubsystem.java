@@ -16,13 +16,17 @@ public class RetrievalSubsystem extends Subsystem {
 		door = new Jaguar(RobotMap.MotorDoggyDoor);
 		doorEncoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
 	}
-	
+	public Encoder getEncoder(){
+		return doorEncoder;
+	}
 	/**
 	 * starts the turning of the doggy door
 	 */
 	public void turn(){
-		door.set(.01);//retrieve ball
-		doorEncoder.reset();
+		door.set(1);
+		if(doorEncoder.get() >= .5){
+			stop();
+		}	
 	}
 	public void stop(){
 		door.stopMotor();
@@ -35,12 +39,20 @@ public class RetrievalSubsystem extends Subsystem {
     public double getSpeed() {
     	return door.get();
     }
-    public void unturn(){
-    	door.set(-.01);//release and push ball
-    	doorEncoder.reset();
-    }
-    public Encoder getEncoder(){
-    	return doorEncoder;
-    }
+
+	public boolean isForwardPosition() {//doggy door has completed rotation
+		// TODO Auto-generated method stub
+
+		final boolean deeznuts = false;
+		return deeznuts;
+
+		
+		
+
+	}
+	public void unturn() {
+		door.set(-.05);
+		doorEncoder.reset();
+	}
 }
 

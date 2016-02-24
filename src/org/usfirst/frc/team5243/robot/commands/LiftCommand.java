@@ -30,12 +30,6 @@ public class LiftCommand extends Command {
     protected void execute() {
     	Robot.oi.getLiftSS().raiseArm(solenoid, c);
     	Robot.oi.getLiftSS().extendArm(speed);
-    	try {
-			wait(0/*placeholder*/);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	
     	isFinished = true;
     }

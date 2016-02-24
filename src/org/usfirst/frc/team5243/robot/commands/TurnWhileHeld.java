@@ -22,7 +22,7 @@ public class TurnWhileHeld extends Command {
 		if(left){
 			Robot.oi.getMotorSS().turnLeft(speed);
 		}else{
-			Robot.oi.getMotorSS().turnLeft(-speed);
+			Robot.oi.getMotorSS().turnRight(speed);
 		}
 	}
 
