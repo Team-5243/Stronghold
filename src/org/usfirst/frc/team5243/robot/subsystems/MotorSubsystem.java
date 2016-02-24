@@ -81,9 +81,11 @@ public class MotorSubsystem extends Subsystem {
 	public void turnLeft(double speed){
 		setLeft(speed);
 		setRight(speed);
+		System.out.println("Left: " + speed);
 	}
 	public void turnRight(double speed){
 		turnLeft(-speed);
+		System.out.println("Right: " + speed);
 	}
 	
 }
