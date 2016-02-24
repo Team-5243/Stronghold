@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
+import org.usfirst.frc.team5243.robot.Robot;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.DrawMode;
@@ -46,19 +47,13 @@ public class CameraSubsystem extends Subsystem {
          rect =  new NIVision.Rect(10, 10, 100, 100);
          isInit=true;
     }
-    public void CameraLoop(){
-    	try{
-    		NIVision.IMAQdxGrab(session, frame, 1);
-    		table = NetworkTable.getTable("GRIP/myContoursReport");
-    		NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
-    		CameraServer.getInstance().setQuality(60);
-    		CameraServer.getInstance().setImage(frame);
-    	}catch (NullPointerException n){
-    		CameraEnd();
-    		CameraInit();
-    		CameraSetUp();
-    	}
-    	
+    public void CameraLoop(){	
+        NIVision.IMAQdxGrab(session, frame, 1);
+    	table = NetworkTable.getTable("GRIP/myContoursReport");
+        NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+        CameraServer.getInstance().setQuality(60);
+        CameraServer.getInstance().setImage(frame);
+        
     }
     public double getAreas(){
     	//double areas[] = table.getNumberArray("targets/area", new double[0]);

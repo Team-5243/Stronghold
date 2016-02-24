@@ -1,22 +1,20 @@
 package org.usfirst.frc.team5243.robot.commands;
 
+import org.usfirst.frc.team5243.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class RockwallCommandGroup extends CommandGroup {
+public class ResetGyro extends CommandGroup {
     
-    public  RockwallCommandGroup() {
+    public  ResetGyro() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveStraight(5/*placeholder*/,1));
-    	addSequential(new RockWallCommand());
-    	addSequential(new CenterTower());
-//    	addParallel(new SpinUpCommand());
-//    	addSequential(new Shoot());
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
@@ -28,5 +26,6 @@ public class RockwallCommandGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	Robot.oi.getSensorSS().getGyro().reset();
     }
 }

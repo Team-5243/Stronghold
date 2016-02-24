@@ -21,10 +21,8 @@ public class RetrievalSubsystem extends Subsystem {
 	 * starts the turning of the doggy door
 	 */
 	public void turn(){
-		door.set(1);
-		if(doorEncoder.get() >= .5){
-			stop();
-		}	
+		door.set(.01);//retrieve ball
+		doorEncoder.reset();
 	}
 	public void stop(){
 		door.stopMotor();
@@ -37,16 +35,12 @@ public class RetrievalSubsystem extends Subsystem {
     public double getSpeed() {
     	return door.get();
     }
-
-	public boolean isForwardPosition() {//doggy door has completed rotation
-		// TODO Auto-generated method stub
-
-		final boolean deeznuts = false;
-		return deeznuts;
-
-		
-		
-
-	}
+    public void unturn(){
+    	door.set(-.01);//release and push ball
+    	doorEncoder.reset();
+    }
+    public Encoder getEncoder(){
+    	return doorEncoder;
+    }
 }
 

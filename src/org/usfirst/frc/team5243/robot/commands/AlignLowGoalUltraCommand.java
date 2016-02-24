@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AlignLowGoalUltraCommand extends Command {
 	private double greatestDegrees;
 	private double greatestRange;
-	private boolean isFinished = false; // This is never actually read. 
+	private boolean isFinished = false;
 	private boolean isFirstTime = true;
 	double initial = 0;
 	double current = 0;

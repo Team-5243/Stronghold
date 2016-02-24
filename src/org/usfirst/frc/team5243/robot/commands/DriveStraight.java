@@ -12,12 +12,12 @@ public class DriveStraight extends Command {
 
 
 
-	private int distance=0; // This is never actually read!
+	private int distance=0;
 	private double seconds = 2; // one is Double and the other is double, so that there can be 
 	private Double speed = 1.0; // separate constructors for time and speed
 	private double k = .05;
 	private long starttime;
-	private boolean isFinished = false; // This is never read!
+	private boolean isFinished = false;
 	private boolean first = true;
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class DriveStraight extends Command {
 		if(speed > 1){
 			speed = 1;
 		}
-		this.speed = speed;
+		this.speed = speed*1000;
 	}
 	/**
 	 * 
@@ -83,6 +83,7 @@ public class DriveStraight extends Command {
 		this.seconds=seconds;
 	}
 	protected void initialize() {
+		System.currentTimeMillis();
 	}
 
 	/**
@@ -91,37 +92,42 @@ public class DriveStraight extends Command {
 <<<<<<< 52eff39453bf031405c119f52558b8db3b3c2536
 	 */
 
-	
+	public void start(){
+		Robot.oi.getMotorSS().setRunning(true);
+		if(!isFinished){
+			Robot.oi.getSensorSS().getGyro().reset();
+		}
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
+		isFinished = true;
+		System.out.print("in Start");
+	}
 	/**
 	 * will make the robot drive straight for the number of seconds in the constructor, or, if you did not set
 	 * that, it will drive for 0 seconds;
 	 */
-	@Override
+
 	protected boolean isFinished() {
-		return System.currentTimeMillis() - starttime > seconds*1000;
+		double distance = Robot.oi.getSensorSS().ultraOutput();
+		return System.currentTimeMillis() - starttime < 0 || distance > 18; // stops robot when it is 18 inches away from an object
+																			// maybe
 	}
-	@Override
-	protected void execute(){
+	protected void execute() {
 		if(first){
-			starttime=System.currentTimeMillis();
-			first = false;
+			Robot.oi.getMotorSS().setRunning(true);
+			starttime = System.currentTimeMillis();
 		}
-		Robot.oi.getMotorSS().setRunning(true);
-		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		System.out.print("in Start");
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle());
+		System.out.println("in execute" + System.currentTimeMillis());
 	}
 	
 	// Called once after isFinished returns true
-	@Override
 	protected void end() {
 		System.out.println("Ending DriveStraight");
-		first = true;
 		Robot.oi.getMotorSS().setRunning(false);
 	}
 	public void changeConstant(double conman){
 		k = conman;
 	}
 	protected void interrupted() {
-		Robot.oi.getMotorSS().setRunning(false);
 	}
 }

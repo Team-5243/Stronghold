@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 
-
 /**
  * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
  * WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?WHATISHAPPENING!??!?
@@ -29,11 +28,17 @@ import edu.wpi.first.wpilibj.command.Command;
  * 
  * Magic.
  */
-
-public class RampartsCommand extends Command {
-
+public class Ramparts extends Command {
+	
+	private boolean stageOne = true;
+	private boolean stageTwo = true;
+	private boolean stageThree = true;
+	private boolean stageFour = true;
+	
+	private boolean first = true;
+	
 	private boolean finished = false;
-    public RampartsCommand() {
+    public Ramparts() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.oi.getMotorSS());
@@ -45,7 +50,37 @@ public class RampartsCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*/ && Robot.oi.getSensorSS().getY() > 0){
+    	
+    	if (first) {
+    		first = false;
+    		Robot.oi.getMotorSS().setRunning(true);
+    	}
+    	
+    	if (stageOne) {
+    		stageOne();
+    	}
+    	else if (stageTwo) {
+    		stageTwo();
+    	}
+    	else if (stageThree) {
+    		stageThree();
+    	}
+    	else if (stageFour) {
+    		stageFour();
+    	}
+    	
+    	
+    	
+    	if(!finished){
+    		DriveStraight go = new DriveStraight(1, .5);
+    		go.execute();
+    		Turn right = new Turn(.3, 30);
+    		right.execute();
+    		Turn left = new Turn(.3,30);
+    		left.execute();
+    		go.execute();
+    	}
+    	/*while(Robot.oi.getSensorSS().getY() < 1000000000/*PLACEHOLDER*//* && Robot.oi.getSensorSS().getY() > 0){
     		//drive up to ramparts
     		DriveStraight exeggcute = new DriveStraight();
     		exeggcute.execute();
@@ -76,7 +111,36 @@ public class RampartsCommand extends Command {
     	DriveStraight theKnightUsed = new DriveStraight(1,1); // speed,seconds
     	theKnightUsed.execute();
     	//placeholder, need to test time needed to drive off ramparts
-    	finished = true;
+    	finished = true;*/
+    }
+    
+    private void stageOne() {
+    	Robot.oi.getMotorSS().getDrive().drive(1,  Robot.oi.getSensorSS().getAngle()*0.01);
+    	if (Math.abs(Robot.oi.getSensorSS().getAngle()) > 10) {
+    		stageOne = false;
+    	}
+    }
+    
+    private void stageTwo() {
+    	if (!(Math.abs(Robot.oi.getSensorSS().getAngle()) < 30)) {
+    		Robot.oi.getMotorSS().getDrive().drive(1, (Robot.oi.getSensorSS().getAngle()*0.01)-180);
+    	}
+    	else
+    		stageTwo = false;
+    }
+    
+    private void stageThree() {
+    	if ((Math.abs(Robot.oi.getSensorSS().getAngle())) < 45) {
+    		Robot.oi.getMotorSS().getDrive().drive(1,  (Robot.oi.getSensorSS().getAngle() * 0.01) - 180);
+    	}
+    	else
+    		stageThree = false;
+    }
+    
+    private void stageFour() {
+    	if (!Robot.oi.getSensorSS().isTiltingY() && !Robot.oi.getSensorSS().isTiltingYneg()) {
+    		stageFour = false;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

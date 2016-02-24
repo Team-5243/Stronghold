@@ -39,16 +39,15 @@ public class SensorSubsystem extends Subsystem {
 	public double ultraOutput(){
 		return ultra.getVoltage()/.0097;
 	}
+	
 	public void TestAccel() {
-		/* We are again writing to static fields from instance methods.
-		 * Bad practice - this can result in nasty logic errors. 
-		 */
 		if (count++ % 10 == 0) {
 			System.out.println("Accelerometer X: " + accel.getX());
 			System.out.println("Accelerometer Y: " + accel.getY());
 			System.out.println("Accelerometer Z: " + accel.getZ());
 		}
 	}
+
 	public double getX() {
 		return accel.getX();
 	}
@@ -63,12 +62,10 @@ public class SensorSubsystem extends Subsystem {
 
 	private void InitAccel() {
 		accel = new BuiltInAccelerometer();
-
+		
 	}
 
 	public void TestUltra() {
-		// This method name starts with an uppercase character. 
-		// It really doesn't matter but it doesn't follow standard naming protocol. 		
 		System.out.println("Range: " + ultra.getVoltage());
 	}
 
@@ -77,8 +74,6 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	public void TestGyro() {
-		// This method name starts with an uppercase character. 
-		// It really doesn't matter but it doesn't follow standard naming protocol. 
 		System.out.println("Gyro angle: " + gyro.getAngle());
 		System.out.println("Gyro rate: " + gyro.getRate());
 	}

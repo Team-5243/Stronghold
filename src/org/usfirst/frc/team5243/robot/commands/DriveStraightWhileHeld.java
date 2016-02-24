@@ -35,7 +35,7 @@ public class DriveStraightWhileHeld extends Command {
 	@Override
 	public void start(){
 		Robot.oi.getMotorSS().setRunning(true);
-		Robot.oi.getMotorSS().getDrive().drive(speed, Robot.oi.getSensorSS().getGyro().getAngle()*.03);
+		Robot.oi.getMotorSS().getDrive().drive(speed, -Robot.oi.getSensorSS().getGyro().getAngle()*.05);
 		System.out.print("in Start");
 	}
 	/**
@@ -56,6 +56,5 @@ public class DriveStraightWhileHeld extends Command {
 	}
 	
 	protected void interrupted() {
-		Robot.oi.getMotorSS().setRunning(false);
 	}
 }

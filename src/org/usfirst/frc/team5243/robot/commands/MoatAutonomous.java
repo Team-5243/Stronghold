@@ -35,14 +35,11 @@ public class MoatAutonomous extends CommandGroup {
         // arm.
 =======
         */
-
-    	//addSequential(new Wait(2));
-    	addSequential(new DriveStraightWhileAutonomous(2, .8));//gets over the moat
-    	addSequential(new Wait(2));
-    	//addSequential(new Wait(2));
-    	addSequential(new DriveStraightWhileAutonomous(1.5, .3));// SHOULD BE DRIVESTRAIGHTUNTILDISTANCE, 42 BEING THE DISTANCE
     	addSequential(new Turn(45));
-    	addSequential(new DriveStraightWhileAutonomous(2, .2));//Want to base this on accelerometer
+    	addSequential(new DriveStraight(2.0, .8));
+    	addSequential(new DriveStraight(42, .5));// SHOULD BE DRIVESTRAIGHTUNTILDISTANCE, 42 BEING THE DISTANCE
+    	addSequential(new Turn(45));
+    	addSequential(new DriveStraight(2.0, .2));//Want to base this on accelerometer
     	addSequential(new Turn(-45));
     	addSequential(new AlignLowGoalUltraCommand());
     	addSequential(new Turn(Robot.oi.getSensorSS().getDegreeTurn()));

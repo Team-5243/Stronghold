@@ -31,9 +31,11 @@ public class RobotMap {
 	// DIO Ports
 	// Pushing up sensor subsystem and shooting. small changes.
 	public static final int SolenoidModuleNumber = 3;
+	public static final int SolenoidChannel = 0;
 	public final static int ultrasonicinputport = 1;
 	public final static int EncoderDoggyDoorPortOne = 6;
 	public final static int EncoderDoggyDoorPortTwo = 7;
 	// Pushing up sensor subsystem and shooting. small changes.
+
 	
 }

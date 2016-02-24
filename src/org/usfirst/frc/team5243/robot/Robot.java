@@ -19,7 +19,6 @@ import org.usfirst.frc.team5243.robot.subsystems.MotorSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -34,15 +33,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	/*
-	 * This is a mutable static field that is not declared final! It isn't protected
-	 * against malicious code and is vulnerable in that sense. This probably isn't an issue, though.
-	 */
-	public static OI oi; 
+	public static OI oi;
 	@SuppressWarnings("unused")
 	private RobotDrive myDrive;
-	NetworkTable table; // This is never read.
-	double[] defaultValue = new double[0]; // This is never read.
+	NetworkTable table;
+	double[] defaultValue = new double[0];
 
 	public Robot() {
 		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
@@ -54,14 +49,7 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		/*
-		 * We are writing to a static field from an instance method.
-		 * This is bad practice, as it can be tricky to get this right if multiple instances
-		 * are being manipulated at the same time. Basically, this is generally bad practice.
-		 * I don't know if there's a way around this, and if there isn't, that's okay, but if
-		 * there is a way to avoid writing to a static field from an instance method, do that. 
-		 */
-		oi = new OI(); 
+		oi = new OI();
 		oi.init();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
@@ -80,8 +68,6 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		CommandGroup s = new MoatAutonomous();
-		s.start();
 	}
 
 	/**
@@ -89,16 +75,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		LiveWindow.run();
-		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
-		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
-		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());
-		SmartDashboard.putNumber("Accelerometer X", oi.getSensorSS().getX());
-		SmartDashboard.putNumber("Accelerometer Y", oi.getSensorSS().getY());
-		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
-		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
-		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
-		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
 	}
 
 	public void teleopInit() {
@@ -149,7 +125,6 @@ public class Robot extends IterativeRobot {
 
 		}
 		LiveWindow.run();
-		
 		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
 		SmartDashboard.putNumber("Fly Wheel Speed",oi.getShootingSS().getSpeed());
 		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());

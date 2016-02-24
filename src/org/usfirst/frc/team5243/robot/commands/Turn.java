@@ -9,33 +9,38 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Turn extends Command {
+	private double target;
 	private double initial;
-	private double speed=.1;
+	private double speed=.2;
 	private double current;
-	private double toTurn;
 	public Turn(double degrees) {
 		requires(Robot.oi.getMotorSS());
 		requires(Robot.oi.getSensorSS());
-		toTurn = degrees;
+		target = degrees;
 	}
 
 	public Turn(double speed, double degrees) {
 		requires(Robot.oi.getMotorSS());
 		requires(Robot.oi.getSensorSS());
-		toTurn = degrees;
+		target = degrees;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		initial = Robot.oi.getSensorSS().getAngle();
-		current = initial;
 	}
+
+/*	public void start() {
+		Robot.oi.getMotorSS().setRunning(true);
+		Robot.oi.getMotorSS().turnLeft(speed);
+		System.out.print("in Start");
+	}*/
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		Robot.oi.getMotorSS().setRunning(true);
 		current = Robot.oi.getSensorSS().getAngle();
-		if (toTurn > 0) {
+		if (current - target > 0) {
 			Robot.oi.getMotorSS().turnLeft(speed);
 			System.out.println("turning left");
 		} else {
@@ -47,7 +52,7 @@ public class Turn extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		System.out.println(Math.abs(initial - current));
-		return Math.abs(initial - current) > toTurn;
+		return Math.abs(initial - current) > target;
 	}
 
 	// Called once after isFinished returns true
