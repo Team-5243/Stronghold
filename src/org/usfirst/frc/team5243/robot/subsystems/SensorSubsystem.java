@@ -39,13 +39,6 @@ public class SensorSubsystem extends Subsystem {
 	public double ultraOutput(){
 		return ultra.getVoltage()/.0097;
 	}
-	public double ultraOutputAverage(){
-		double average = ultraOutput();
-		for(int i = 0; i<3;i++){
-			average += ultraOutput();
-		}
-		return average/4;
-	}
 	public void TestAccel() {
 		/* We are again writing to static fields from instance methods.
 		 * Bad practice - this can result in nasty logic errors. 
