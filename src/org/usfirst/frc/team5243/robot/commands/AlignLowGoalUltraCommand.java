@@ -36,17 +36,20 @@ public class AlignLowGoalUltraCommand extends Command {
 		current = Robot.oi.getSensorSS().getAngle();
 		Robot.oi.getMotorSS().turnRight(.2);
 		System.out.println("turning left");
-		double distanceCurrent = Robot.oi.getSensorSS().ultraOutput();
-		if (distanceCurrent > greatestRange&&distanceCurrent<180) {
-			greatestRange = Robot.oi.getSensorSS().ultraOutput();
-			greatestDegrees = Robot.oi.getSensorSS().getAngle();
+		double angle = Robot.oi.getSensorSS().getAngle();
+		double distanceCurrent = Robot.oi.getSensorSS().ultraOutputAverage();
+		if (distanceCurrent > greatestRange) {
+			System.out.println("Distance Current: " + distanceCurrent);
+			System.out.println("GreatestRange: " + greatestRange);
+			greatestRange = distanceCurrent;
+			greatestDegrees = angle;
 		}
 
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Math.abs(initialAngle - current) > 90;
+		return Math.abs(initialAngle - current) > 60;
 	}
 
 	// Called once after isFinished returns true

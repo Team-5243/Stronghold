@@ -15,6 +15,7 @@ import org.usfirst.frc.team5243.robot.commands.RetrievalCommand;
 import org.usfirst.frc.team5243.robot.commands.RockWallCommand;
 import org.usfirst.frc.team5243.robot.commands.RoughTerrainCommand;
 import org.usfirst.frc.team5243.robot.commands.DriveStraightWhileHeld;
+import org.usfirst.frc.team5243.robot.commands.EnableDrive;
 import org.usfirst.frc.team5243.robot.commands.MoatCommand;
 import org.usfirst.frc.team5243.robot.commands.Shoot;
 import org.usfirst.frc.team5243.robot.commands.SpinUpCommand;
@@ -149,34 +150,9 @@ public class OI {
 //		SpinUpButton.whenPressed(new SpinUpCommand());
 //		AlignButton.whenPressed(new CenterTower());
 		// begin today buttons
-		driveStraightWhile.whenReleased(new Command(){
-			public void start(){
-				getMotorSS().setRunning(false);
-				w.first = true;
-			}
-			@Override
-			protected void initialize() {
-			}
-			protected void execute() {	
-				getMotorSS().setRunning(false);
-			}
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			@Override
-			protected void end() {	
-				getMotorSS().setRunning(false);
-			}
-
-			@Override
-			protected void interrupted() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+		driveStraightWhile.whenReleased(new EnableDrive());
+		turnLeft.whenReleased(new EnableDrive());
+		turnRight.whenReleased(new EnableDrive());
 //		shootButton.whenPressed(new Shoot());
 //		SpinUpButton.whenPressed(new SpinUpCommand());
 //		AlignButton.whenPressed(new CenterTower());
