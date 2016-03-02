@@ -14,11 +14,11 @@ public class LiftSubsystem extends Subsystem {
     // here. Call these from Commands.
 	private CANTalon leftTalon;
 	private CANTalon rightTalon;
-	private Talon arm;
+	private CANTalon arm;
 	private Compressor compressorArm;
 	private Solenoid solenoidArm;
 	public LiftSubsystem(){
-		arm = new Talon(RobotMap.ArmMotor);
+		arm = new CANTalon(RobotMap.ArmMotor);
 		leftTalon = new CANTalon(RobotMap.leftClimbMotor);
 		rightTalon = new CANTalon(RobotMap.rightClimbMotor);
 		solenoidArm = new Solenoid(RobotMap.SolenoidModuleNumber);

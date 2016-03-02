@@ -24,12 +24,13 @@ public class RobotMap {
 	public final static int MotorFrontRight = 1;
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight = 3;
-	public final static int MotorDoggyDoor = 4;
-	public final static int ArmMotor = 5;
+
 	
 	// CAN Ports
 	public final static int leftClimbMotor = 0;
 	public final static int rightClimbMotor = 1;
+	public final static int MotorDoggyDoor = 2;
+	public final static int ArmMotor = 3;
 	// DIO Ports
 	public static final int SolenoidModuleNumber = 3;
 	public final static int ultrasonicinputport = 1;

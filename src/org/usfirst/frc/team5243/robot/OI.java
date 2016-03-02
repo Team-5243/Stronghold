@@ -41,7 +41,9 @@ public class OI {
 	private Button lowShootButton;
 	private Button raiseArm;
 	private Button extendArmButton;
+	private Button testTurnButton;
 	private DriveStraightWhileHeld driveStraightCommand;
+	private ClimbCommand climb;
     public OI(){
     	System.out.println("OI constructor Start");
     	driveStraightCommand = new DriveStraightWhileHeld(.6);
@@ -55,6 +57,7 @@ public class OI {
  		
     }
     public void init(){
+    	climb = new ClimbCommand();
  		turnLeft = new JoystickButton(leftStick,1); 	
  		driveStraightWhile = new JoystickButton(leftStick,2 );//Will be Removed 
  		retrievalButton = new JoystickButton(leftStick, 3);
@@ -63,6 +66,7 @@ public class OI {
  		moatButton = new JoystickButton(leftStick, 8);
  		rampartsButton = new JoystickButton(leftStick, 9);
  		alignUltraButton = new JoystickButton(leftStick, 11);
+ 		testTurnButton= new JoystickButton(leftStick, 6);//Will Be removed
  		
 		turnRight = new JoystickButton(rightStick,1);
  		driveStraightWhen = new JoystickButton(rightStick,2);
@@ -74,6 +78,73 @@ public class OI {
  		extendArmButton = new JoystickButton(rightStick, 10);
  		raiseArm = new JoystickButton(rightStick, 11);
  		
+ 		testTurnButton.whileHeld(new Command(){
+ 			public void start(){
+ 				getRetrievalSS().turn(.1);
+ 			}
+			@Override
+			protected void initialize() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			protected void execute() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			protected boolean isFinished() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			protected void end() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			protected void interrupted() {
+				// TODO Auto-generated method stub
+				
+			}
+ 			
+ 		});
+ 		testTurnButton.whenReleased(new Command(){
+
+			@Override
+			protected void initialize() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			protected void execute() {
+				getRetrievalSS().stop();
+			}
+
+			@Override
+			protected boolean isFinished() {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			protected void end() {
+				getRetrievalSS().stop();
+				
+			}
+
+			@Override
+			protected void interrupted() {
+				// TODO Auto-generated method stub
+				
+			}
+ 			
+ 		});
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
  		driveStraightWhile.whileHeld(driveStraightCommand);
  		driveStraightWhen.whenPressed(new DriveStraight(1,.5));
@@ -97,7 +168,7 @@ public class OI {
  		retrievalButton.whenPressed(new RetrievalCommand());
  		lowShootButton.whenPressed(new LowShoot());
  		rampartsButton.whenPressed(new RampartsCommand());
- 		climbButton.whenPressed(new ClimbCommand());
+ 		climbButton.whenPressed(climb);
  		raiseArm.whenPressed(new LiftCommand(.1));
  		lowBarButton.whenPressed(new LowBarAutonomous());
  		moatButton.whenPressed(new MoatCommand());
@@ -110,13 +181,15 @@ public class OI {
 			protected void initialize() {}
 			@Override
 			protected void execute() {
+				climb.first =false;
 				getLiftSS().stopLift();
 				getLiftSS().setBrake(true);
 			}
 			@Override
-			protected boolean isFinished() {return false;}
+			protected boolean isFinished() {return true;}
 			@Override
 			protected void end() {
+				climb.first=false;
 				getLiftSS().stopLift();
 				getLiftSS().setBrake(true);
 			}

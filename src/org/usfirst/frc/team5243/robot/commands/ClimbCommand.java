@@ -8,27 +8,36 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ClimbCommand extends Command {
+	private double startTime;
+	public boolean first;
 	public ClimbCommand() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		first =true;
 	}
 	// Called just before this Command runs the first time
 	protected void initialize() {
 	}
 	// Called repeatedly when this Command is scheduled to run
 	public void start() {
+		if(first){
+			startTime = System.currentTimeMillis()/1000.0;
+			first = false;
+		}
 		Robot.oi.getLiftSS().setBrake(false);
+		double currentTime = System.currentTimeMillis()/1000.0;
+		double speed = .001*Math.pow(2, currentTime-startTime+5);
 		if (Robot.oi.getSensorSS().isTiltingZneg()) {
-			Robot.oi.getLiftSS().getLeft().set(.5);
-			Robot.oi.getLiftSS().getLeft().set(0);
+			Robot.oi.getLiftSS().getLeft().set(speed);
+			Robot.oi.getLiftSS().getLeft().set(speed);
 		}
 		else if (Robot.oi.getSensorSS().isTiltingZ()) {
-			Robot.oi.getLiftSS().getLeft().set(.5);
-			Robot.oi.getLiftSS().getLeft().set(0);
+			Robot.oi.getLiftSS().getLeft().set(speed);
+			Robot.oi.getLiftSS().getLeft().set(speed);
 		}
 		else{
-			Robot.oi.getLiftSS().getLeft().set(.5);
-			Robot.oi.getLiftSS().getRight().set(.5);
+			Robot.oi.getLiftSS().getLeft().set(speed);
+			Robot.oi.getLiftSS().getRight().set(speed);
 		}
 	}
 
