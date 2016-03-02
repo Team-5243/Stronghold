@@ -40,6 +40,7 @@ public class OI {
 	private Button gyroReset;
 	private Button lowShootButton;
 	private Button raiseArm;
+	private Button extendArmButton;
 	private DriveStraightWhileHeld driveStraightCommand;
     public OI(){
     	System.out.println("OI constructor Start");
@@ -70,6 +71,7 @@ public class OI {
  		climbButton = new JoystickButton(rightStick, 5);
  		rockWallButton = new JoystickButton(rightStick, 8);
  		roughTerrainButton = new JoystickButton(rightStick,9);
+ 		extendArmButton = new JoystickButton(rightStick, 10);
  		raiseArm = new JoystickButton(rightStick, 11);
  		
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
@@ -88,7 +90,7 @@ public class OI {
 			protected void interrupted() {
 			}	
  		});
-//		climbButton.whenPressed(new ClimbCommand());
+		climbButton.whenPressed(new ClimbCommand());
  		turn45.whenPressed(new Turn(45));
  		turnLeft.whileHeld(new TurnWhileHeld(true,.5));
  		turnRight.whileHeld(new TurnWhileHeld(false,.5));
@@ -101,7 +103,41 @@ public class OI {
  		moatButton.whenPressed(new MoatCommand());
  		rockWallButton.whenPressed(new RockWallAutonomous());
  		roughTerrainButton.whenPressed(new RoughTerrainAutonomous());
+ 		extendArmButton.whileHeld(new ExtendArm(.5));
  		
+ 		climbButton.whenReleased(new Command(){
+			@Override
+			protected void initialize() {}
+			@Override
+			protected void execute() {
+				getLiftSS().stopLift();
+			}
+			@Override
+			protected boolean isFinished() {return false;}
+			@Override
+			protected void end() {
+				getLiftSS().stopLift();
+			}
+			@Override
+			protected void interrupted() {}
+ 		});
+ 		
+ 		extendArmButton.whenReleased(new Command(){
+			@Override
+			protected void initialize() {}
+			@Override
+			protected void execute() {
+				getLiftSS().extendArm(0);
+			}
+			@Override
+			protected boolean isFinished() {return false;}
+			@Override
+			protected void end() {
+				getLiftSS().extendArm(0);
+			}
+			@Override
+			protected void interrupted() {}
+ 		});
 		driveStraightWhile.whenReleased(new EnableDrive());
 		turnLeft.whenReleased(new EnableDrive());
 		turnRight.whenReleased(new EnableDrive());

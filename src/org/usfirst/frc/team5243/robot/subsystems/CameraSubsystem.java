@@ -50,7 +50,6 @@ public class CameraSubsystem extends Subsystem {
     	try{
     		NIVision.IMAQdxGrab(session, frame, 1);
     		table = NetworkTable.getTable("GRIP/myContoursReport");
-    		NIVision.imaqDrawShapeOnImage(frame, frame, rect,DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
     		CameraServer.getInstance().setQuality(60);
     		CameraServer.getInstance().setImage(frame);
     	}catch (NullPointerException n){

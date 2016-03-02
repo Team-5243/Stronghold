@@ -18,18 +18,17 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	// PWM Ports
-	public final static int flyWheelRight = 6;
-	public final static int flyWheelLeft = 9;
+	/*public final static int flyWheelRight = 6;
+	public final static int flyWheelLeft = 9;*/
 	public final static int MotorFrontLeft = 0;
 	public final static int MotorFrontRight = 1;
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight = 3;
 	public final static int MotorDoggyDoor = 4;
+	public final static int ArmMotor = 5;
 	public final static int leftClimbMotor = 7;
 	public final static int rightClimbMotor = 8;
-	public final static int ArmMotor = 5;
 	// DIO Ports
-	// Pushing up sensor subsystem and shooting. small changes.
 	public static final int SolenoidModuleNumber = 3;
 	public final static int ultrasonicinputport = 1;
 	public final static int EncoderDoggyDoorPortOne = 0;

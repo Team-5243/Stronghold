@@ -14,12 +14,13 @@ public class LiftSubsystem extends Subsystem {
 	private Talon leftTalon;
 	private Talon rightTalon;
 	private Talon arm;
-//	private Solenoid shoot;
+	//private Compressor compressorArm;
+	private Solenoid solenoidArm;
 	public LiftSubsystem(){
 		arm = new Talon(RobotMap.ArmMotor);
 		leftTalon = new Talon(RobotMap.leftClimbMotor);
 		rightTalon = new Talon(RobotMap.rightClimbMotor);
-//		shoot = new Solenoid(RobotMap.SolenoidModuleNumber,RobotMap.SolenoidChannel);
+		solenoidArm = new Solenoid(RobotMap.SolenoidModuleNumber);
 	}
     public void initDefaultCommand() {
     	
@@ -33,9 +34,9 @@ public class LiftSubsystem extends Subsystem {
     public void setLeft(int speed){
     	leftTalon.set(speed);
     }
-    public void raiseArm(Solenoid s, Compressor c){
-    	c.setClosedLoopControl(true);
-    	s.set(true);
+    public void raiseArm(){
+    	//c.setClosedLoopControl(true);
+    	solenoidArm.set(true);
     }
     public void extendArm(double speed){
     	arm.set(speed);

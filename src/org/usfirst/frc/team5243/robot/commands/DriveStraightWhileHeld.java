@@ -12,12 +12,10 @@ public class DriveStraightWhileHeld extends Command {
 
 
 	private Double speed = 1.0; // separate constructors for time and speed
-	private double k;
 	public DriveStraightWhileHeld(double speed) {
         //requires(Robot.oi.getMotorSS());
         //requires(Robot.oi.getSensorSS());
 		this.speed = speed;
-		k = .03;
 	}
 	public void setSpeed(double speed){
 		this.speed = speed;

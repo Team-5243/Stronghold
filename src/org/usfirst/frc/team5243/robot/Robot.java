@@ -41,13 +41,6 @@ public class Robot extends IterativeRobot {
 		oi.init();
 		oi.getCamera().CameraInit();
 		oi.getCamera().CameraSetUp();
-		// instantiate the command used for the autonomous period
-
-		myDrive = new RobotDrive(oi.getMotorSS().getFrontLeft(), oi.getMotorSS().getBackLeft(),
-				oi.getMotorSS().getFrontRight(), oi.getMotorSS().getBackRight());
-		SmartDashboard.putNumber("Motor", 5);
-		// oi.initializeDriveStraight(myDrive);
-
 	}
 
 	public void disabledPeriodic() {
@@ -65,6 +58,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		oi.getCamera().CameraLoop();
 		LiveWindow.run();
 		SmartDashboard.putNumber("Motor RPM", oi.getMotorSS().getSpeed());
 		SmartDashboard.putNumber("Doggy Door Speed",oi.getRetrievalSS().getSpeed());
@@ -111,8 +105,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
 
 
-		 oi.getCamera().CameraLoop();
-		SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
+		oi.getCamera().CameraLoop();
+		//SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
 
 		/*
 		 * double areas = table.getNumber("area", 0); System.out.print("areas: "
@@ -137,7 +131,5 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Accelerometer Z", oi.getSensorSS().getZ());
 		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
 		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
-
-
 	}
 }

@@ -8,18 +8,20 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LiftCommand extends Command {
+public class ExtendArm extends Command {
 	private double speed;
-    public LiftCommand(double s) {
-//      requires(Robot.oi.getLiftSS());
+    public ExtendArm(double s) {
+        //requires(Robot.oi.getLiftSS());
         speed = s;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
     }
     // Called repeatedly when this Command is scheduled to run
+    public void start(){
+    	Robot.oi.getLiftSS().extendArm(speed);
+    }
     protected void execute() {
-    	Robot.oi.getLiftSS().raiseArm();
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
