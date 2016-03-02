@@ -33,12 +33,25 @@ public class RampartsCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	DriveStraight one = new DriveStraight(1, .3);//assuming its in front of the left ramp
+    	one.execute();
+    	Wait stawp = new Wait(1);
+    	stawp.execute();
+    	Turn go = new Turn(35);
+    	go.execute();
+    	one = new DriveStraight(.5,.3);
+    	one.execute();
+    	stawp.execute();
+    	go = new Turn(-35);
+    	go.execute();
+    	one = new DriveStraight(1,.3);
+    	one.execute();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return finished;
+        
     }
 
     // Called once after isFinished returns true
