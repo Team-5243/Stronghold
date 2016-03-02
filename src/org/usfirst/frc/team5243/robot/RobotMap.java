@@ -26,13 +26,15 @@ public class RobotMap {
 	public final static int MotorBackRight = 3;
 	public final static int MotorDoggyDoor = 4;
 	public final static int ArmMotor = 5;
-	public final static int leftClimbMotor = 7;
-	public final static int rightClimbMotor = 8;
+	
+	// CAN Ports
+	public final static int leftClimbMotor = 0;
+	public final static int rightClimbMotor = 1;
 	// DIO Ports
 	public static final int SolenoidModuleNumber = 3;
 	public final static int ultrasonicinputport = 1;
-	public final static int EncoderDoggyDoorPortOne = 0;
-	public final static int EncoderDoggyDoorPortTwo = 1;
+	public final static int LimitSwitch1 = 0;
+	public final static int LimitSwitch2 = 1;
 	// Pushing up sensor subsystem and shooting. small changes.
 	
 }

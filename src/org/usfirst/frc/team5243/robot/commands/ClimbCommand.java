@@ -17,6 +17,7 @@ public class ClimbCommand extends Command {
 	}
 	// Called repeatedly when this Command is scheduled to run
 	public void start() {
+		Robot.oi.getLiftSS().setBrake(false);
 		if (Robot.oi.getSensorSS().isTiltingZneg()) {
 			Robot.oi.getLiftSS().getLeft().set(.5);
 			Robot.oi.getLiftSS().getLeft().set(0);

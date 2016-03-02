@@ -2,6 +2,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,22 +12,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RetrievalSubsystem extends Subsystem {
     private Jaguar door;
-	private Encoder doorEncoder;
+	private DigitalInput limit1;
+	private DigitalInput limit2;
 	public RetrievalSubsystem(){
 		door = new Jaguar(RobotMap.MotorDoggyDoor);
-		doorEncoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+		limit1 = new DigitalInput(RobotMap.LimitSwitch1);
+		limit2 = new DigitalInput(RobotMap.LimitSwitch2);
 	}
-	public Encoder getEncoder(){
-		return doorEncoder;
+	public DigitalInput getLimit1(){
+		return limit1;
+	}
+	public DigitalInput getLimit2(){
+		return limit2;
 	}
 	/**
 	 * starts the turning of the doggy door
 	 */
-	public void turn(){
-		door.set(1);
-		if(doorEncoder.get() >= .5){
-			stop();
-		}	
+	public void turn(double d){
+		door.set(.1);
 	}
 	public void stop(){
 		door.stopMotor();
@@ -39,20 +42,5 @@ public class RetrievalSubsystem extends Subsystem {
     public double getSpeed() {
     	return door.get();
     }
-
-	public boolean isForwardPosition() {//doggy door has completed rotation
-		// TODO Auto-generated method stub
-
-		final boolean deeznuts = false;
-		return deeznuts;
-
-		
-		
-
-	}
-	public void unturn() {
-		door.set(-.05);
-		doorEncoder.reset();
-	}
 }
 

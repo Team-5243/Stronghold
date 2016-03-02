@@ -111,12 +111,14 @@ public class OI {
 			@Override
 			protected void execute() {
 				getLiftSS().stopLift();
+				getLiftSS().setBrake(true);
 			}
 			@Override
 			protected boolean isFinished() {return false;}
 			@Override
 			protected void end() {
 				getLiftSS().stopLift();
+				getLiftSS().setBrake(true);
 			}
 			@Override
 			protected void interrupted() {}

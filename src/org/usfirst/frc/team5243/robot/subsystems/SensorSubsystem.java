@@ -21,7 +21,7 @@ public class SensorSubsystem extends Subsystem {
 
 	private Accelerometer accel;
 	private AnalogInput ultra;
-	private ADXRS450_Gyro gyro;
+	private AnalogGyro gyro;
 	private double degreeTurn;
 
 	private static int count = 0;
@@ -172,10 +172,11 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	private void InitGyro() {
-		gyro = new ADXRS450_Gyro();
+		//gyro = new ADXRS450_Gyro();
+		gyro = new AnalogGyro(2);
 	}
 
-	public ADXRS450_Gyro getGyro() {
+	public AnalogGyro getGyro() {
 		return gyro;
 	}
 

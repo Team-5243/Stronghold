@@ -2,6 +2,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -11,31 +12,32 @@ public class LiftSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private Talon leftTalon;
-	private Talon rightTalon;
+	private CANTalon leftTalon;
+	private CANTalon rightTalon;
 	private Talon arm;
-	//private Compressor compressorArm;
+	private Compressor compressorArm;
 	private Solenoid solenoidArm;
 	public LiftSubsystem(){
 		arm = new Talon(RobotMap.ArmMotor);
-		leftTalon = new Talon(RobotMap.leftClimbMotor);
-		rightTalon = new Talon(RobotMap.rightClimbMotor);
+		leftTalon = new CANTalon(RobotMap.leftClimbMotor);
+		rightTalon = new CANTalon(RobotMap.rightClimbMotor);
 		solenoidArm = new Solenoid(RobotMap.SolenoidModuleNumber);
+		compressorArm = new Compressor();
 	}
     public void initDefaultCommand() {
     	
     }
-    public Talon getLeft(){
+    public CANTalon getLeft(){
     	return leftTalon;
     }
-    public Talon getRight(){
+    public CANTalon getRight(){
     	return rightTalon;
     }
     public void setLeft(int speed){
     	leftTalon.set(speed);
     }
     public void raiseArm(){
-    	//c.setClosedLoopControl(true);
+    	compressorArm.setClosedLoopControl(true);
     	solenoidArm.set(true);
     }
     public void extendArm(double speed){
@@ -53,6 +55,10 @@ public class LiftSubsystem extends Subsystem {
     }
 	public void stopLift() {
 		leftTalon.set(0);
-		rightTalon.set(0);		
+		rightTalon.set(0);
+	}
+	public void setBrake(boolean d){
+		leftTalon.enableBrakeMode(d);
+		rightTalon.enableBrakeMode(d);
 	}
 }
