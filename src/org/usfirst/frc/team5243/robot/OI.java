@@ -80,7 +80,7 @@ public class OI {
  		
  		testTurnButton.whileHeld(new Command(){
  			public void start(){
- 				getRetrievalSS().turn(.1);
+ 				getRetrievalSS().turn(-.1);
  			}
 			@Override
 			protected void initialize() {
