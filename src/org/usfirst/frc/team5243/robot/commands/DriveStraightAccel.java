@@ -7,34 +7,42 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RetrievalCommand extends Command {
+public class DriveStraightAccel extends Command {
 	private double speed;
-    public RetrievalCommand(double s) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	private boolean first;
+	private boolean negative;
+    public DriveStraightAccel(double s, boolean neg) {
     	speed = s;
+    	first = true;
+    	negative = neg;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    }
-    public void start(){
-    	Robot.oi.getRetrievalSS().turn(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {	
+    protected void execute() {
+		if(first){
+			Robot.oi.getSensorSS().getGyro().reset();
+			first = false;
+		}
+		Robot.oi.getMotorSS().setRunning(true);
+		Robot.oi.getMotorSS().getDrive().drive(-speed, -Robot.oi.getSensorSS().getGyro().getAngle() * .03);
+		System.out.print("in 3Start");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.oi.getRetrievalSS().getLimit1().get()&&Robot.oi.getRetrievalSS().getLimit2().get();
+    	if(!negative)
+    		return Robot.oi.getSensorSS().isTiltingY();
+    	else
+    		return Robot.oi.getSensorSS().isTiltingYneg();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.oi.getRetrievalSS().stop();
+    	Robot.oi.getMotorSS().setRunning(false);
     }
 
     // Called when another command which requires one or more of the same

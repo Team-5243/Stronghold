@@ -22,7 +22,7 @@ public class LiftSubsystem extends Subsystem {
 		leftTalon = new CANTalon(RobotMap.leftClimbMotor);
 		rightTalon = new CANTalon(RobotMap.rightClimbMotor);
 		solenoidArm = new Solenoid(RobotMap.SolenoidModuleNumber);
-		compressorArm = new Compressor();
+		compressorArm = new Compressor(7);
 	}
     public void initDefaultCommand() {
     	
@@ -40,6 +40,10 @@ public class LiftSubsystem extends Subsystem {
     	compressorArm.setClosedLoopControl(true);
     	solenoidArm.set(true);
     }
+    public void lowerArm(){
+    	compressorArm.setClosedLoopControl(false);
+    	solenoidArm.set(false);
+    }
     public void extendArm(double speed){
     	arm.set(speed);
     }
@@ -56,6 +60,7 @@ public class LiftSubsystem extends Subsystem {
 	public void stopLift() {
 		leftTalon.set(0);
 		rightTalon.set(0);
+		setBrake(true);
 	}
 	public void setBrake(boolean d){
 		leftTalon.enableBrakeMode(d);

@@ -26,14 +26,14 @@ public class ClimbCommand extends Command {
 		}
 		Robot.oi.getLiftSS().setBrake(false);
 		double currentTime = System.currentTimeMillis()/1000.0;
-		double speed = .001*Math.pow(2, currentTime-startTime+5);
-		if (Robot.oi.getSensorSS().isTiltingZneg()) {
-			Robot.oi.getLiftSS().getLeft().set(speed);
-			Robot.oi.getLiftSS().getLeft().set(speed);
+		double speed = -.001*Math.pow(2, -(currentTime-startTime));
+		if (Robot.oi.getSensorSS().isTiltingYneg()) {
+			Robot.oi.getLiftSS().getLeft().set(speed*(Math.abs(1-Robot.oi.getSensorSS().getY())));
+			Robot.oi.getLiftSS().getRight().set(speed);
 		}
-		else if (Robot.oi.getSensorSS().isTiltingZ()) {
+		else if (Robot.oi.getSensorSS().isTiltingY()) {
 			Robot.oi.getLiftSS().getLeft().set(speed);
-			Robot.oi.getLiftSS().getLeft().set(speed);
+			Robot.oi.getLiftSS().getRight().set(speed*(Math.abs(1-Robot.oi.getSensorSS().getY())));
 		}
 		else{
 			Robot.oi.getLiftSS().getLeft().set(speed);

@@ -5,7 +5,7 @@ import org.usfirst.frc.team5243.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TurnWhileHeld extends Command {
-	private double speed=.4;
+	private double speed=.25;
 	private boolean left;
 	public TurnWhileHeld(boolean turnleft, double givenspeed) {
 		left = turnleft;

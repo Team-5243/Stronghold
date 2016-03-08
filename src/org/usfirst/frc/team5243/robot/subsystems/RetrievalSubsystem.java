@@ -30,7 +30,7 @@ public class RetrievalSubsystem extends Subsystem {
 	 * starts the turning of the doggy door
 	 */
 	public void turn(double d){
-		door.set(.1);
+		door.set(d);
 	}
 	public void stop(){
 		door.set(0);

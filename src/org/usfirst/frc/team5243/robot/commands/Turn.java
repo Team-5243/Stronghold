@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Turn extends Command {
 	private double initial;
-	private double speed=.1;
+	private double speed=.25;
 	private double current;
 	private double toTurn;
 	private boolean first = true;

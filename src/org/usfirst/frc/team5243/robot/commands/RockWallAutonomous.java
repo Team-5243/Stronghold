@@ -18,5 +18,6 @@ public class RockWallAutonomous extends CommandGroup {
     	addSequential(new Turn(45));
     	addSequential(new AlignLowGoalUltraCommand());
     	addSequential(new Turn(Robot.oi.getSensorSS().getDegreeTurn()));
+
     }
 }

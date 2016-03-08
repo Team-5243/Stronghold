@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5243.robot.commands.*;
 import org.usfirst.frc.team5243.robot.subsystems.*;
+import org.usfirst.frc.team5243.triggers.LimitSwitchButton;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -24,9 +25,12 @@ public class OI {
 	private Joystick leftStick;
 	private Joystick rightStick;
 	private Button alignUltraButton;
-
+	
+	private LimitSwitchButton retrievalLimits;
 	private Button retrievalButton;
+
 	private Button driveStraightWhile;
+	private Button retractArm;
 	private Button driveStraightWhen;
 	private Button climbButton;
 	private Button lowBarButton;
@@ -40,6 +44,7 @@ public class OI {
 	private Button gyroReset;
 	private Button lowShootButton;
 	private Button raiseArm;
+	private Button lowerArm;
 	private Button extendArmButton;
 	private Button testTurnButton;
 	private DriveStraightWhileHeld driveStraightCommand;
@@ -57,30 +62,36 @@ public class OI {
  		
     }
     public void init(){
-    	climb = new ClimbCommand();
+    	setClimb(new ClimbCommand());
+    	retrievalLimits = new LimitSwitchButton();
+    	
  		turnLeft = new JoystickButton(leftStick,1); 	
- 		driveStraightWhile = new JoystickButton(leftStick,2 );//Will be Removed 
- 		retrievalButton = new JoystickButton(leftStick, 3);
- 		gyroReset = new JoystickButton(leftStick, 4);
- 		turn45 = new JoystickButton(leftStick,5); //Will be remove
- 		moatButton = new JoystickButton(leftStick, 8);
- 		rampartsButton = new JoystickButton(leftStick, 9);
- 		alignUltraButton = new JoystickButton(leftStick, 11);
- 		testTurnButton= new JoystickButton(leftStick, 6);//Will Be removed
+ 		//driveStraightWhile = new JoystickButton(leftStick,3 );//Will be Removed 
+ 		retrievalButton = new JoystickButton(leftStick, 2);
+ 		lowShootButton = new JoystickButton(leftStick, 3);
+ 		raiseArm = new JoystickButton(leftStick, 6);
+ 		extendArmButton = new JoystickButton(leftStick, 7); 	
+ 		retractArm = new JoystickButton(leftStick,8);
+ 		//moatButton = new JoystickButton(leftStick, 8);
+ 		//rampartsButton = new JoystickButton(leftStick, 9);
+ 		alignUltraButton = new JoystickButton(leftStick, 9);
+ 		driveStraightWhen = new JoystickButton(leftStick,10);
+ 		turn45 = new JoystickButton(leftStick,11);
+ 		//testTurnButton= new JoystickButton(leftStick, 8);//Will Be removed
  		
 		turnRight = new JoystickButton(rightStick,1);
- 		driveStraightWhen = new JoystickButton(rightStick,2);
- 		lowShootButton = new JoystickButton(rightStick, 3);
- 		lowBarButton = new JoystickButton(rightStick, 4); 		
- 		climbButton = new JoystickButton(rightStick, 5);
- 		rockWallButton = new JoystickButton(rightStick, 8);
- 		roughTerrainButton = new JoystickButton(rightStick,9);
- 		extendArmButton = new JoystickButton(rightStick, 10);
- 		raiseArm = new JoystickButton(rightStick, 11);
- 		
- 		testTurnButton.whileHeld(new Command(){
+		driveStraightWhile = new JoystickButton(rightStick, 3);
+ 		//lowBarButton = new JoystickButton(rightStick, 4); 		
+ 		gyroReset = new JoystickButton(rightStick, 6);
+ 		lowerArm = new JoystickButton(rightStick, 7);
+ 		//rockWallButton = new JoystickButton(rightStick, 8);
+ 		//roughTerrainButton = new JoystickButton(rightStick,9);
+ 		climbButton = new JoystickButton(rightStick, 11);
+ 		retrievalLimits.whenPressed(new TurnOffCommand());
+ 		/*testTurnButton.whileHeld(new Command(){
  			public void start(){
- 				getRetrievalSS().turn(-.1);
+ 				getLiftSS().getLeft().set(.5);
+ 				getLiftSS().getRight().set(.5);
  			}
 			@Override
 			protected void initialize() {
@@ -112,42 +123,11 @@ public class OI {
 				
 			}
  			
- 		});
- 		testTurnButton.whenReleased(new Command(){
-
-			@Override
-			protected void initialize() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			protected void execute() {
-				getRetrievalSS().stop();
-			}
-
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			protected void end() {
-				getRetrievalSS().stop();
-				
-			}
-
-			@Override
-			protected void interrupted() {
-				// TODO Auto-generated method stub
-				
-			}
- 			
- 		});
+ 		});*/
+ 		//testTurnButton.whenReleased(new TurnOffCommand());
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
  		driveStraightWhile.whileHeld(driveStraightCommand);
- 		driveStraightWhen.whenPressed(new DriveStraight(1,.5));
+ 		//driveStraightWhen.whenPressed(new DriveStraight(1,.5));
  		gyroReset.whenPressed(new Command(){
 			@Override
 			protected void initialize() {}
@@ -162,57 +142,27 @@ public class OI {
 			}	
  		});
 		climbButton.whenPressed(new ClimbCommand());
- 		turn45.whenPressed(new Turn(45));
- 		turnLeft.whileHeld(new TurnWhileHeld(true,.5));
- 		turnRight.whileHeld(new TurnWhileHeld(false,.5));
- 		retrievalButton.whenPressed(new RetrievalCommand());
- 		lowShootButton.whenPressed(new LowShoot());
- 		rampartsButton.whenPressed(new RampartsCommand());
- 		climbButton.whenPressed(climb);
- 		raiseArm.whenPressed(new LiftCommand(.1));
- 		lowBarButton.whenPressed(new LowBarAutonomous());
- 		moatButton.whenPressed(new MoatCommand());
- 		rockWallButton.whenPressed(new RockWallAutonomous());
- 		roughTerrainButton.whenPressed(new RoughTerrainAutonomous());
+ 		//turn45.whenPressed(new Turn(45));
+ 		turnLeft.whileHeld(new TurnWhileHeld(true,.25));
+ 		turnRight.whileHeld(new TurnWhileHeld(false,.25));
+ 		retrievalButton.whileHeld(new RetrievalCommand(-.8));
+ 		lowShootButton.whileHeld(new RetrievalCommand(.8));
+ 		//rampartsButton.whenPressed(new RampartsCommand());
+ 		climbButton.whenPressed(getClimb());
+ 		raiseArm.whenPressed(new LiftCommand(true));
+ 		lowerArm.whenPressed(new LiftCommand(false));
+ 		//lowBarButton.whenPressed(new LowBarAutonomous());
+ 		//moatButton.whenPressed(new MoatCommand());
+ 		//rockWallButton.whenPressed(new RockWallAutonomous());
+ 		//roughTerrainButton.whenPressed(new RoughTerrainAutonomous());
  		extendArmButton.whileHeld(new ExtendArm(.5));
- 		
- 		climbButton.whenReleased(new Command(){
-			@Override
-			protected void initialize() {}
-			@Override
-			protected void execute() {
-				climb.first =false;
-				getLiftSS().stopLift();
-				getLiftSS().setBrake(true);
-			}
-			@Override
-			protected boolean isFinished() {return true;}
-			@Override
-			protected void end() {
-				climb.first=false;
-				getLiftSS().stopLift();
-				getLiftSS().setBrake(true);
-			}
-			@Override
-			protected void interrupted() {}
- 		});
- 		
- 		extendArmButton.whenReleased(new Command(){
-			@Override
-			protected void initialize() {}
-			@Override
-			protected void execute() {
-				getLiftSS().extendArm(0);
-			}
-			@Override
-			protected boolean isFinished() {return false;}
-			@Override
-			protected void end() {
-				getLiftSS().extendArm(0);
-			}
-			@Override
-			protected void interrupted() {}
- 		});
+ 		retractArm.whileHeld(new ExtendArm(-.5));
+ 		extendArmButton.whenReleased(new TurnOffCommand());
+ 		retractArm.whenReleased(new TurnOffCommand());
+ 		climbButton.whenReleased(new TurnOffCommand()); 
+ 		retrievalButton.whenReleased(new TurnOffCommand());
+ 		lowShootButton.whenReleased(new TurnOffCommand());
+ 		extendArmButton.whenReleased(new TurnOffCommand());
 		driveStraightWhile.whenReleased(new EnableDrive());
 		turnLeft.whenReleased(new EnableDrive());
 		turnRight.whenReleased(new EnableDrive());
@@ -240,6 +190,12 @@ public class OI {
 	}
 	public LiftSubsystem getLiftSS(){
 		return LiftSub;
+	}
+	public ClimbCommand getClimb() {
+		return climb;
+	}
+	public void setClimb(ClimbCommand climb) {
+		this.climb = climb;
 	}
 }
 

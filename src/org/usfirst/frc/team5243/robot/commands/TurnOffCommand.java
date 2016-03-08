@@ -7,34 +7,36 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RetrievalCommand extends Command {
-	private double speed;
-    public RetrievalCommand(double s) {
+public class TurnOffCommand extends Command {
+
+    public TurnOffCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	speed = s;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    }
-    public void start(){
-    	Robot.oi.getRetrievalSS().turn(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {	
+    protected void execute() {
+    	Robot.oi.getRetrievalSS().stop();
+    	Robot.oi.getClimb().first= false;
+    	Robot.oi.getLiftSS().stopLift();
+    	Robot.oi.getLiftSS().extendArm(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.oi.getRetrievalSS().getLimit1().get()&&Robot.oi.getRetrievalSS().getLimit2().get();
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.oi.getRetrievalSS().stop();
+    	Robot.oi.getClimb().first= false;
+    	Robot.oi.getLiftSS().stopLift();
+    	Robot.oi.getLiftSS().extendArm(0);
     }
 
     // Called when another command which requires one or more of the same

@@ -3,6 +3,7 @@ package org.usfirst.frc.team5243.robot.commands;
 import org.usfirst.frc.team5243.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -54,8 +55,9 @@ public class AlignLowGoalUltraCommand extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.oi.getSensorSS().setDegreeTurn(-(Robot.oi.getSensorSS().getAngle() - greatestDegrees));
-		System.out.println(Robot.oi.getSensorSS().getDegreeTurn());
+		/*Robot.oi.getSensorSS().setDegreeTurn(-(Robot.oi.getSensorSS().getAngle() - greatestDegrees));
+		System.out.println(Robot.oi.getSensorSS().getDegreeTurn());*/
+		Scheduler.getInstance().add(new Turn(-(Robot.oi.getSensorSS().getAngle() - greatestDegrees)));
 		isFirstTime = true;
 	}
 

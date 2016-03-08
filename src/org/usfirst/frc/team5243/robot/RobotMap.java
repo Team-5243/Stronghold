@@ -27,10 +27,10 @@ public class RobotMap {
 
 	
 	// CAN Ports
-	public final static int leftClimbMotor = 0;
-	public final static int rightClimbMotor = 1;
-	public final static int MotorDoggyDoor = 2;
-	public final static int ArmMotor = 3;
+	public final static int leftClimbMotor = 2;
+	public final static int rightClimbMotor = 3;
+	public final static int MotorDoggyDoor = 1;
+	public final static int ArmMotor = 0;
 	// DIO Ports
 	public static final int SolenoidModuleNumber = 3;
 	public final static int ultrasonicinputport = 1;
