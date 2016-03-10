@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
-import org.usfirst.frc.team5243.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -9,7 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ShootingSubsystem extends Subsystem {
+	@SuppressWarnings("unused")
 	private Jaguar leftSide;
+	@SuppressWarnings("unused")
 	private Jaguar rightSide;
 
 	// Put methods for controlling this subsystem

@@ -31,21 +31,29 @@ public class OI {
 
 	private Button driveStraightWhile;
 	private Button retractArm;
+	@SuppressWarnings("unused")
 	private Button driveStraightWhen;
 	private Button climbButton;
+	@SuppressWarnings("unused")
 	private Button lowBarButton;
+	@SuppressWarnings("unused")
 	private Button moatButton;
+	@SuppressWarnings("unused")
 	private Button rampartsButton;
+	@SuppressWarnings("unused")
 	private Button rockWallButton;
+	@SuppressWarnings("unused")
 	private Button roughTerrainButton;
 	private Button turnLeft;
 	private Button turnRight;
+	@SuppressWarnings("unused")
 	private Button turn45;
 	private Button gyroReset;
 	private Button lowShootButton;
 	private Button raiseArm;
 	private Button lowerArm;
 	private Button extendArmButton;
+	@SuppressWarnings("unused")
 	private Button testTurnButton;
 	private DriveStraightWhileHeld driveStraightCommand;
 	private ClimbCommand climb;

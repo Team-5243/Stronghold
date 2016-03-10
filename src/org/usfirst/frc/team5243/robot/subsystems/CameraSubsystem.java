@@ -2,9 +2,9 @@ package org.usfirst.frc.team5243.robot.subsystems;
 
 
 import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.DrawMode;
+//import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;
-import com.ni.vision.NIVision.ShapeMode;
+//import com.ni.vision.NIVision.ShapeMode;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +16,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class CameraSubsystem extends Subsystem {
     private int session;
     private Image frame;
-    private NIVision.Rect rect;
+    @SuppressWarnings("unused")
+	private NIVision.Rect rect;
     private boolean isInit;
     NetworkTable table;
     // Put methods for controlling this subsystem

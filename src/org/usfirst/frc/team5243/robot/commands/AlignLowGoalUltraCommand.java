@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class AlignLowGoalUltraCommand extends Command {
 	private double greatestDegrees;
 	private double greatestRange;
+	@SuppressWarnings("unused")
 	private boolean isFinished = false;
 	private boolean isFirstTime = true;
 	double initialAngle = 0;
