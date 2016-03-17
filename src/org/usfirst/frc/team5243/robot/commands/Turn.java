@@ -36,10 +36,8 @@ public class Turn extends Command {
 		current = Robot.oi.getSensorSS().getAngle();
 		if (toTurn < 0) {
 			Robot.oi.getMotorSS().turnLeft(speed);
-			System.out.println("TurnLeft: " + toTurn);
 		} else {
 			Robot.oi.getMotorSS().turnRight(speed);
-			System.out.println("Turn Right: " + toTurn);
 		}
 	}
 

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
- *
+ * Uses ultrasonic sensor to align robot
  */
 public class AlignLowGoalUltraCommand extends Command {
 	private double greatestDegrees;
@@ -37,7 +37,6 @@ public class AlignLowGoalUltraCommand extends Command {
 		Robot.oi.getMotorSS().setRunning(true);
 		current = Robot.oi.getSensorSS().getAngle();
 		Robot.oi.getMotorSS().turnRight(.2);
-		System.out.println("turning left");
 		double angle = Robot.oi.getSensorSS().getAngle();
 		double distanceCurrent = Robot.oi.getSensorSS().ultraOutputAverage();
 		if (distanceCurrent > greatestRange) {

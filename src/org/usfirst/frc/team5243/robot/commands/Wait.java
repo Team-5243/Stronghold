@@ -7,8 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Wait extends Command {
 	private int sec;
-	@SuppressWarnings("unused")
-	private double startTime;
 	
     public Wait(int seconds) {
         // Use requires() here to declare subsystem dependencies

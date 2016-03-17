@@ -12,10 +12,10 @@ public class NewAuto extends CommandGroup {
 	//(unused autonomous modes/center tower, etc.)
 	//-Evan
     public  NewAuto() {
-    	addSequential(new DriveStraightAccel(.5, true));//gets over the low bar
-    	addSequential(new DriveStraight(12, .3));  //drives right up to plexiglas wall
-    	addSequential(new Turn(90)); //turn to face left side of tower
-    	addSequential(new DriveStraight(2.0, 0.1)); //drive straight up to tower
+    	addSequential(new DriveStraightAccel(.7, true));//gets over the low bar
+    	addSequential(new DriveStraight(12, .5));  //drives right up to plexiglas wall
+    	addSequential(new Turn(90)); //turn to face left side of tower, Right turn positive, Left negative
+    	addSequential(new DriveStraight(2.0, 0.5)); //drive straight up to tower
     	addSequential(new LowShoot()); //doggy door into goal at point blank range
     }
 }

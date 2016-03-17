@@ -29,7 +29,6 @@ public class DriveStraightAccel extends Command {
 		}
 		Robot.oi.getMotorSS().setRunning(true);
 		Robot.oi.getMotorSS().getDrive().drive(-speed, -Robot.oi.getSensorSS().getGyro().getAngle() * .03);
-		System.out.print("in 3Start");
     }
 
     // Make this return true when this Command no longer needs to run execute()

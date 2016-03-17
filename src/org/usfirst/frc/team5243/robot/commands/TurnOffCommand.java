@@ -24,6 +24,8 @@ public class TurnOffCommand extends Command {
     	Robot.oi.getClimb().first= false;
     	Robot.oi.getLiftSS().stopLift();
     	Robot.oi.getLiftSS().extendArm(0);
+    	Robot.oi.getShootingSS().spinDown();
+    	Robot.oi.getShootingSS().resetServo();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,6 +39,8 @@ public class TurnOffCommand extends Command {
     	Robot.oi.getClimb().first= false;
     	Robot.oi.getLiftSS().stopLift();
     	Robot.oi.getLiftSS().extendArm(0);
+    	Robot.oi.getShootingSS().spinDown();
+    	Robot.oi.getShootingSS().resetServo();
     }
 
     // Called when another command which requires one or more of the same

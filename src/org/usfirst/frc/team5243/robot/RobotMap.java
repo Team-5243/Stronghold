@@ -24,7 +24,9 @@ public class RobotMap {
 	public final static int MotorFrontRight = 1;
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight = 3;
-
+	public final static int flyWheelLeft = 4;
+	public final static int flyWheelRight = 5;
+	public final static int shootServo = 6;
 	
 	// CAN Ports
 	public final static int leftClimbMotor = 2;

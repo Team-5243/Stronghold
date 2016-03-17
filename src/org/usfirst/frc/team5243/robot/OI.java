@@ -3,7 +3,6 @@ package org.usfirst.frc.team5243.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5243.robot.commands.*;
 import org.usfirst.frc.team5243.robot.subsystems.*;
@@ -16,55 +15,45 @@ public class OI {
 	
 
 	private final CameraSubsystem CameraSub;
-	private final MotorSubsystem MotorSub;
-	private final SensorSubsystem SensorSub;
-	private final RetrievalSubsystem RetrievalSub;
-
 	private final LiftSubsystem LiftSub;
+	private final MotorSubsystem MotorSub;
+	private final RetrievalSubsystem RetrievalSub;
+	private final SensorSubsystem SensorSub;
+	private final ShootingSubsystem ShootingSub;
 	
 	private Joystick leftStick;
 	private Joystick rightStick;
-	private Button alignUltraButton;
 	
 	private LimitSwitchButton retrievalLimits;
-	private Button retrievalButton;
-
-	private Button driveStraightWhile;
-	private Button retractArm;
-	@SuppressWarnings("unused")
-	private Button driveStraightWhen;
+	private Button alignUltraButton;
 	private Button climbButton;
-	@SuppressWarnings("unused")
-	private Button lowBarButton;
-	@SuppressWarnings("unused")
-	private Button moatButton;
-	@SuppressWarnings("unused")
-	private Button rampartsButton;
-	@SuppressWarnings("unused")
-	private Button rockWallButton;
-	@SuppressWarnings("unused")
-	private Button roughTerrainButton;
-	private Button turnLeft;
-	private Button turnRight;
-	@SuppressWarnings("unused")
-	private Button turn45;
-	private Button gyroReset;
+	private Button driveStraightWhile;
+	private Button extendArmButton;
+	private Button flyWheelRetrieveButton;
+	private Button flyWheelShootButton;
+	private Button flyWheelShootHalfButton;
+	private Button lowerArm;
 	private Button lowShootButton;
 	private Button raiseArm;
-	private Button lowerArm;
-	private Button extendArmButton;
-	@SuppressWarnings("unused")
-	private Button testTurnButton;
-	private DriveStraightWhileHeld driveStraightCommand;
+	private Button retractArm;
+	private Button retrievalButton;
+	private Button turnLeft;
+	private Button turnRight;
+	
 	private ClimbCommand climb;
-    public OI(){
+	private DriveStraightWhileHeld driveStraightCommand;
+    
+	
+	public OI(){
     	System.out.println("OI constructor Start");
     	driveStraightCommand = new DriveStraightWhileHeld(.6);
     	CameraSub = new CameraSubsystem();
-    	MotorSub  = new MotorSubsystem();
-    	SensorSub = new SensorSubsystem();
-    	RetrievalSub = new RetrievalSubsystem();
     	LiftSub = new LiftSubsystem();
+    	MotorSub  = new MotorSubsystem();
+    	RetrievalSub = new RetrievalSubsystem();
+    	SensorSub = new SensorSubsystem();
+    	ShootingSub = new ShootingSubsystem();
+    	
  		leftStick = new Joystick(0);
  		rightStick = new Joystick(1);
  		
@@ -72,105 +61,55 @@ public class OI {
     public void init(){
     	setClimb(new ClimbCommand());
     	retrievalLimits = new LimitSwitchButton();
+    	//free buttons: Left: 4, 5, 10, 11, 12 Right: 2, 4, 5, 6, 8, 9, 10, 12
+    	flyWheelRetrieveButton = new JoystickButton(leftStick, 4);
+ 		flyWheelShootButton = new JoystickButton(leftStick, 5);
+    	flyWheelShootHalfButton = new JoystickButton(leftStick, 12);
+    	
     	
  		turnLeft = new JoystickButton(leftStick,1); 	
- 		//driveStraightWhile = new JoystickButton(leftStick,3 );//Will be Removed 
  		retrievalButton = new JoystickButton(leftStick, 2);
  		lowShootButton = new JoystickButton(leftStick, 3);
  		raiseArm = new JoystickButton(leftStick, 6);
  		extendArmButton = new JoystickButton(leftStick, 7); 	
  		retractArm = new JoystickButton(leftStick,8);
- 		//moatButton = new JoystickButton(leftStick, 8);
- 		//rampartsButton = new JoystickButton(leftStick, 9);
  		alignUltraButton = new JoystickButton(leftStick, 9);
- 		driveStraightWhen = new JoystickButton(leftStick,10);
- 		turn45 = new JoystickButton(leftStick,11);
- 		//testTurnButton= new JoystickButton(leftStick, 8);//Will Be removed
  		
 		turnRight = new JoystickButton(rightStick,1);
-		driveStraightWhile = new JoystickButton(rightStick, 3);
- 		//lowBarButton = new JoystickButton(rightStick, 4); 		
- 		gyroReset = new JoystickButton(rightStick, 6);
+		driveStraightWhile = new JoystickButton(rightStick, 3);		
  		lowerArm = new JoystickButton(rightStick, 7);
- 		//rockWallButton = new JoystickButton(rightStick, 8);
- 		//roughTerrainButton = new JoystickButton(rightStick,9);
  		climbButton = new JoystickButton(rightStick, 11);
- 		retrievalLimits.whenPressed(new TurnOffCommand());
- 		/*testTurnButton.whileHeld(new Command(){
- 			public void start(){
- 				getLiftSS().getLeft().set(.5);
- 				getLiftSS().getRight().set(.5);
- 			}
-			@Override
-			protected void initialize() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			protected void execute() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			protected void end() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			protected void interrupted() {
-				// TODO Auto-generated method stub
-				
-			}
- 			
- 		});*/
- 		//testTurnButton.whenReleased(new TurnOffCommand());
- 		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
+ 		
+ 		
+ 		
  		driveStraightWhile.whileHeld(driveStraightCommand);
- 		//driveStraightWhen.whenPressed(new DriveStraight(1,.5));
- 		gyroReset.whenPressed(new Command(){
-			@Override
-			protected void initialize() {}
-			@Override
-			protected void execute() {getSensorSS().getGyro().reset();}
-			@Override
-			protected boolean isFinished() {return true;}
-			@Override
-			protected void end() {getSensorSS().getGyro().reset();}
-			@Override
-			protected void interrupted() {
-			}	
- 		});
-		climbButton.whenPressed(new ClimbCommand());
- 		//turn45.whenPressed(new Turn(45));
  		turnLeft.whileHeld(new TurnWhileHeld(true,.25));
  		turnRight.whileHeld(new TurnWhileHeld(false,.25));
  		retrievalButton.whileHeld(new RetrievalCommand(-.8));
+ 		flyWheelRetrieveButton.whileHeld(new ShootCommand(-1));
+ 		flyWheelShootHalfButton.whileHeld(new ShootCommand(.5));
+ 		flyWheelShootButton.whileHeld(new ShootCommand(1));
  		lowShootButton.whileHeld(new RetrievalCommand(.8));
- 		//rampartsButton.whenPressed(new RampartsCommand());
+ 		extendArmButton.whileHeld(new ExtendArm(.5));
+ 		retractArm.whileHeld(new ExtendArm(-.5));
+ 		
+ 		retrievalLimits.whenPressed(new TurnOffCommand());
+ 		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
+ 		climbButton.whenPressed(new ClimbCommand());
  		climbButton.whenPressed(getClimb());
  		raiseArm.whenPressed(new LiftCommand(true));
  		lowerArm.whenPressed(new LiftCommand(false));
- 		//lowBarButton.whenPressed(new LowBarAutonomous());
- 		//moatButton.whenPressed(new MoatCommand());
- 		//rockWallButton.whenPressed(new RockWallAutonomous());
- 		//roughTerrainButton.whenPressed(new RoughTerrainAutonomous());
- 		extendArmButton.whileHeld(new ExtendArm(.5));
- 		retractArm.whileHeld(new ExtendArm(-.5));
+ 		
+ 		
  		extendArmButton.whenReleased(new TurnOffCommand());
  		retractArm.whenReleased(new TurnOffCommand());
  		climbButton.whenReleased(new TurnOffCommand()); 
  		retrievalButton.whenReleased(new TurnOffCommand());
  		lowShootButton.whenReleased(new TurnOffCommand());
  		extendArmButton.whenReleased(new TurnOffCommand());
+ 		flyWheelRetrieveButton.whenReleased(new TurnOffCommand());
+ 		flyWheelShootButton.whenReleased(new TurnOffCommand());
+ 		flyWheelShootHalfButton.whenReleased(new TurnOffCommand());
 		driveStraightWhile.whenReleased(new EnableDrive());
 		turnLeft.whenReleased(new EnableDrive());
 		turnRight.whenReleased(new EnableDrive());
@@ -204,6 +143,10 @@ public class OI {
 	}
 	public void setClimb(ClimbCommand climb) {
 		this.climb = climb;
+	}
+	public ShootingSubsystem getShootingSS() {
+		// TODO Auto-generated method stub
+		return ShootingSub;
 	}
 }
 

@@ -7,10 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoatCommand extends Command {
-    public MoatCommand() {
+public class ShootCommand extends Command {
+	private double speed;
+    public ShootCommand(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -19,10 +21,13 @@ public class MoatCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.oi.getSensorSS().isTiltingY()){
-    		Robot.oi.getMotorSS().getDrive().drive(.4, -Robot.oi.getSensorSS().getGyro().getAngle());
-    	}else{
-    		Robot.oi.getMotorSS().getDrive().drive(.8, -Robot.oi.getSensorSS().getGyro().getAngle());
+    	Robot.oi.getShootingSS().spinUp(speed);
+    	int count = 0;
+    	if(speed >= 0){
+    	while(count < 20){
+    		count++;
+    	}
+    	Robot.oi.getShootingSS().spinServo();
     	}
     }
 
@@ -39,5 +44,4 @@ public class MoatCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-
 }

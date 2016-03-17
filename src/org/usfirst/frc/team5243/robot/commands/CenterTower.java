@@ -5,7 +5,7 @@ import org.usfirst.frc.team5243.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 	
 /**
- *
+ * Uses vision processing to center the robot
  */
 public class CenterTower extends Command {
 

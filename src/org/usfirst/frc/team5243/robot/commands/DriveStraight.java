@@ -80,7 +80,6 @@ public class DriveStraight extends Command {
 		}
 		Robot.oi.getMotorSS().setRunning(true);
 		Robot.oi.getMotorSS().getDrive().drive(-speed, -Robot.oi.getSensorSS().getGyro().getAngle() * k);
-		System.out.print("in Start");
 	}
 	// Called once after isFinished returns true
 	@Override

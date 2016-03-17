@@ -1,22 +1,28 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Jaguar;
+import org.usfirst.frc.team5243.robot.RobotMap;
+import org.usfirst.frc.team5243.robot.commands.Wait;
+
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class ShootingSubsystem extends Subsystem {
-	@SuppressWarnings("unused")
-	private Jaguar leftSide;
-	@SuppressWarnings("unused")
-	private Jaguar rightSide;
+	private Victor leftSide;
+	private Victor rightSide;
+	private Servo shootServo;
+	private double speed;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public ShootingSubsystem() {
-		//leftSide = new Jaguar(RobotMap.flyWheelLeft);
-		//rightSide = new Jaguar(RobotMap.flyWheelRight);
+		leftSide = new Victor(RobotMap.flyWheelLeft);
+		rightSide = new Victor(RobotMap.flyWheelRight);
+		shootServo = new Servo(RobotMap.shootServo);
 	}
 
 	public void initDefaultCommand() {
@@ -24,28 +30,30 @@ public class ShootingSubsystem extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	public void spinUp() {
-		/*if (leftSide.getSpeed() == 1)
-			System.out.println("It's already at max speed");
-		else {
-			leftSide.set(1.0);
-			rightSide.set(1.0);
+	public void spinUp(double speed) {
+			leftSide.set(speed);
+			rightSide.set(speed);
 			System.out.println("Fully started!");
-		}*/
+			this.speed = speed;
 	}
 
 	public void spinDown() {
-		/*if (leftSide.getSpeed() == 0)
-			System.out.println("It's already down");
-		else {
 			leftSide.set(0.0);
 			rightSide.set(0.0);
 			System.out.println("Powered down");
-		}*/
+			speed = 0;
+	}
+	public void spinServo(){
+		shootServo.set(.25);
+		Scheduler.getInstance().add(new Wait(1));
+		shootServo.set(0);
+	}
+	public double getSpeed() {
+		return speed;
 	}
 
-	public double getSpeed() {
-		return 0.0;//leftSide.getSpeed();
-
+	public void resetServo() {
+		// TODO Auto-generated method stub
+		shootServo.set(0);
 	}
 }
