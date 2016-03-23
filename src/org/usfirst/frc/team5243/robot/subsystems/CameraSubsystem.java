@@ -16,10 +16,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class CameraSubsystem extends Subsystem {
     private int session;
     private Image frame;
-    @SuppressWarnings("unused")
-	private NIVision.Rect rect;
-    private boolean isInit;
     NetworkTable table;
+    CameraServer server;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
@@ -32,25 +30,20 @@ public class CameraSubsystem extends Subsystem {
     
     }
     public void CameraSetUp(){
-
-        frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+    	/*server = CameraServer.getInstance();
+    	server.setQuality(15);
+    	server.startAutomaticCapture("cam0");*/
+    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         
         // the camera name (ex "cam0") can be found through the roborio web interface
-        session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+        session = NIVision.IMAQdxOpenCamera("cam3", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
         NIVision.IMAQdxConfigureGrab(session);
     	System.out.println("In camera SetUp");
     	NIVision.IMAQdxStartAcquisition(session);
-        /**
-         * grab an image, draw the circle, and provide it for the camera server
-         * which will in turn send it to the dashboard.
-         */
-         rect =  new NIVision.Rect(10, 10, 100, 100);
-         isInit=true;
     }
     public void CameraLoop(){
     	try{
-    		NIVision.IMAQdxGrab(session, frame, 1);
-    		table = NetworkTable.getTable("GRIP/myContoursReport");
+    		NIVision.IMAQdxGrab(session, frame, 2);
     		CameraServer.getInstance().setQuality(30);
     		CameraServer.getInstance().setImage(frame);
     	}catch (NullPointerException n){
@@ -58,7 +51,6 @@ public class CameraSubsystem extends Subsystem {
     		CameraInit();
     		CameraSetUp();
     	}
-    	
     }
     public double getAreas(){
     	//double areas[] = table.getNumberArray("targets/area", new double[0]);
@@ -74,7 +66,6 @@ public class CameraSubsystem extends Subsystem {
     
     public void CameraEnd(){
     	NIVision.IMAQdxStopAcquisition(session);
-    	isInit=false;
     }
 	public double distanceToCenterTower() {
 		// TODO Auto-generated method stub
@@ -83,9 +74,6 @@ public class CameraSubsystem extends Subsystem {
 	public boolean isTowerCentered() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-	public boolean isInit(){
-		return isInit;
 	}
     
 }

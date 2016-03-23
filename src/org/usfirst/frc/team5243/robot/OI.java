@@ -62,14 +62,14 @@ public class OI {
     	setClimb(new ClimbCommand());
     	retrievalLimits = new LimitSwitchButton();
     	//free buttons: Left: 4, 5, 10, 11, 12 Right: 2, 4, 5, 6, 8, 9, 10, 12
-    	flyWheelRetrieveButton = new JoystickButton(leftStick, 4);
- 		flyWheelShootButton = new JoystickButton(leftStick, 5);
-    	flyWheelShootHalfButton = new JoystickButton(leftStick, 12);
+    	flyWheelRetrieveButton = new JoystickButton(rightStick, 4);
+ 		flyWheelShootButton = new JoystickButton(rightStick, 5);
+    	flyWheelShootHalfButton = new JoystickButton(leftStick, 10);
     	
     	
  		turnLeft = new JoystickButton(leftStick,1); 	
- 		retrievalButton = new JoystickButton(leftStick, 2);
- 		lowShootButton = new JoystickButton(leftStick, 3);
+ 		retrievalButton = new JoystickButton(leftStick, 3);
+ 		lowShootButton = new JoystickButton(leftStick, 2);
  		raiseArm = new JoystickButton(leftStick, 6);
  		extendArmButton = new JoystickButton(leftStick, 7); 	
  		retractArm = new JoystickButton(leftStick,8);
@@ -85,11 +85,9 @@ public class OI {
  		driveStraightWhile.whileHeld(driveStraightCommand);
  		turnLeft.whileHeld(new TurnWhileHeld(true,.25));
  		turnRight.whileHeld(new TurnWhileHeld(false,.25));
- 		retrievalButton.whileHeld(new RetrievalCommand(-.8));
- 		flyWheelRetrieveButton.whileHeld(new ShootCommand(-1));
- 		flyWheelShootHalfButton.whileHeld(new ShootCommand(.5));
- 		flyWheelShootButton.whileHeld(new ShootCommand(1));
- 		lowShootButton.whileHeld(new RetrievalCommand(.8));
+ 		retrievalButton.whileHeld(new RetrievalCommand(-.35));
+ 		flyWheelRetrieveButton.whileHeld(new BringInBall());
+ 		lowShootButton.whileHeld(new RetrievalCommand(.45));
  		extendArmButton.whileHeld(new ExtendArm(.5));
  		retractArm.whileHeld(new ExtendArm(-.5));
  		
@@ -97,6 +95,8 @@ public class OI {
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
  		climbButton.whenPressed(new ClimbCommand());
  		climbButton.whenPressed(getClimb());
+ 		flyWheelShootHalfButton.whenPressed(new ShootCommand(-.5));
+ 		flyWheelShootButton.whenPressed(new ShootCommand(-1));
  		raiseArm.whenPressed(new LiftCommand(true));
  		lowerArm.whenPressed(new LiftCommand(false));
  		
@@ -107,10 +107,8 @@ public class OI {
  		retrievalButton.whenReleased(new TurnOffCommand());
  		lowShootButton.whenReleased(new TurnOffCommand());
  		extendArmButton.whenReleased(new TurnOffCommand());
- 		flyWheelRetrieveButton.whenReleased(new TurnOffCommand());
- 		flyWheelShootButton.whenReleased(new TurnOffCommand());
- 		flyWheelShootHalfButton.whenReleased(new TurnOffCommand());
 		driveStraightWhile.whenReleased(new EnableDrive());
+		flyWheelRetrieveButton.whenReleased(new TurnOffCommand());
 		turnLeft.whenReleased(new EnableDrive());
 		turnRight.whenReleased(new EnableDrive());
 	

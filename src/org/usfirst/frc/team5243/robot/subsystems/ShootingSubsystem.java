@@ -3,6 +3,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 import org.usfirst.frc.team5243.robot.commands.Wait;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -12,18 +13,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ShootingSubsystem extends Subsystem {
-	private Victor leftSide;
-	private Victor rightSide;
+	private CANTalon leftSide;
+	private CANTalon rightSide;
 	private Servo shootServo;
 	private double speed;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public ShootingSubsystem() {
-		leftSide = new Victor(RobotMap.flyWheelLeft);
-		rightSide = new Victor(RobotMap.flyWheelRight);
+		leftSide = new CANTalon(RobotMap.flyWheelLeft);
+		rightSide = new CANTalon(RobotMap.flyWheelRight);
 		shootServo = new Servo(RobotMap.shootServo);
-	}
+		}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
@@ -32,7 +33,7 @@ public class ShootingSubsystem extends Subsystem {
 
 	public void spinUp(double speed) {
 			leftSide.set(speed);
-			rightSide.set(speed);
+			rightSide.set(-speed);
 			System.out.println("Fully started!");
 			this.speed = speed;
 	}
@@ -44,16 +45,16 @@ public class ShootingSubsystem extends Subsystem {
 			speed = 0;
 	}
 	public void spinServo(){
-		shootServo.set(.25);
-		Scheduler.getInstance().add(new Wait(1));
-		shootServo.set(0);
+		shootServo.setAngle(405);
+	}
+	public void resetServo(){
+		shootServo.setAngle(0);
 	}
 	public double getSpeed() {
 		return speed;
 	}
-
-	public void resetServo() {
+	public double getServoAngle() {
 		// TODO Auto-generated method stub
-		shootServo.set(0);
-	}
+		return shootServo.getAngle();
+		}
 }

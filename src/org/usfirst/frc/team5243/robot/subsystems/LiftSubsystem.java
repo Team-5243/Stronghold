@@ -18,8 +18,8 @@ public class LiftSubsystem extends Subsystem {
 	private Solenoid solenoidArm;
 	public LiftSubsystem(){
 		arm = new CANTalon(RobotMap.ArmMotor);
-		leftTalon = new CANTalon(RobotMap.leftClimbMotor);
-		rightTalon = new CANTalon(RobotMap.rightClimbMotor);
+		leftTalon = new CANTalon(8);
+		rightTalon = new CANTalon(9);
 		solenoidArm = new Solenoid(RobotMap.SolenoidModuleNumber);
 		compressorArm = new Compressor(7);
 	}

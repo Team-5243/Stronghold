@@ -9,7 +9,7 @@ public class LowBarAutonomous extends CommandGroup {
     
     public  LowBarAutonomous() {
     	addSequential(new DriveStraight(5.5, .7));//gets over the lowBAR,  (LOW BAR (4.5, .6)) (Rock Wall (5.5,.6))
-    	addSequential(new DriveStraight(72, .4));// SHOULD BE DRIVESTRAIGHTUNTILDISTANCE, 42 BEING THE DISTANCE
+    	addSequential(new DriveStraight(52, .4));// SHOULD BE DRIVESTRAIGHTUNTILDISTANCE, 42 BEING THE DISTANCE
     	addSequential(new Turn(45));
     	addSequential(new DriveStraight(3, .5));//Want to base this on accelerometer?
     	addSequential(new Turn(-45));

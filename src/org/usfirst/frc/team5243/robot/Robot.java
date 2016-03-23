@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		CommandGroup s = new LowBarAutonomous();
+		CommandGroup s = new NewAuto();
 		s.start();
 	}
 

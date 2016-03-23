@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TurnOffCommand extends Command {
+public class BringInBall extends Command {
 
-    public TurnOffCommand() {
+    public BringInBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -19,30 +19,27 @@ public class TurnOffCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.oi.getRetrievalSS().turn(0);
-    	Robot.oi.getClimb().first= false;
-    	Robot.oi.getLiftSS().stopLift();
-    	Robot.oi.getLiftSS().extendArm(0);
-    	Robot.oi.getShootingSS().spinDown();
+    public void start() {
+    	Robot.oi.getShootingSS().spinUp(.6);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.oi.getRetrievalSS().stop();
-    	Robot.oi.getClimb().first= false;
-    	Robot.oi.getLiftSS().stopLift();
-    	Robot.oi.getLiftSS().extendArm(0);
-    	Robot.oi.getShootingSS().spinDown();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
+	@Override
+	protected void execute() {
+		// TODO Auto-generated method stub
+		
+	}
 }
