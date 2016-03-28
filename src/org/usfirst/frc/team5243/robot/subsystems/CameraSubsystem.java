@@ -44,7 +44,7 @@ public class CameraSubsystem extends Subsystem {
     public void CameraLoop(){
     	try{
     		NIVision.IMAQdxGrab(session, frame, 2);
-    		CameraServer.getInstance().setQuality(30);
+    		CameraServer.getInstance().setQuality(100);
     		CameraServer.getInstance().setImage(frame);
     	}catch (NullPointerException n){
     		CameraEnd();
@@ -53,14 +53,10 @@ public class CameraSubsystem extends Subsystem {
     	}
     }
     public double getAreas(){
-    	//double areas[] = table.getNumberArray("targets/area", new double[0]);
-
-    	return 0.0;
-    /*	double areas[] = table.getNumberArray("area", new double[0]);
-    	if(areas.length == 0)
-    		return -1;
+    	return 0;
+    	/*int areas = (int) table.getNumber("dsTime",0);
     	System.out.println(areas);
-        return areas[0];*/
+        return areas;*/
     }
    
     

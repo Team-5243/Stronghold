@@ -68,6 +68,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
 		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
 		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
+		SmartDashboard.putNumber("Network Table", oi.getCamera().getAreas());
 	}
 
 	public void teleopInit() {
@@ -103,7 +104,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
 		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
 		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
-
+		SmartDashboard.putNumber("Network Table", oi.getCamera().getAreas());
 
 		oi.getCamera().CameraLoop();
 		//SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
