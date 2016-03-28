@@ -3,6 +3,7 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,6 +22,7 @@ public class SensorSubsystem extends Subsystem {
 	private AnalogInput ultra;
 	private ADXRS450_Gyro gyro;
 	private double degreeTurn;
+	
 
 	private static int count = 0;
 
@@ -184,6 +186,4 @@ public class SensorSubsystem extends Subsystem {
 	public void setDegreeTurn(double degreeTurn) {
 		this.degreeTurn = degreeTurn;
 	}
-
-
 }

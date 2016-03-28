@@ -25,6 +25,9 @@ public class RetrievalCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {	
+    	Robot.oi.getShootingSS().resetServo();
+    	System.out.println("Distance: "+Robot.oi.getRetrievalSS().getEncoderDistance());
+    	System.out.println("Rate: "+Robot.oi.getRetrievalSS().getEncoderRate());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,6 +37,9 @@ public class RetrievalCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("Distance: "+Robot.oi.getRetrievalSS().getEncoderDistance());
+    	System.out.println("Rate: "+Robot.oi.getRetrievalSS().getEncoderRate());
+    	Robot.oi.getRetrievalSS().resetEncoder();
     	Robot.oi.getRetrievalSS().stop();
     }
 

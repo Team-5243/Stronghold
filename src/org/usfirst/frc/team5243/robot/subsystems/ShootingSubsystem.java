@@ -4,6 +4,7 @@ import org.usfirst.frc.team5243.robot.RobotMap;
 import org.usfirst.frc.team5243.robot.commands.Wait;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,6 +17,7 @@ public class ShootingSubsystem extends Subsystem {
 	private CANTalon leftSide;
 	private CANTalon rightSide;
 	private Servo shootServo;
+	
 	private double speed;
 
 	// Put methods for controlling this subsystem
@@ -24,12 +26,14 @@ public class ShootingSubsystem extends Subsystem {
 		leftSide = new CANTalon(RobotMap.flyWheelLeft);
 		rightSide = new CANTalon(RobotMap.flyWheelRight);
 		shootServo = new Servo(RobotMap.shootServo);
-		}
+	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
+	
+	
 
 	public void spinUp(double speed) {
 			leftSide.set(speed);
@@ -45,7 +49,7 @@ public class ShootingSubsystem extends Subsystem {
 			speed = 0;
 	}
 	public void spinServo(){
-		shootServo.setAngle(405);
+		shootServo.setAngle(90);
 	}
 	public void resetServo(){
 		shootServo.setAngle(0);
@@ -56,5 +60,11 @@ public class ShootingSubsystem extends Subsystem {
 	public double getServoAngle() {
 		// TODO Auto-generated method stub
 		return shootServo.getAngle();
-		}
+	}
+	
+	/*public Encoder getEncoder() {
+		return door;
+	}*/ 
+	
+	
 }

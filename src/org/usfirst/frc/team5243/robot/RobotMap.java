@@ -25,6 +25,7 @@ public class RobotMap {
 	public final static int MotorBackLeft = 2;
 	public final static int MotorBackRight = 3;
 	public final static int shootServo = 6;
+	public final static int cameraServo = 7; // might change
 	
 	// CAN Port
 	public final static int flyWheelLeft = 2;
@@ -38,4 +39,8 @@ public class RobotMap {
 	// Pushing up sensor subsystem and shooting. small changes.
 	//Analog
 	public final static int ultrasonicinputport = 1;
+	
+	//Encoder channels
+	public static final int encoderAChannel = 8; // currently placeholder
+	public static final int encoderBChannel = 9; // currently placeholder
 }

@@ -1,12 +1,16 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
 
+import org.usfirst.frc.team5243.robot.Robot;
+import org.usfirst.frc.team5243.robot.RobotMap;
+
 import com.ni.vision.NIVision;
 //import com.ni.vision.NIVision.DrawMode;
 import com.ni.vision.NIVision.Image;
 //import com.ni.vision.NIVision.ShapeMode;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
@@ -18,9 +22,13 @@ public class CameraSubsystem extends Subsystem {
     private Image frame;
     NetworkTable table;
     CameraServer server;
+    
+    private Servo cameraServo;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    
+    public CameraSubsystem() {
+    	cameraServo = new Servo(RobotMap.cameraServo);
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -70,6 +78,15 @@ public class CameraSubsystem extends Subsystem {
 	public boolean isTowerCentered() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	// Spins the camera servo degree to parameter degree
+	public void spinCamera(double d) {
+		cameraServo.set(d);
+	}
+	
+	public double getCameraAngle() {
+		return cameraServo.getAngle();
 	}
     
 }
