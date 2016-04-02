@@ -23,7 +23,7 @@ public class CameraSpin extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double degreeTemp = Robot.oi.getCamera().getCameraAngle();
+		//double degreeTemp = Robot.oi.getCamera().getCameraAngle();
     	Robot.oi.getCamera().spinCamera(degrees);
     }
 

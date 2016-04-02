@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Turn extends Command {
 	private double initial;
-	private double speed=.25;
+	private double speed;
 	private double current;
 	private double toTurn;
 	private boolean first = true;
@@ -18,6 +18,7 @@ public class Turn extends Command {
 		requires(Robot.oi.getMotorSS());
 		requires(Robot.oi.getSensorSS());
 		toTurn = degrees;
+		
 	}
 
 	// Called just before this Command runs the first time

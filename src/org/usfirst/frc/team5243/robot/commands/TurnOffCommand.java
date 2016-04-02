@@ -21,9 +21,6 @@ public class TurnOffCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.oi.getRetrievalSS().turn(0);
-    	Robot.oi.getClimb().first= false;
-    	Robot.oi.getLiftSS().stopLift();
-    	Robot.oi.getLiftSS().extendArm(0);
     	Robot.oi.getShootingSS().spinDown();
     }
 
@@ -35,9 +32,6 @@ public class TurnOffCommand extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.oi.getRetrievalSS().stop();
-    	Robot.oi.getClimb().first= false;
-    	Robot.oi.getLiftSS().stopLift();
-    	Robot.oi.getLiftSS().extendArm(0);
     	Robot.oi.getShootingSS().spinDown();
     }
 

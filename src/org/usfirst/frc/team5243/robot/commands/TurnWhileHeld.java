@@ -1,15 +1,16 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
+import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TurnWhileHeld extends Command {
 	private double speed=.25;
 	private boolean left;
-	public TurnWhileHeld(boolean turnleft, double givenspeed) {
+	public TurnWhileHeld(boolean turnleft) {
 		left = turnleft;
-		speed = givenspeed;
+		speed = RobotMap.std.getNumber("TurnSpeed", .25);
 	}
 
 	// Called just before this Command runs the first time

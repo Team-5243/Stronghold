@@ -1,9 +1,9 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
+import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
@@ -12,7 +12,7 @@ public class ShootCommand extends Command {
 	private double speed;
 	private boolean first;
 	private long startTime;
-	private final int deltaT=2;
+	private final int deltaT = 2;
 	
 	public ShootCommand(double speed) {
         // Use requires() here to declare subsystem dependencies
@@ -20,7 +20,12 @@ public class ShootCommand extends Command {
     	this.speed = speed;
     	first = true;
     }
-
+	public ShootCommand(boolean IDONOTHINGHERE){
+		this.speed = RobotMap.std.getNumber("ShootSpeed", -1);
+	}
+	public ShootCommand(int ItooDonothingHeresoIamAscrubWithmyTerriblecamelCasing){
+		this.speed = RobotMap.std.getNumber("ShootSpeed",-1)/2;
+	}
     // Called just before this Command runs the first time
     protected void initialize() {
     }

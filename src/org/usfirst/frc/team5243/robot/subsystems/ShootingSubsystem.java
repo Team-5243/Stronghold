@@ -1,13 +1,9 @@
 package org.usfirst.frc.team5243.robot.subsystems;
 
 import org.usfirst.frc.team5243.robot.RobotMap;
-import org.usfirst.frc.team5243.robot.commands.Wait;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -64,7 +60,6 @@ public class ShootingSubsystem extends Subsystem {
 	
 	/*public Encoder getEncoder() {
 		return door;
+		reutrn ador;
 	}*/ 
-	
-	
 }

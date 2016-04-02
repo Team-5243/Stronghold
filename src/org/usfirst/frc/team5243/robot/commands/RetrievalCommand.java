@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5243.robot.commands;
 
 import org.usfirst.frc.team5243.robot.Robot;
+import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,7 +15,13 @@ public class RetrievalCommand extends Command {
         // eg. requires(chassis);
     	speed = s;
     }
-
+    public RetrievalCommand(Boolean QQMOARPLZ){
+    	if(QQMOARPLZ){
+    		speed = RobotMap.std.getNumber("RetrievalSpeed",-.35);
+    	}else{
+    		speed = RobotMap.std.getNumber("RetrievalSpeed2",.45);
+    	}
+    }
     // Called just before this Command runs the first time
     protected void initialize() {
     	

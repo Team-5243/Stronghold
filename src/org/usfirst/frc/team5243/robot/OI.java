@@ -3,6 +3,7 @@ package org.usfirst.frc.team5243.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 import org.usfirst.frc.team5243.robot.commands.*;
 import org.usfirst.frc.team5243.robot.subsystems.*;
@@ -15,7 +16,6 @@ public class OI {
 	
 
 	private final CameraSubsystem CameraSub;
-	private final LiftSubsystem LiftSub;
 	private final MotorSubsystem MotorSub;
 	private final RetrievalSubsystem RetrievalSub;
 	private final SensorSubsystem SensorSub;
@@ -40,8 +40,6 @@ public class OI {
 	private Button turnLeft;
 	private Button turnRight;
 	
-	
-	private ClimbCommand climb;
 	private DriveStraightWhileHeld driveStraightCommand;
     
 	
@@ -49,7 +47,6 @@ public class OI {
     	System.out.println("OI constructor Start");
     	driveStraightCommand = new DriveStraightWhileHeld(.6);
     	CameraSub = new CameraSubsystem();
-    	LiftSub = new LiftSubsystem();
     	MotorSub  = new MotorSubsystem();
     	RetrievalSub = new RetrievalSubsystem();
     	SensorSub = new SensorSubsystem();
@@ -60,7 +57,6 @@ public class OI {
  		
     }
     public void init(){
-    	setClimb(new ClimbCommand());
     	retrievalLimits = new LimitSwitchButton();
     	//free buttons: Left: 4, 5, 10, 11, 12 Right: 2, 4, 5, 6, 8, 9, 10, 12
     	flyWheelRetrieveButton = new JoystickButton(rightStick, 4);
@@ -79,35 +75,25 @@ public class OI {
 		turnRight = new JoystickButton(rightStick,1);
 		driveStraightWhile = new JoystickButton(rightStick, 3);		
  		lowerArm = new JoystickButton(rightStick, 7);
- 		climbButton = new JoystickButton(rightStick, 11);
  		
  		
  		
  		driveStraightWhile.whileHeld(driveStraightCommand);
- 		turnLeft.whileHeld(new TurnWhileHeld(true,.25));
- 		turnRight.whileHeld(new TurnWhileHeld(false,.25));
- 		retrievalButton.whileHeld(new RetrievalCommand(-.35));
+ 		turnLeft.whileHeld(new TurnWhileHeld(true));
+ 		turnRight.whileHeld(new TurnWhileHeld(false));
+ 		retrievalButton.whileHeld(new RetrievalCommand(true));//()
  		flyWheelRetrieveButton.whileHeld(new BringInBall());
- 		lowShootButton.whileHeld(new RetrievalCommand(.45));
- 		extendArmButton.whileHeld(new ExtendArm(.5));
- 		retractArm.whileHeld(new ExtendArm(-.5));
+ 		lowShootButton.whileHeld(new RetrievalCommand(false));//()
+ 		
  		
  		retrievalLimits.whenPressed(new TurnOffCommand());
  		alignUltraButton.whenPressed(new AlignLowGoalUltraCommand());
- 		climbButton.whenPressed(new ClimbCommand());
- 		climbButton.whenPressed(getClimb());
- 		flyWheelShootHalfButton.whenPressed(new ShootCommand(-.5));
- 		flyWheelShootButton.whenPressed(new ShootCommand(-1));
- 		raiseArm.whenPressed(new LiftCommand(true));
- 		lowerArm.whenPressed(new LiftCommand(false));
+ 		flyWheelShootHalfButton.whenPressed(new ShootCommand(13337));//()
+ 		flyWheelShootButton.whenPressed(new ShootCommand(true)); // 13337 and true are used to call different constructors.
  		
  		
- 		extendArmButton.whenReleased(new TurnOffCommand());
- 		retractArm.whenReleased(new TurnOffCommand());
- 		climbButton.whenReleased(new TurnOffCommand()); 
  		retrievalButton.whenReleased(new TurnOffCommand());
  		lowShootButton.whenReleased(new TurnOffCommand());
- 		extendArmButton.whenReleased(new TurnOffCommand());
 		driveStraightWhile.whenReleased(new EnableDrive());
 		flyWheelRetrieveButton.whenReleased(new TurnOffCommand());
 		turnLeft.whenReleased(new EnableDrive());
@@ -133,15 +119,6 @@ public class OI {
 
 	public RetrievalSubsystem getRetrievalSS(){
 		return RetrievalSub;
-	}
-	public LiftSubsystem getLiftSS(){
-		return LiftSub;
-	}
-	public ClimbCommand getClimb() {
-		return climb;
-	}
-	public void setClimb(ClimbCommand climb) {
-		this.climb = climb;
 	}
 	public ShootingSubsystem getShootingSS() {
 		// TODO Auto-generated method stub

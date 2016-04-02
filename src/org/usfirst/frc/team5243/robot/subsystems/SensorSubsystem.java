@@ -3,7 +3,6 @@ package org.usfirst.frc.team5243.robot.subsystems;
 import org.usfirst.frc.team5243.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;

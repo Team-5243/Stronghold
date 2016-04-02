@@ -22,16 +22,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	@SuppressWarnings("unused")
-	private RobotDrive myDrive;
-	NetworkTable table;
-	double[] defaultValue = new double[0];
-
 	public Robot() {
-		//table = NetworkTable.getTable("GRIP/myCoutoursReport");
-
+		
 	}
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -50,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		CommandGroup s = new NewAuto();
-		s.start();
+		s.start();//()
 	}
 
 	/**
@@ -68,7 +61,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
 		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
 		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
-		SmartDashboard.putNumber("Network Table", oi.getCamera().getAreas());
+		SmartDashboard.putNumber("Network Table Areas", oi.getCamera().getAreas());
+		SmartDashboard.putNumber("Network Table X", oi.getCamera().getX());
+		SmartDashboard.putNumber("Network Table Y", oi.getCamera().getY());
+		SmartDashboard.putNumber("Network Table Height", oi.getCamera().getHeight());
+		SmartDashboard.putNumber("Network Table Width", oi.getCamera().getWidth());
 	}
 
 	public void teleopInit() {
@@ -104,20 +101,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", oi.getSensorSS().getAngle());
 		SmartDashboard.putNumber("Gyro Rate", oi.getSensorSS().getRate());
 		SmartDashboard.putNumber("Ultrasonic", Robot.oi.getSensorSS().ultraOutput());
-		SmartDashboard.putNumber("Network Table", oi.getCamera().getAreas());
+		SmartDashboard.putNumber("Network Table Areas", oi.getCamera().getAreas());
+		SmartDashboard.putNumber("Network Table X", oi.getCamera().getX());
+		SmartDashboard.putNumber("Network Table Y", oi.getCamera().getY());
+		SmartDashboard.putNumber("Network Table Height", oi.getCamera().getHeight());
+		SmartDashboard.putNumber("Network Table Width", oi.getCamera().getWidth());
 
 		oi.getCamera().CameraLoop();
-		//SmartDashboard.putNumber("NetworkTable areas", oi.getCamera().getAreas());
-
-		/*
-		 * double areas = table.getNumber("area", 0); System.out.print("areas: "
-		 * ); for (double area: areas) { System.out.print(areas + " "); }
-		 * System.out.println();
-		 * 
-		 * oi.getSensorSS().TestAccel(); oi.getSensorSS().TestUltra();
-		 * 
-		 * System.out.print("");
-		 */
 	}
 
 	/**
